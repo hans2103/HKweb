@@ -1,0 +1,34 @@
+{
+  "name": "hkweb",
+  "version": "1.0.0",
+  "description": "website for HKweb",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hans2103/HKweb.git"
+  },
+  "keywords": [
+    "HKweb",
+    "Joomla",
+    "Magento",
+    "Teaching",
+    "CSS3",
+    "Fun"
+  ],
+  "author": "Hans Kuijpers",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hans2103/HKweb/issues"
+  },
+  "homepage": "https://github.com/hans2103/HKweb#readme",
+  "dependencies": {
+    "font-face": "^2.3.0",
+    "illusion": "timble/illusion"
+  },
+  "devDependencies": {
+    "node-sass": "^4.9.2"
+  }
+}

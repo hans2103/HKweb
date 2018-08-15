@@ -1,15 +1,18 @@
-body {
-	background: red;
-  display: grid;
-}
+// Normalize
+@import "../../node_modules/node-normalize-scss/normalize";
 
-p {
-  color: green;
-}
+// Settings
+@import "tools/tools";
 
-a {
-  text-decoration: underline;
-  color: yellow;
+// Atoms
+@import "atoms/body";
+@import "atoms/html";
+@import "atoms/paragraph";
 
-}
+// Molecules
+@import "molecules/navigation";
+@import "molecules/scroll-snap";
+@import "molecules/section";
 
+// Shame
+@import "shame";

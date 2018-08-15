@@ -1,0 +1,10 @@
+.docScroller {
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+  scroll-behavior: smooth;
+  scroll-snap-type: mandatory;
+  scroll-snap-points-y: repeat(100vh);
+  height: 100vh;
+}
+

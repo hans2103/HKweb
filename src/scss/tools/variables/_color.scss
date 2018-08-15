@@ -1,0 +1,30 @@
+$colors: (
+  orange: (
+    base: rgba(244,121,20,1)
+  ),
+  blue: (
+    base: rgba(96,181,202,1)
+  ),
+  yellow: (
+    base: rgba(251,232,156,1)
+  ),
+  black: (
+    base: rgba(51, 51, 51, 1)
+  ),
+  white: (
+    base: rgba(254, 255, 247, 1)
+  ),
+  gray: (
+    base: rgba(129,131,118,1),
+    base075: rgba(129,131,118,0.75),
+  ),
+  social: (
+    facebook: #3B5998,
+    twitter: #1DA1F2,
+    googleplus: #DC4E41,
+    linkedin: #0077B5,
+    behance: #1769FF,
+    github: #181717,
+    slideshare: #000000
+  )
+);

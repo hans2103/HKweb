@@ -1,6 +1,4 @@
 @import "../../node_modules/font-face/scss/font-face";
 
-@include font-face('Open Sans', 300);
-@include font-face('Open Sans', 400);
-@include font-face('Open Sans', 700);
-
+@include font-face('Arvo', 400);
+@include font-face('Montserrat', 400);

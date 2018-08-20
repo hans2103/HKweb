@@ -1,10 +1,14 @@
 .section {
-  height: 100vh;
-  display: grid;
-  grid-template-columns: minmax(1em, 1fr) repeat(12, minmax(0, 3.795rem)) minmax(1em, 1fr);
-  grid-template-rows: minmax(1rem, 3rem) 1fr 1fr;
-  grid-gap: 1em;
-  justify-items: center;
+  @include spacing(all, padding, 1);
+
+  @include breakpoint($charlie) {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: minmax(1em, 1fr) repeat(12, minmax(0, 3.795rem)) minmax(1em, 1fr);
+    grid-template-rows: minmax(1rem, 3rem) 1fr 1fr;
+    grid-gap: 1rem;
+    justify-items: center;
+  }
 }
 
 .section--seen {
@@ -29,7 +33,7 @@
   background-color: color(blue, base);
 
   figure {
-    grid-column: 2/7;
+    grid-column: 2/8;
     grid-row: 2/3;
   }
 
@@ -64,6 +68,25 @@
   .section__content {
     grid-column: 2/14;
     grid-row: 3/4;
+
+    @include breakpoint($charlie) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 1rem;
+    }
+
+    div + p {
+      @include breakpoint(0, $charlie) {
+        margin-top: $spacing-l;
+        text-align: center;
+      }
+
+      @include breakpoint($charlie) {
+        align-self: center;
+        justify-self: center;
+        grid-column: 1/-1;
+      }
+    }
   }
 }
 
@@ -71,13 +94,19 @@
   background-color: color(white, base);
 
   figure {
-    grid-column: 2/5;
+    grid-column: 2/6;
     grid-row: 2/3;
   }
 
   .section__content {
     grid-column: 6/14;
     grid-row: 2/3;
+
+    @include breakpoint($charlie) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 1rem;
+    }
   }
 
   footer {

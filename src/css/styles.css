@@ -538,18 +538,18 @@ body {
 }
 
 html {
-  font-size: 16px;
+  font-size: 14px;
 }
 
 @media screen and (min-width: 560px) {
   html {
-    font-size: calc(1.72414vw + 6.34483px);
+    font-size: calc(0.86207vw + 9.17241px);
   }
 }
 
 @media screen and (min-width: 1024px) {
   html {
-    font-size: 24px;
+    font-size: 18px;
   }
 }
 
@@ -559,6 +559,54 @@ p:empty {
   list-style: none;
   border: none;
   background: transparent;
+}
+
+.button {
+  -webkit-appearance: none;
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+  background: transparent;
+  color: #f47914;
+  border: 2px solid #f47914;
+  font-size: 1rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  line-height: 1;
+  height: inherit;
+  padding-top: 11px;
+  padding-right: 24px;
+  padding-bottom: 11px;
+  padding-left: 24px;
+  margin-right: 16px;
+  margin-bottom: 16px;
+  text-decoration: none;
+  text-align: center;
+  vertical-align: middle;
+  transition: background 200ms cubic-bezier(0.195, 0.4, 0.45, 0.785) 0ms;
+}
+
+.button:last-child {
+  margin-right: 0;
+}
+
+.button:only-child {
+  margin-bottom: 0;
+}
+
+.button:hover, .button:focus {
+  background: #60b5ca;
+}
+
+.button svg {
+  display: inline-block;
+  vertical-align: bottom;
+  margin-left: 0.5em;
+}
+
+.button svg:last-child {
+  margin-right: 0.5em;
+  margin-left: 0;
 }
 
 .links {
@@ -613,12 +661,39 @@ p:empty {
 }
 
 .section {
-  height: 100vh;
-  display: grid;
-  grid-template-columns: minmax(1em, 1fr) repeat(12, minmax(0, 3.795rem)) minmax(1em, 1fr);
-  grid-template-rows: minmax(1rem, 3rem) 1fr 1fr;
-  grid-gap: 1em;
-  justify-items: center;
+  padding-top: 16px;
+  padding-right: 16px;
+  padding-bottom: 16px;
+  padding-left: 16px;
+}
+
+@media screen and (min-width: 560px) {
+  .section {
+    padding-top: 24px;
+    padding-right: 24px;
+    padding-bottom: 24px;
+    padding-left: 24px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .section {
+    padding-top: 32px;
+    padding-right: 32px;
+    padding-bottom: 32px;
+    padding-left: 32px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .section {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: minmax(1em, 1fr) repeat(12, minmax(0, 3.795rem)) minmax(1em, 1fr);
+    grid-template-rows: minmax(1rem, 3rem) 1fr 1fr;
+    grid-gap: 1rem;
+    justify-items: center;
+  }
 }
 
 .section--seen {
@@ -644,7 +719,7 @@ p:empty {
 }
 
 .section--coding figure {
-  grid-column: 2/7;
+  grid-column: 2/8;
   grid-row: 2/3;
 }
 
@@ -681,18 +756,49 @@ p:empty {
   grid-row: 3/4;
 }
 
+@media screen and (min-width: 768px) {
+  .section--training .section__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+  }
+}
+
+@media screen and (min-width: 0) and (max-width: 768px) {
+  .section--training .section__content div + p {
+    margin-top: 24px;
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .section--training .section__content div + p {
+    align-self: center;
+    justify-self: center;
+    grid-column: 1/-1;
+  }
+}
+
 .section--sharing {
   background-color: #fefff7;
 }
 
 .section--sharing figure {
-  grid-column: 2/5;
+  grid-column: 2/6;
   grid-row: 2/3;
 }
 
 .section--sharing .section__content {
   grid-column: 6/14;
   grid-row: 2/3;
+}
+
+@media screen and (min-width: 768px) {
+  .section--sharing .section__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+  }
 }
 
 .section--sharing footer {
@@ -795,7 +901,11 @@ p:empty {
   color: #96281b;
 }
 
-figure svg {
+figure {
+  width: 100%;
+}
+
+figure > svg {
   width: 100%;
   height: 100%;
   max-width: 100%;

@@ -90,7 +90,7 @@
         erat urna sollicitudin tellus, lacinia rutrum magna ipsum in urna. Phasellus quis semper elit. Pellentesque
         egestas vehicula faucibus.</p>
       <p>Pellentesque convallis, felis vel egestas gravida, ligula est aliquet ante, a eleifend nulla nulla.</p>
-      <p><a href="https://www.behance.net/hans2103" class="anchor--button">See his work on Behance</a></p>
+      <p><a href="https://www.behance.net/hans2103" class="button">See his work on Behance</a></p>
     </div>
     <figure>
       <svg><use href="#hans-coding" /></svg>
@@ -110,7 +110,7 @@
       <p>Vivamus molestie neque turpis, eu sagittis tellus tincidunt in. Etiam rhoncus interdum nunc non feugia.</p>
       <h3>Professional services</h3>
       <p>Configuration and running testPage loading timeReal life traffic simulationOptimization advice</p>
-      <p><a href="#contact-hans" rel="modal:open" class="anchor--button">Contact Hans for a test</a></p>
+      <p><a href="#contact-hans" rel="modal:open" class="button">Contact Hans for a test</a></p>
     </div>
     <figure>
       <svg><use href="#hans-testing" /></svg>
@@ -134,7 +134,7 @@
           Praesent massa nisi, porta quis elit sed, tincidunt blandit neque. In hac habitasse platea dictumst. Aenean
           eget est at enim aliquet!</p>
       </div>
-      <p><a href="#contact-hans" rel="modal:open" class="anchor--button">Ask Hans to train you</a></p>
+      <p><a href="#contact-hans" rel="modal:open" class="button">Ask Hans to train you</a></p>
     </div>
     <figure>
       <svg><use href="#hans-training" /></svg>
@@ -185,7 +185,6 @@
       <svg><use href="#hans-sharing" /></svg>
     </figure>
     <footer class="section__footer">
-      <div class="section__content">
         <div class="site-footer--social social-icon--list">
           <a class="social-icon--link facebook" href="https://www.facebook.com/hans2103"><svg><use href="#facebook" /></svg><span class="social-icon--title">Facebook</span></a>
           <a class="social-icon--link twitter" href="https://twitter.com/hans2103"><svg><use href="#twitter" /></svg><span class="social-icon--title">Twitter</span></a>
@@ -200,7 +199,6 @@
           href="http://untilsunday.it/">Until Sunday</a>. Developed by <a href="https://hkweb.nl">Hans Kuijpers</a>.
         </p>
         </div>
-      </div>
     </footer>
   </section>
 </div>

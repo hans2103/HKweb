@@ -22,5 +22,3 @@ Desktop.ini
 
 # Local Netlify folder
 .netlify
-out/*
-!out/.gitignore

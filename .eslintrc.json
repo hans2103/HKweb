@@ -5,23 +5,24 @@
     },
     "extends": "eslint:recommended",
     "parserOptions": {
-        "ecmaVersion": 5
+        "ecmaVersion": 6
     },
     "rules": {
+        "no-console":0,
         "indent": [
-            "error",
-            "tab"
+            1,
+            4
         ],
         "linebreak-style": [
-            "error",
+            2,
             "unix"
         ],
         "quotes": [
-            "error",
+            2,
             "double"
         ],
         "semi": [
-            "error",
+            2,
             "always"
         ]
     }

@@ -1,122 +1,42 @@
 {
-  "name": "hkweb",
-  "version": "1.0.0",
-  "description": "website for HKweb",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hans2103/HKweb.git"
-  },
-  "keywords": [
-    "HKweb",
-    "Joomla",
-    "Magento",
-    "Teaching",
-    "CSS3",
-    "Fun"
-  ],
-  "author": "Hans Kuijpers",
-  "contributors": [
-    {
-      "name": "Hans Kuijpers",
-      "url": "https://github.com/hans2103"
+    "name": "hkweb",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "next",
+        "build": "next build",
+        "start": "next start",
+        "export": "next build && next export"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/hans2103/HKweb.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/hans2103/HKweb/issues"
+    },
+    "homepage": "https://github.com/hans2103/HKweb#readme",
+    "browserslist": [
+        ">0.2%",
+        "not dead",
+        "not ie < 11",
+        "not op_mini all"
+    ],
+    "dependencies": {
+        "@zeit/next-sass": "^1.0.1",
+        "next": "^9.3.0",
+        "node-sass": "^4.13.1",
+        "react": "^16.13.0",
+        "react-gtm-module": "^2.0.8",
+        "react-dom": "^16.13.0",
+        "styled-components": "^5.0.1",
+        "styled-normalize": "^8.0.7"
+    },
+    "devDependencies": {
+        "babel-plugin-styled-components": "^1.10.7"
     }
-  ],
-  "bugs": {
-    "url": "https://github.com/hans2103/HKweb/issues"
-  },
-  "homepage": "https://github.com/hans2103/HKweb#readme",
-  "config": {
-    "src": "src",
-    "dist": "public_html",
-    "port": "4593",
-    "proxy": "hkweb.test",
-    "percentage": "3%",
-    "region": "NL",
-    "scripts": "src/scripts/*.js"
-  },
-  "scripts": {
-    "// GENERAL": " --- GENERAL ---",
-    "reinstall": "rimraf ./node_modules && yarn install",
-    "postinstall": "run-s start",
-    "start": "run-p serve watch",
-    "// CSS": " --- CSS --- ",
-    "scss": "node-sass --output-style expanded -o $npm_package_config_src/css $npm_package_config_src/scss",
-    "autoprefixer": "postcss --no-map -u autoprefixer --autoprefixer.browsers \"&gt; $npm_package_config_percentage in $npm_package_config_region, ie 11\" -r $npm_package_config_src/css/*",
-    "cleancss:font": "cleancss --skip-rebase --output $npm_package_config_dist/css/font.css -O2 restructureRules:on,mergeSemantically:on $npm_package_config_src/css/font.css",
-    "cleancss:style": "cleancss --skip-rebase --output $npm_package_config_dist/css/style.css -O1 specialComments:none -O2 restructureRules:on,mergeSemantically:on $npm_package_config_src/css/style.css",
-    "cleancss": "run-s cleancss:*",
-    "// JS": " --- JAVASCRIPT --- ",
-    "modernizr": "modernizr -c modernizr-config.json -d $npm_package_config_dist/js -u",
-    "uglify": "uglifyjs $npm_package_config_scripts -m -o $npm_package_config_dist/js/scripts.js && uglifyjs $npm_package_config_scripts -m -c -o $npm_package_config_dist/js/scripts.min.js",
-    "// IMAGES": " --- IMAGES --- ",
-    "favicon": "cpx -p \"$npm_package_config_src/favicon/*.*\" $npm_package_config_dist/images/favicon",
-    "icons:copy:sprite-files": "svgo -f $npm_package_config_src/icons/sprite -o $npm_package_config_dist/icons",
-    "icons:copy:non-sprite-files": "svgo -f $npm_package_config_src/icons -o $npm_package_config_dist/icons",
-    "icons:presprite": "rimraf $npm_package_config_dist/images/icons/sprite.svg",
-    "icons:sprite": "svgstore -o $npm_package_config_dist/icons/sprite.svg $npm_package_config_src/icons/sprite/*.svg --inline",
-    "icons": "run-s icons:**",
-    "imagemin": "imagemin-power $npm_package_config_src/images/* -o $npm_package_config_dist/images",
-    "// BUILD(GENERIC)": " --- BUILD (GENERIC) --- ",
-    "clean": "rimraf $npm_package_config_dist/{css/*,js/*,icons/*,images/*,img/*}",
-    "mkdirs:css": "mkdirp $npm_package_config_dist/css",
-    "mkdirs:icons": "mkdirp $npm_package_config_dist/icons",
-    "mkdirs:images": "mkdirp $npm_package_config_dist/images/favicon",
-    "mkdirs:js": "mkdirp $npm_package_config_dist/js",
-    "mkdirs": "run-s mkdirs:*",
-    "// BUILD (DEVELOPMENT)": " --- BUILD (DEVELOPMENT) --- ",
-    "prebuild": "run-s clean mkdirs",
-    "build:css": "run-s lint-scss scss autoprefixer cleancss",
-    "build:favicon": "run-s favicon",
-    "build:icons": "run-s icons",
-    "build:images": "run-s imagemin",
-    "build:js": "run-s lint uglify",
-    "build:modernizr": "run-s modernizr",
-    "build": "run-s build:*",
-    "// LINTING & TESTING": " --- LINTING & TESTING --- ",
-    "pretest": "run-s lint lint-scss",
-    "lint": "eslint $npm_package_config_src/scripts || true",
-    "lint-scss": "stylelint $npm_package_config_src/scss/*.scss --syntax scss || true",
-    "// SERVING": " --- SERVING --- ",
-    "kill": "lsof -n -i:$npm_package_config_port | grep LISTEN | awk '{print $2}' | xargs -r kill -9",
-    "preserve": "run-s build kill",
-    "serve": "browser-sync start --proxy $npm_package_config_proxy --port $npm_package_config_port --files \"$npm_package_config_dist/css/*.css, $npm_package_config_dist/js/*.js, $npm_package_config_dist/img/*.*, $npm_package_config_dist/**/*.php, $npm_package_config_dist/*.php, !node_modules/**/*.php\"",
-    "// WATCHING": " --- WATCHING --- ",
-    "watch:favicon": "onchange \"$npm_package_config_src/favicon\" -v -- run-s build:favicon",
-    "watch:icons": "onchange \"$npm_package_config_src/icons/**/*.svg\" -v -- run-s build:icons",
-    "watch:images": "onchange \"$npm_package_config_src/images\" -v -- run-s build:images",
-    "watch:css": "onchange \"$npm_package_config_src/scss\" -v -- run-s build:css",
-    "watch:js": "onchange \"$npm_package_config_src/scripts\" -v -- run-s build:js",
-    "watch": "run-p watch:*"
-  },
-  "devDependencies": {
-    "autoprefixer": "^9.1.5",
-    "browser-sync": "^2.24.7",
-    "clean-css-cli": "^4.2.1",
-    "copyfiles": "^2.1.0",
-    "cpx": "^1.5.0",
-    "eslint": "^5.6.0",
-    "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-promise": "^4.0.1",
-    "eslint-plugin-standard": "^4.0.0",
-    "font-face": "^2.3.1",
-    "illusion": "timble/illusion",
-    "imagemin-power-cli": "^3.0.0",
-    "mkdirp": "^0.5.1",
-    "modernizr": "^3.6.0",
-    "node-normalize-scss": "^8.0.0",
-    "node-sass": "^4.9.3",
-    "npm-run-all": "^4.1.3",
-    "onchange": "^4.1.0",
-    "postcss-cli": "^6.0.0",
-    "replace-in-file": "^3.4.2",
-    "rimraf": "^2.6.2",
-    "stylelint": "^9.5.0",
-    "svgo": "^1.1.1",
-    "svgstore-cli": "^1.3.1",
-    "uglify-js": "^3.4.9"
-  },
-  "dependencies": {
-    "optimised-svgs": "perfectwebteam/optimised-svgs"
-  }
 }

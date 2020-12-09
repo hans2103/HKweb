@@ -1,11 +1,15 @@
-import styled from 'styled-components';
-import Link from 'next/link';
+import styled from 'styled-components'
+import Link from 'next/link'
 
-export default ({ href, name }) => (
-    <Link href={href} passHref>
-        <StyledLink>{name}</StyledLink>
-    </Link>
-);
+const Named = ({ href, name }) => {
+    return (
+        <Link href={href} passHref>
+            <StyledLink>{name}</StyledLink>
+        </Link>
+    )
+}
+
+export default Named
 
 const StyledLink = styled.a`
     color: rgb(244,121,20);
@@ -23,4 +27,4 @@ const StyledLink = styled.a`
             color: initial;
         }
     }
-`;
+`

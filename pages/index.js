@@ -1,10 +1,25 @@
-import styled from 'styled-components'
+// pages/index.js
 
-const Title = styled.h1`
-  font-size: 50px;
-  color: ${({ theme }) => theme.colors.primary};
-`
+import Box from '../components/design-system/Box';
+import Flex from '../components/design-system/Flex';
+import Heading from '../components/design-system/Heading';
+import Layout from '../components/layout/Layout';
+import Stack from '../components/design-system/Stack';
 
 export default function Home() {
-  return <Title>My page</Title>
+    return (
+        <Layout>
+            <Flex flexDirection="column">
+                <Heading level={1}>My page</Heading>
+                <Stack gap={5}>
+                    <Box color="white" backgroundColor="navy">
+                        Tomato
+                    </Box>
+                    <Box color="white" backgroundColor="navy">
+                        Tomato
+                    </Box>
+                </Stack>
+            </Flex>
+        </Layout>
+    );
 }

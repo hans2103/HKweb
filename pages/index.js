@@ -1,17 +1,17 @@
-import styled from 'styled-components';
-import Link from '../components/Link';
+// pages/index.js
 
-export default () => (
-    <Container>
-        <Link
-            href="mailto:info@hkweb.nl"
-            name="info@hkweb.nl" />
-        <Link
-            href="tel:+31 (0)6 5422 4518"
-            name="06 - 5422 4518" />
-    </Container>
-);
+import Flex from '../components/Flex'
+import Heading from '../components/Heading'
+import Stack from '../components/Stack'
 
-const Container = styled.div `
-	padding: .75em 0;
-`;
+const Index = () => {
+  return (
+    <Flex as="main" justifyContent="center" alignItems="center" height="100vh">
+      <Stack gap={5}>
+        <Heading level={1}>Hans Kuijpers, happy frontend developer</Heading>
+      </Stack>
+    </Flex>
+  )
+}
+
+export default Index

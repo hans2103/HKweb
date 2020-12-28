@@ -1,29 +1,6 @@
 {
-    "env": {
-        "browser": true,
-        "node": true
-    },
-    "extends": "eslint:recommended",
-    "parserOptions": {
-        "ecmaVersion": 6
-    },
-    "rules": {
-        "no-console":0,
-        "indent": [
-            1,
-            4
-        ],
-        "linebreak-style": [
-            2,
-            "unix"
-        ],
-        "quotes": [
-            2,
-            "double"
-        ],
-        "semi": [
-            2,
-            "always"
-        ]
-    }
+	"extends": "tamia/react",
+	"rules": {
+		"react/prop-types": 0
+	}
 }

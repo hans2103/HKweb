@@ -1,10 +1,10 @@
 // pages/index.js
 
-import Box from '../components/design-system/Box';
-import Flex from '../components/design-system/Flex';
-import Heading from '../components/design-system/Heading';
-import Layout from '../components/layout/Layout';
-import Stack from '../components/design-system/Stack';
+import Box from '../src/components/box';
+import Flex from '../src/components/flex';
+import Heading from '../src/components/heading';
+import Layout from '../src/layout/layout';
+import Stack from '../src/components/stack';
 
 export default function Home() {
     return (

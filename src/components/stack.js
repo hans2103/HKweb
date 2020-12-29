@@ -1,4 +1,4 @@
-// components/design-system/stack.js
+// components/stack.js
 
 import styled from 'styled-components';
 import { system } from 'styled-system';

@@ -1,4 +1,4 @@
-// components/design-system/input.js
+// components/input.js
 
 import styled from 'styled-components';
 import css from '@styled-system/css';

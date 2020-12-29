@@ -1,4 +1,4 @@
-// components/design-system/Flex.js
+// components/Flex.js
 
 import styled from 'styled-components';
 import Box from './box';

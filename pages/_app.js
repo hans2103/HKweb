@@ -1,13 +1,19 @@
 // pages/_app.js
 
-import { createGlobalStyle, ThemeProvider } from 'styled-components';
-import theme from '../styles/theme';
+import { createGlobalStyle } from 'styled-components';
+import { normalize } from 'styled-normalize'
+import Provider from '../src/Provider';
 
 const GlobalStyle = createGlobalStyle`
+ ${normalize}
+ 
   body {
-    margin: 0;
     padding: 0;
     box-sizing: border-box;
+  }
+  
+  ul, ol {
+    padding: 0;
   }
 `;
 
@@ -15,9 +21,9 @@ export default function App({ Component, pageProps }) {
     return (
         <>
             <GlobalStyle />
-            <ThemeProvider theme={theme}>
+            <Provider>
                 <Component {...pageProps} />
-            </ThemeProvider>
+            </Provider>
         </>
     );
 }

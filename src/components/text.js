@@ -1,4 +1,4 @@
-// components/design-system/text.js
+// components/text.js
 
 import styled from 'styled-components';
 import { color, typography, space, layout, variant } from 'styled-system';

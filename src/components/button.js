@@ -49,7 +49,7 @@ const Button = styled.button(
 Button.propTypes = {
     variant: PropTypes.oneOf(['secondary', 'primary']),
     disabled: PropTypes.bool,
-    childrend: PropTypes.node.isRequired
+    children: PropTypes.node.isRequired
 };
 
 Button.defaultProps = {

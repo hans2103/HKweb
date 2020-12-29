@@ -1,6 +1,5 @@
-// components/design-system/heading.js
+// components/heading.js
 
-import React from 'react';
 import styled from 'styled-components';
 import { variant, space } from 'styled-system';
 import PropTypes from 'prop-types';

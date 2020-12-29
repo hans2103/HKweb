@@ -38,14 +38,14 @@ const fontSizes = {
 };
 
 const colors = {
-    bg: '#fff',
-    base: '#222',
-    light: '#999',
-    primary: '#c25400',
-    hover: '#ff7d1a',
-    focus: '#ff7d1a',
-    selection: 'rgb(255,237,117)',
-    selectionAlpha: 'rgba(255,237,117,0.25)'
+    bg: 'hsl(0,0%,100%)',
+    base: 'hsl(0,0%,13%)',
+    light: 'hsl(0,0%,60%)',
+    primary: 'hsl(26,100%,38%)',
+    hover: 'hsl(26,100%,55%)',
+    focus: 'hsl(26,100%,55%)',
+    selection: 'hsl(52,100%,73%)',
+    selectionAlpha: 'hsla(52,100%,73%,0.25)'
 };
 
 const shadows = {
@@ -53,8 +53,16 @@ const shadows = {
 };
 
 const borders = {
+    none: 'none',
+    thin: '1px solid',
     focus: '3px solid'
 };
+
+const radii = {
+    none: 0,
+    base: '0.25em',
+    round: '99999em',
+}
 
 const fontWeights = {
     base: 300,
@@ -87,7 +95,7 @@ const textBaseStyles = {
     letterSpacing: letterSpacings.base
 };
 
-export default {
+export const theme = {
     baseFontSize: '1.125em',
     blockMarginBottom: space.m,
     headingMarginTop: space.l,
@@ -108,6 +116,7 @@ export default {
     colors,
     shadows,
     borders,
+    radii,
     breakpoints,
     headingStyles: {
         1: {

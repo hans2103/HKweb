@@ -1,4 +1,4 @@
-// components/design-system/itemlist.js
+// components/itemlist.js
 
 import Text from './text';
 import Link from './link';
@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 const ItemList = ({ items }) => {
     return (
-        <Text as='ul' variant='small'>
+        <Text as='ul'>
             {items.map(item => (
                 <Item as='li' key={item.link}>
                     <Link href={item.link}>{item.title}</Link>

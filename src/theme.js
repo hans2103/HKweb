@@ -39,13 +39,14 @@ const fontSizes = {
 
 const colors = {
     bg: 'hsl(0,0%,100%)',
-    base: 'hsl(0,0%,13%)',
+    base: 'hsl(221, 45%, 28%)',
     light: 'hsl(0,0%,60%)',
     primary: 'hsl(26,100%,38%)',
     hover: 'hsl(26,100%,55%)',
     focus: 'hsl(26,100%,55%)',
     selection: 'hsl(52,100%,73%)',
-    selectionAlpha: 'hsla(52,100%,73%,0.25)'
+    selectionAlpha: 'hsla(52,100%,73%,0.25)',
+    hero: 'hsl(38,48%,81%)'
 };
 
 const shadows = {

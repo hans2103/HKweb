@@ -6,24 +6,24 @@ import PropTypes from 'prop-types';
 
 const variants = {
     body: {
-        fontFamily: 'body',
+        fontFamily: 'base',
         fontSize: 'm',
         fontWeight: 'normal',
-        lineHeight: 'body',
-        color: 'text'
+        lineHeight: 'base',
+        color: 'base'
     },
     disclaimer: {
-        fontFamily: 'body',
+        fontFamily: 'base',
         fontSize: 's',
         fontWeight: 'normal',
-        lineHeight: 'body',
+        lineHeight: 'base',
         color: 'secondary'
     },
     error: {
-        fontFamily: 'body',
+        fontFamily: 'base',
         fontSize: 'm',
         fontWeight: 'normal',
-        lineHeight: 'body',
+        lineHeight: 'base',
         color: 'error'
     }
 };

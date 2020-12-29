@@ -7,21 +7,21 @@ import propTypes from '@styled-system/prop-types';
 
 const variants = {
     1: {
-        color: 'text',
+        color: 'primary',
         fontFamily: 'heading',
         fontWeight: 'bold',
         lineHeight: 'heading',
         fontSize: 'xl',
     },
     2: {
-        color: 'text',
+        color: 'base',
         fontFamily: 'heading',
         fontWeight: 'bold',
         lineHeight: 'heading',
         fontSize: 'l',
     },
     3: {
-        color: 'text',
+        color: 'base',
         fontFamily: 'heading',
         fontWeight: 'bold',
         lineHeight: 'heading',

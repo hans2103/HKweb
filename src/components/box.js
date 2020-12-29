@@ -1,6 +1,5 @@
 // components/Box.js
 
-import React from 'react'
 import styled from 'styled-components';
 import { space, color, border, layout, flexbox, grid } from 'styled-system';
 import propTypes from '@styled-system/prop-types';

@@ -1,20 +1,20 @@
 // compontents/layout/layout.js
 
+import Flex from '../components/flex';
 import Footer from './footer';
 import Meta from './meta';
-//import Header from '../Layout/Header';
+import Header from './Header';
+import Hero from './Hero';
 
-function Layout({ children }) {
+function Layout ({ children }) {
     return (
-        <>
+        <Flex flexDirection='column'>
             <Meta />
-            <div id="site-content">
-                <div className="min-h-screen">
-                    <main className="text-default bg-default">{children}</main>
-                </div>
-                <Footer />
-            </div>
-        </>
+            <Hero />
+            <Header />
+            <main>{children}</main>
+            <Footer />
+        </Flex>
     );
 }
 

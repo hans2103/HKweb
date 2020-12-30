@@ -2,7 +2,9 @@
 
 import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
+import PropTypes from 'prop-types';
 import Provider from '../src/Provider';
+import Fonts from '../src/components/fonts';
 
 const GlobalStyle = createGlobalStyle`
  ${normalize}
@@ -52,11 +54,17 @@ const App = ({ Component, pageProps }) => {
     return (
         <>
             <GlobalStyle />
+            <Fonts />
             <Provider>
                 <Component {...pageProps} />
             </Provider>
         </>
     );
+};
+
+App.propTypes = {
+    Component: PropTypes.func,
+    pageProps: PropTypes.object
 };
 
 /** @component */

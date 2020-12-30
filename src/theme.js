@@ -1,6 +1,6 @@
 // styles/theme.js
 
-const baseFont = ['Helvetica', 'sans-serif'].join(',');
+const baseFont = ['SwitzeraADFRegular', 'Verdana', 'arial', 'sans-serif'].join(',');
 
 const space = {
     xxs: '0.125rem', // 2px

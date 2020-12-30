@@ -10,11 +10,11 @@ import {
     SITE_SKILLS
 } from '../../lib/constants';
 
-export default function Meta () {
+const Meta = () => {
     return (
         <Head>
             <meta charSet='utf-8' />
-            <meta name="viewport" content="width=device-width, initial-scale=1"/>
+            <meta name='viewport' content='width=device-width, initial-scale=1' />
             <title>{SITE_TITLE}, {SITE_SUBTITLE} | {SITE_SKILLS}</title>
             <link rel='icon' type='image/png' sizes='32x32' href='/favicon/favicon-32x32.png' />
             <link rel='icon' type='image/png' sizes='16x16' href='/favicon/favicon-16x16.png' />
@@ -38,4 +38,7 @@ export default function Meta () {
             <meta key='twitter:image' name='twitter:image' content={HOME_OG_IMAGE_URL} />
         </Head>
     );
-}
+};
+
+/** @component */
+export default Meta;

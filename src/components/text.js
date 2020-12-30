@@ -48,4 +48,5 @@ Text.defaultProps = {
     variant: 'body'
 };
 
+/** @component */
 export default Text;

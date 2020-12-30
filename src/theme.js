@@ -46,7 +46,7 @@ const colors = {
     focus: 'hsl(26,100%,55%)',
     selection: 'hsl(52,100%,73%)',
     selectionAlpha: 'hsla(52,100%,73%,0.25)',
-    hero: 'hsl(38,48%,81%)'
+    hero: 'hsl(33,100%,50%)'
 };
 
 const shadows = {
@@ -62,8 +62,8 @@ const borders = {
 const radii = {
     none: 0,
     base: '0.25em',
-    round: '99999em',
-}
+    round: '99999em'
+};
 
 const fontWeights = {
     base: 300,

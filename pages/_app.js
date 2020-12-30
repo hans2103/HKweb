@@ -57,7 +57,7 @@ const App = ({ Component, pageProps }) => {
             </Provider>
         </>
     );
-}
+};
 
 /** @component */
-export default App
+export default App;

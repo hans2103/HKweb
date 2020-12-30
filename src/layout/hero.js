@@ -1,12 +1,11 @@
 // src/layout/hero/js
 
 import styled from 'styled-components';
-import Image from 'next/image';
 import css from '@styled-system/css';
+import Image from '../components/image';
 import Box from '../components/box';
 import Flex from '../components/flex';
 import Heading from '../components/heading';
-import Text from '../components/text';
 import { SITE_TITLE, SITE_SUBTITLE } from '../../lib/constants';
 
 const Component = styled(Flex)(
@@ -31,14 +30,14 @@ const ComponentHeading = styled(Heading)(
         color: 'currentColor',
         fontSize: 'xxl'
     })
-)
+);
 
-const ComponentText = styled(Text)(
+const ComponentText = styled(Heading)(
     css({
         color: 'currentColor',
         fontSize: 'xl'
     })
-)
+);
 
 const Hero = () => {
     return (
@@ -63,7 +62,7 @@ const Hero = () => {
                     {SITE_TITLE}
                 </ComponentHeading>
                 <ComponentText
-                    as='p'
+                    level={2}
                 >
                     {SITE_SUBTITLE}
                 </ComponentText>

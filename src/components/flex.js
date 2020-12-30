@@ -9,4 +9,5 @@ const Flex = styled(Box)({
 
 Flex.propTypes = Box.propTypes;
 
+/** @component */
 export default Flex;

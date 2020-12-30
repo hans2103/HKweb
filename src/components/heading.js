@@ -50,4 +50,5 @@ Heading.propTypes = {
     children: PropTypes.node,
 };
 
+/** @component */
 export default Heading;

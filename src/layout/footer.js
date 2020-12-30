@@ -43,4 +43,5 @@ const Footer = () => {
     );
 };
 
+/** @component */
 export default Footer;

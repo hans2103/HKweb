@@ -9,4 +9,5 @@ const Grid = styled(Box)({
 
 Grid.propTypes = Box.propTypes;
 
+/** @component */
 export default Grid;

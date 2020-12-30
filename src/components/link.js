@@ -1,7 +1,10 @@
+// src/components/link.js
+
+import NextLink from 'next/link';
 import styled from 'styled-components';
 import css from '@styled-system/css';
 
-const Link = styled.a(
+const Component = styled.a(
     css({
         '&, &:link, &:visited': {
             padding: 0,
@@ -22,4 +25,13 @@ const Link = styled.a(
     })
 );
 
+const Link = ({ href, name }) => {
+    return (
+        <NextLink href={href} passHref>
+            <Component>{name}</Component>
+        </NextLink>
+    );
+};
+
+/** @component */
 export default Link;

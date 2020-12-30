@@ -18,4 +18,5 @@ function Layout ({ children }) {
     );
 }
 
+/** @component */
 export default Layout;

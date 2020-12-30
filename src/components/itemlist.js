@@ -10,7 +10,7 @@ const ItemList = ({ items, justifyContent, ...props }) => {
         <Flex as='ul' m='0' listStyle='none' justifyContent={justifyContent}>
             {items.map(item => (
                 <Item as='li' key={item.link}>
-                    <Link href={item.link}>{item.title}</Link>
+                    <Link href={item.link} name={item.title} />
                 </Item>
             ))}
         </Flex>
@@ -37,6 +37,7 @@ const Item = styled(Text)`
     }
 `;
 
+/** @component */
 export default ItemList;
 
 

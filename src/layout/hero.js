@@ -12,8 +12,9 @@ const Component = styled(Flex)(
     css({
         position: 'relative',
         flexDirection: 'column',
-        width: '100vw',
-        height: 'calc(100vh - 4rem - 33px)'
+        width: '100%vw',
+        height: 'calc(100vh - 4rem - 33px)',
+        minHeight: '20rem'
     })
 );
 
@@ -45,7 +46,6 @@ const Hero = () => {
             <Box as='figure'
                  position='fixed'
                  height='100%'
-                 width='100%'
                  overflow='hidden'
                  zIndex='-1'>
                 <Image

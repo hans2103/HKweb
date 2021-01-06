@@ -38,15 +38,15 @@ const fontSizes = {
 };
 
 const colors = {
-    bg: 'hsl(0,0%,100%)',
-    base: 'hsl(221, 45%, 28%)',
+    bg: 'hsl(148,9%,88%)',
+    base: 'hsl(209,14%,37%)',
     light: 'hsl(0,0%,60%)',
-    primary: 'hsl(26,100%,38%)',
-    hover: 'hsl(26,100%,55%)',
-    focus: 'hsl(26,100%,55%)',
+    primary: 'hsl(209,14%,37%)',
+    hover: 'hsl(14,84%,55%)',
+    focus: 'hsl(14,84%,55%)',
     selection: 'hsl(52,100%,73%)',
     selectionAlpha: 'hsla(52,100%,73%,0.25)',
-    hero: 'hsl(33,100%,50%)'
+    hero: 'hsl(148,9%,88%)'
 };
 
 const shadows = {

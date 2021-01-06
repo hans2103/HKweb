@@ -2,15 +2,13 @@
 
 import Flex from '../components/flex';
 import Footer from './footer';
-import Meta from './meta';
 import Header from './header';
-import Hero from './hero';
+import Meta from './meta';
 
 function Layout ({ children }) {
     return (
         <Flex flexDirection='column'>
             <Meta />
-            <Hero />
             <Header />
             <main>{children}</main>
             <Footer />

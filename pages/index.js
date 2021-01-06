@@ -1,24 +1,26 @@
 // pages/index.js
 
 import Flex from '../src/components/flex';
-import Grid from '../src/components/grid';
 import Heading from '../src/components/heading';
+import Hero from '../src/layout/hero';
 import Layout from '../src/layout/layout';
-import Box from '../src/components/box';
+import Link from '../src/components/link';
+import Stack from '../src/components/stack';
 import Text from '../src/components/text';
 
 const Home = () => {
     return (
         <Layout>
-            <Flex flexDirection='column'>
-                <Heading level={1}>My page</Heading>
+            <Hero />
+            <Flex p='2rem' pl='3vw' flexDirection='column'>
+                <Heading level={2}>HKweb</Heading>
 
-                <Box as='section' aria-labelledby='Mijn-Presentaties'>
-                    <Heading level={2} id='Mijn-Presentaties'>Mijn presentaties</Heading>
+                <Stack as='section' mt='1rem' aria-labelledby='contact'>
+                    <Heading level={2} id='contact'>Contact</Heading>
                     <Text>
-                        Hier komt een lijst van gegeven presentaties.
+                    <Link href='mailto:info@hkweb.nl' name='e-mail: info@hkweb.nl' /> | <Link href='tel:+31654224518' name='telefoon: 06 - 5422 4518' />
                     </Text>
-                </Box>
+                </Stack>
 
             </Flex>
         </Layout>

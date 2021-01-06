@@ -3,6 +3,7 @@
 import NextLink from 'next/link';
 import styled from 'styled-components';
 import css from '@styled-system/css';
+import Hidden from './hidden';
 
 const Component = styled.a(
     css({
@@ -25,10 +26,21 @@ const Component = styled.a(
     })
 );
 
-const Link = ({ href, name }) => {
+const Name = props => {
+    if (props.hidden) {
+        return <Hidden>{props.name}</Hidden>;
+    } else {
+        return <>{props.name}</>;
+    }
+};
+
+const Link = ({ href, name, hidden, children }) => {
     return (
         <NextLink href={href} passHref>
-            <Component>{name}</Component>
+            <Component>
+                <Name hidden={hidden} name={name} />
+                {children}
+            </Component>
         </NextLink>
     );
 };

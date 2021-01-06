@@ -15,7 +15,7 @@ const Input = styled.input(
         borderRadius: 'base',
         fontFamily: 'body',
         fontSize: 'm',
-        color: 'text',
+        color: 'base',
         backgroundColor: 'background',
         boxShadow: 'none',
 

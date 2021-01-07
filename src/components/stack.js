@@ -18,10 +18,7 @@ const Stack = styled(Box)(
 Stack.propTypes = {
     ...Box.propProps,
     /** Spacing between children */
-    gap: PropTypes.oneOfType([
-        PropTypes.number,
-        PropTypes.arrayOf(PropTypes.number)
-    ])
+    gap: PropTypes.oneOfType([PropTypes.number, PropTypes.arrayOf(PropTypes.number)])
 };
 
 /** @component */

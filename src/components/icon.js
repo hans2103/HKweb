@@ -1,14 +1,14 @@
 // src/components/icons.js
 
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 import { icons } from '../../lib/icons';
 
 const Icon = (props) => {
     const styles = {
         svg: {},
         path: {
-            fill: props.color,
-        },
+            fill: props.color
+        }
     };
 
     return (
@@ -17,8 +17,7 @@ const Icon = (props) => {
             width={`${props.size}em`}
             height={`${props.size}em`}
             viewBox="0 0 24 24"
-            aria-hidden="true"
-        >
+            aria-hidden="true">
             <path style={styles.path} d={icons[props.icon]} />
         </svg>
     );
@@ -27,11 +26,11 @@ const Icon = (props) => {
 Icon.propTypes = {
     icon: PropTypes.string.isRequired,
     size: PropTypes.number,
-    color: PropTypes.string,
+    color: PropTypes.string
 };
 
 Icon.defaultProps = {
-    size: 1,
+    size: 1
 };
 
 export default Icon;

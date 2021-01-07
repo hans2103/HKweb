@@ -1,60 +1,60 @@
 {
-  "name": "hkweb",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "server": "node server.js",
-    "build": "next build",
-    "start": "NODE_ENV=production node server.js",
-    "docs": "npm run build --prefix docs/",
-    "build:all": "npm run build && npm run build --prefix docs/",
-    "lint": "eslint --fix .",
-    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
-  },
-  "dependencies": {
-    "@styled-system/prop-types": "^5.1.5",
-    "express": "^4.17.1",
-    "next": "10.0.4",
-    "prop-types": "^15.7.2",
-    "react": "17.0.1",
-    "react-dom": "17.0.1",
-    "react-gtm-module": "^2.0.11",
-    "react-smooth-collapse": "^2.1.0",
-    "react-styleguidist": "^11.1.5",
-    "react-tooltip": "^4.2.11",
-    "styled-components": "^5.2.1",
-    "styled-normalize": "^8.0.7",
-    "styled-system": "^5.1.5",
-    "use-theme-switcher": "^1.0.0"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.12.10",
-    "@babel/preset-env": "^7.12.11",
-    "babel-core": "^6.26.3",
-    "babel-loader": "^8.2.2",
-    "babel-plugin-inline-react-svg": "^1.1.2",
-    "babel-plugin-module-resolver": "^4.1.0",
-    "babel-plugin-styled-components": "^1.12.0",
-    "eslint": "^7.17.0",
-    "eslint-config-prettier": "^7.1.0",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-prettier": "^3.3.1",
-    "eslint-plugin-react": "^7.22.0",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "eslint-plugin-simple-import-sort": "^7.0.0",
-    "husky": "^4.3.6",
-    "lint-staged": "^10.5.3",
-    "prettier": "^2.2.1"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
+    "name": "hkweb",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "server": "node server.js",
+        "build": "next build",
+        "start": "NODE_ENV=production node server.js",
+        "docs": "npm run build --prefix docs/",
+        "build:all": "npm run build && npm run build --prefix docs/",
+        "lint": "eslint --fix .",
+        "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
+    },
+    "dependencies": {
+        "@styled-system/prop-types": "^5.1.5",
+        "express": "^4.17.1",
+        "next": "10.0.4",
+        "prop-types": "^15.7.2",
+        "react": "17.0.1",
+        "react-dom": "17.0.1",
+        "react-gtm-module": "^2.0.11",
+        "react-smooth-collapse": "^2.1.0",
+        "react-styleguidist": "^11.1.5",
+        "react-tooltip": "^4.2.11",
+        "styled-components": "^5.2.1",
+        "styled-normalize": "^8.0.7",
+        "styled-system": "^5.1.5",
+        "use-theme-switcher": "^1.0.0"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.12.10",
+        "@babel/preset-env": "^7.12.11",
+        "babel-core": "^6.26.3",
+        "babel-loader": "^8.2.2",
+        "babel-plugin-inline-react-svg": "^1.1.2",
+        "babel-plugin-module-resolver": "^4.1.0",
+        "babel-plugin-styled-components": "^1.12.0",
+        "eslint": "^7.17.0",
+        "eslint-config-prettier": "^7.1.0",
+        "eslint-plugin-jsx-a11y": "^6.4.1",
+        "eslint-plugin-prettier": "^3.3.1",
+        "eslint-plugin-react": "^7.22.0",
+        "eslint-plugin-react-hooks": "^4.2.0",
+        "eslint-plugin-simple-import-sort": "^7.0.0",
+        "husky": "^4.3.6",
+        "lint-staged": "^10.5.3",
+        "prettier": "^2.2.1"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "./**/*.{js,jsx,ts,tsx}": [
+            "eslint --fix"
+        ]
     }
-  },
-  "lint-staged": {
-    "./**/*.{js,jsx,ts,tsx}": [
-      "eslint --fix"
-    ]
-  }
 }

@@ -1,5 +1,5 @@
-import Document, { Html, Head, Main, NextScript } from "next/document";
-import { ServerStyleSheet } from "styled-components";
+import Document, { Html, Head, Main, NextScript } from 'next/document';
+import { ServerStyleSheet } from 'styled-components';
 
 class CustomDocument extends Document {
     static async getInitialProps(ctx) {
@@ -9,7 +9,7 @@ class CustomDocument extends Document {
         try {
             ctx.renderPage = () =>
                 originalRenderPage({
-                    enhanceApp: App => props => sheet.collectStyles(<App {...props} />),
+                    enhanceApp: (App) => (props) => sheet.collectStyles(<App {...props} />)
                 });
 
             const initialProps = await Document.getInitialProps(ctx);
@@ -21,7 +21,7 @@ class CustomDocument extends Document {
                         {initialProps.styles}
                         {sheet.getStyleElement()}
                     </>
-                ),
+                )
             };
         } finally {
             sheet.seal();
@@ -33,8 +33,8 @@ class CustomDocument extends Document {
             <Html lang="nl">
                 <Head />
                 <body>
-                <Main />
-                <NextScript />
+                    <Main />
+                    <NextScript />
                 </body>
             </Html>
         );
@@ -42,4 +42,4 @@ class CustomDocument extends Document {
 }
 
 /** @component */
-export default CustomDocument
+export default CustomDocument;

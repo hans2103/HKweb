@@ -56,6 +56,5 @@ Button.defaultProps = {
     variant: 'secondary'
 };
 
-
 /** @component */
 export default Button;

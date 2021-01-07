@@ -15,11 +15,15 @@ const Component = styled(Stack)(
 
 const Footer = () => {
     return (
-        <Component as='footer' display='flex' flexDirection='column' justifyContent='flex-end' gap='m' p='m'>
-            <Box ml='auto'>
-                <Text>
-                    Copyright &copy; {new Date().getFullYear() + ' '} Hans Kuijpers
-                </Text>
+        <Component
+            as="footer"
+            display="flex"
+            flexDirection="column"
+            justifyContent="flex-end"
+            gap="m"
+            p="m">
+            <Box ml="auto">
+                <Text>Copyright &copy; {new Date().getFullYear() + ' '} Hans Kuijpers</Text>
             </Box>
         </Component>
     );

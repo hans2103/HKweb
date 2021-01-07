@@ -5,11 +5,16 @@ import Text from './text';
 import Link from './link';
 import styled from 'styled-components';
 
-const ItemList = ({ items, justifyContent, alignItems, ...props }) => {
+const ItemList = ({ items, justifyContent, alignItems }) => {
     return (
-        <Flex as='ul' m='0' listStyle='none' alignItems={alignItems} justifyContent={justifyContent}>
-            {items.map(item => (
-                <Item as='li' key={item.link}>
+        <Flex
+            as="ul"
+            m="0"
+            listStyle="none"
+            alignItems={alignItems}
+            justifyContent={justifyContent}>
+            {items.map((item) => (
+                <Item as="li" key={item.link}>
                     <Link href={item.link} name={item.title} />
                 </Item>
             ))}
@@ -19,7 +24,7 @@ const ItemList = ({ items, justifyContent, alignItems, ...props }) => {
 
 const Item = styled(Text)`
     margin-bottom: ${(props) => props.theme.space.s};
-    
+
     @media (min-width: ${(props) => props.theme.breakpoints[0]}) {
         display: inline;
         margin-bottom: 0;
@@ -40,5 +45,3 @@ const Item = styled(Text)`
 
 /** @component */
 export default ItemList;
-
-

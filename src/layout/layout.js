@@ -5,9 +5,9 @@ import Footer from './footer';
 import Header from './header';
 import Meta from './meta';
 
-function Layout ({ children }) {
+function Layout({ children }) {
     return (
-        <Flex flexDirection='column'>
+        <Flex flexDirection="column">
             <Meta />
             <Header />
             <main>{children}</main>

@@ -11,35 +11,33 @@ const variants = {
         fontFamily: 'heading',
         fontWeight: 'bold',
         lineHeight: 'heading',
-        fontSize: 'xl',
+        fontSize: 'xl'
     },
     2: {
         color: 'base',
         fontFamily: 'heading',
         fontWeight: 'bold',
         lineHeight: 'heading',
-        fontSize: 'l',
+        fontSize: 'l'
     },
     3: {
         color: 'base',
         fontFamily: 'heading',
         fontWeight: 'bold',
         lineHeight: 'heading',
-        fontSize: 'm',
-    },
+        fontSize: 'm'
+    }
 };
 
-const HeadingBase = ({ level, as: Component = `h${level}`, ...props }) => (
-    <Component {...props} />
-);
+const HeadingBase = ({ level, as: Component = `h${level}`, ...props }) => <Component {...props} />;
 
 const Heading = styled(HeadingBase)(
     {
-        margin: 0,
+        margin: 0
     },
     variant({
         variants,
-        prop: 'level',
+        prop: 'level'
     }),
     space
 );
@@ -47,7 +45,7 @@ const Heading = styled(HeadingBase)(
 Heading.propTypes = {
     ...propTypes.space,
     level: PropTypes.oneOf([1, 2, 3]).isRequired,
-    children: PropTypes.node,
+    children: PropTypes.node
 };
 
 /** @component */

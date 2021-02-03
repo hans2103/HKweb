@@ -62,11 +62,14 @@ const SocialLinks = (props) => {
     let socialList = props.type === 'follow' ? socialFollow : socialShare;
 
     return (
-        <List as='ul' m='0' alignItems={props.alignItems} justifyContent={props.justifyContent}>
-            {socialList.map((item, index) => (
-                <Item as='li' key={item.link}>
-                    <Link href={item.link} hidden={true} name={'Bekijk mijn profiel op ' + item.icon}>
-                        <Icon color='currentColor' icon={item.icon} />
+        <List as="ul" m="0" alignItems={props.alignItems} justifyContent={props.justifyContent}>
+            {socialList.map((item) => (
+                <Item as="li" key={item.link}>
+                    <Link
+                        href={item.link}
+                        hidden={true}
+                        name={'Bekijk mijn profiel op ' + item.icon}>
+                        <Icon color="currentColor" icon={item.icon} />
                     </Link>
                 </Item>
             ))}
@@ -76,4 +79,3 @@ const SocialLinks = (props) => {
 
 /** @component */
 export default SocialLinks;
-

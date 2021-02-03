@@ -14,7 +14,8 @@ const Component = styled(Flex)(
         flexDirection: 'column',
         width: '100%vw',
         height: 'calc(100vh - 4rem - 33px)',
-        minHeight: '20rem'
+        minHeight: '20rem',
+        backgroundColor: 'base'
     })
 );
 
@@ -22,7 +23,8 @@ const ComponentContent = styled(Box)(
     css({
         zIndex: '1',
         color: 'hero',
-        textShadow: '0px 4px 3px hsla(221, 45%, 28%, 0.4),0px 8px 13px hsla(221, 45%, 28%, 0.1),0px 18px 23px hsla(221, 45%, 28%, 0.1)'
+        textShadow:
+            '0px 4px 3px hsla(221, 45%, 28%, 0.4),0px 8px 13px hsla(221, 45%, 28%, 0.1),0px 18px 23px hsla(221, 45%, 28%, 0.1)'
     })
 );
 
@@ -42,30 +44,18 @@ const ComponentText = styled(Heading)(
 
 const Hero = () => {
     return (
-        <Component as='div'>
-            <Box as='figure'
-                 position='fixed'
-                 height='100%'
-                 overflow='hidden'
-                 zIndex='-1'>
+        <Component as="div">
+            <Box as="figure" position="fixed" height="100%" overflow="hidden" zIndex="-1">
                 <Image
-                    src='/images/Hans-2020.jpg'
-                    alt='Foto van Hans Kuijpers'
-                    layout='fill'
-                    objectFit='cover'
+                    src="/images/Hans-2020.jpg"
+                    alt="Foto van Hans Kuijpers"
+                    layout="fill"
+                    objectFit="cover"
                 />
             </Box>
-            <ComponentContent pb='9vh' pl='3vw'>
-                <ComponentHeading
-                    level={1}
-                >
-                    {SITE_TITLE}
-                </ComponentHeading>
-                <ComponentText
-                    level={2}
-                >
-                    {SITE_SUBTITLE}
-                </ComponentText>
+            <ComponentContent pb="9vh" pl="3vw">
+                <ComponentHeading level={1}>{SITE_TITLE}</ComponentHeading>
+                <ComponentText level={2}>{SITE_SUBTITLE}</ComponentText>
             </ComponentContent>
         </Component>
     );

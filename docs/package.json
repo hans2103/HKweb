@@ -1,24 +1,24 @@
 {
-  "name": "ui",
-  "version": "1.0.0",
-  "description": "",
-  "scripts": {
-    "dev": "npx styleguidist server --config styleguide.config.js --open",
-    "build": "npx styleguidist build"
-  },
-  "dependencies": {
-    "@babel/core": "^7.12.10",
-    "@babel/preset-react": "7.12.10",
-    "babel-loader": "8.2.2",
-    "next": "10.0.4",
-    "prop-types": "15.7.2",
-    "react": "17.0.1",
-    "react-dom": "17.0.1",
-    "react-styleguidist": "11.1.5",
-    "styled-components": "5.2.1",
-    "webpack": "5.11.1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+    "name": "ui",
+    "version": "1.0.0",
+    "description": "",
+    "scripts": {
+        "dev": "npx styleguidist server --config styleguide.config.js --open",
+        "build": "npx styleguidist build"
+    },
+    "dependencies": {
+        "@babel/core": "^7.12.10",
+        "@babel/preset-react": "7.12.10",
+        "babel-loader": "8.2.2",
+        "next": "10.0.4",
+        "prop-types": "15.7.2",
+        "react": "17.0.1",
+        "react-dom": "17.0.1",
+        "react-styleguidist": "11.1.5",
+        "styled-components": "5.2.1",
+        "webpack": "5.11.1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
 }

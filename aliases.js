@@ -1,9 +1,9 @@
-const path = require('path')
+const path = require('path');
 
-const root = path.resolve(__dirname)
+const root = path.resolve(__dirname);
 
 const alias = {
-  components: `${root}/components`,
-}
+    components: `${root}/components`
+};
 
-module.exports = alias
+module.exports = alias;

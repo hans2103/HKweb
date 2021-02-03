@@ -16,4 +16,3 @@ Link buttons:
 <Button variant="primary" as="a" href="/">Primary button</Button>
 <Button variant="secondary" as="a" href="/">Secondary button</Button>
 ```
-

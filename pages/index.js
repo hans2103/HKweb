@@ -12,16 +12,18 @@ const Home = () => {
     return (
         <Layout>
             <Hero />
-            <Flex p='2rem' pl='3vw' flexDirection='column'>
+            <Flex p="2rem" pl="3vw" flexDirection="column">
                 <Heading level={2}>HKweb</Heading>
 
-                <Stack as='section' mt='1rem' aria-labelledby='contact'>
-                    <Heading level={2} id='contact'>Contact</Heading>
+                <Stack as="section" mt="1rem" aria-labelledby="contact">
+                    <Heading level={2} id="contact">
+                        Contact
+                    </Heading>
                     <Text>
-                    <Link href='mailto:info@hkweb.nl' name='e-mail: info@hkweb.nl' /> | <Link href='tel:+31654224518' name='telefoon: 06 - 5422 4518' />
+                        <Link href="mailto:info@hkweb.nl" name="e-mail: info@hkweb.nl" /> |{' '}
+                        <Link href="tel:+31654224518" name="telefoon: 06 - 5422 4518" />
                     </Text>
                 </Stack>
-
             </Flex>
         </Layout>
     );

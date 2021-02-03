@@ -18,20 +18,14 @@ const StyledLogo = styled(Logo)(
 
 const Header = () => {
     return (
-        <Flex as='header' p='m'>
+        <Flex as="header" p="m">
             <Box>
-                <Link
-                    href='https://hkweb.nl'
-                    name='HKweb'
-                    hidden={true}
-                >
-                    <StyledLogo
-                        width='3rem'
-                    />
+                <Link href="https://hkweb.nl" name="HKweb" hidden={true}>
+                    <StyledLogo width="3rem" />
                 </Link>
             </Box>
-            <Box mx='auto' />
-            <SocialLinks type='follow' alignItems='center' justifyContent='flex-end' />
+            <Box mx="auto" />
+            <SocialLinks type="follow" alignItems="center" justifyContent="flex-end" />
         </Flex>
     );
 };

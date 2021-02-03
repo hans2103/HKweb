@@ -26,7 +26,7 @@ const Component = styled.a(
     })
 );
 
-const Name = props => {
+const Name = (props) => {
     if (props.hidden) {
         return <Hidden>{props.name}</Hidden>;
     } else {

@@ -1,13 +1,10 @@
 // pages/_app.js
 
-import { useEffect } from 'react';
 import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
 import PropTypes from 'prop-types';
 import Provider from '../src/Provider';
 import Fonts from '../src/components/fonts';
-import TagManager from 'react-gtm-module';
-import { GTM_ID } from '../lib/constants';
 
 const GlobalStyle = createGlobalStyle`
  ${normalize}
@@ -54,10 +51,6 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const App = ({ Component, pageProps }) => {
-    useEffect(() => {
-        TagManager.initialize({ gtmId: GTM_ID });
-    }, []);
-
     return (
         <>
             <GlobalStyle />

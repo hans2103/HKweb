@@ -1,5 +1,6 @@
 // src/components/hidden.js
 
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Box from './box';
 
@@ -22,6 +23,10 @@ const Hidden = ({ children, ...restProps }) => {
             {children}
         </Component>
     );
+};
+
+Hidden.propTypes = {
+    children: PropTypes.node.isRequired
 };
 
 /** @component */

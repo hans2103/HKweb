@@ -1,5 +1,6 @@
 // src/components/link.js
 
+import PropTypes from 'prop-types';
 import NextLink from 'next/link';
 import styled from 'styled-components';
 import css from '@styled-system/css';
@@ -43,6 +44,13 @@ const Link = ({ href, name, hidden, children }) => {
             </Component>
         </NextLink>
     );
+};
+
+Link.propTypes = {
+    href: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    hidden: PropTypes.bool,
+    children: PropTypes.node.isRequired
 };
 
 /** @component */

@@ -1,5 +1,6 @@
 // components/itemlist.js
 
+import PropTypes from 'prop-types';
 import Flex from './flex';
 import Text from './text';
 import Link from './link';
@@ -42,6 +43,12 @@ const Item = styled(Text)`
         }
     }
 `;
+
+ItemList.propTypes = {
+    items: PropTypes.array.isRequired,
+    justifyContent: PropTypes.string,
+    alignItems: PropTypes.string
+};
 
 /** @component */
 export default ItemList;

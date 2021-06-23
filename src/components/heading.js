@@ -1,9 +1,9 @@
 // components/heading.js
 
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { variant, space } from 'styled-system';
-import PropTypes from 'prop-types';
-import propTypes from '@styled-system/prop-types';
+//import propTypes from '@styled-system/prop-types';
 
 const variants = {
     1: {
@@ -42,10 +42,10 @@ const Heading = styled(HeadingBase)(
     space
 );
 
-Heading.propTypes = {
-    ...propTypes.space,
-    level: PropTypes.oneOf([1, 2, 3]).isRequired,
-    children: PropTypes.node
+HeadingBase.propTypes = {
+    level: PropTypes.number.isRequired,
+    children: PropTypes.node,
+    as: PropTypes.node
 };
 
 /** @component */

@@ -1,5 +1,6 @@
 // src/components/social-icons.js
 
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import css from '@styled-system/css';
 
@@ -75,6 +76,12 @@ const SocialLinks = (props) => {
             ))}
         </List>
     );
+};
+
+SocialLinks.propTypes = {
+    type: PropTypes.string,
+    alignItems: PropTypes.string,
+    justifyContent: PropTypes.string
 };
 
 /** @component */

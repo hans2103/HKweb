@@ -3,20 +3,20 @@
     "version": "1.0.0",
     "description": "",
     "scripts": {
-        "dev": "npx styleguidist server --config styleguide.config.js --open",
-        "build": "npx styleguidist build"
+        "dev": "npx react-styleguidist server --config styleguide.config.js --open",
+        "build": "npx react-styleguidist build"
     },
     "dependencies": {
-        "@babel/core": "^7.12.10",
-        "@babel/preset-react": "7.12.10",
+        "@babel/core": "^7.14.6",
+        "@babel/preset-react": "7.14.5",
         "babel-loader": "8.2.2",
-        "next": "10.0.4",
+        "next": "11.0.1",
         "prop-types": "15.7.2",
-        "react": "17.0.1",
-        "react-dom": "17.0.1",
-        "react-styleguidist": "11.1.5",
-        "styled-components": "5.2.1",
-        "webpack": "5.11.1"
+        "react": "17.0.2",
+        "react-dom": "17.0.2",
+        "react-styleguidist": "11.1.7",
+        "styled-components": "5.3.0",
+        "webpack": "5.40.0"
     },
     "keywords": [],
     "author": "",

@@ -1,5 +1,7 @@
 // compontents/layout/layout.js
 
+import PropTypes from 'prop-types';
+
 import Flex from '../components/flex';
 import Footer from './footer';
 import Header from './header';
@@ -15,6 +17,10 @@ function Layout({ children }) {
         </Flex>
     );
 }
+
+Layout.propTypes = {
+    children: PropTypes.node.isRequired
+};
 
 /** @component */
 export default Layout;

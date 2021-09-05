@@ -50,7 +50,7 @@ Link.propTypes = {
     href: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     hidden: PropTypes.bool,
-    children: PropTypes.node.isRequired
+    children: PropTypes.node
 };
 
 /** @component */

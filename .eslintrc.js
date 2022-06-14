@@ -19,9 +19,9 @@ module.exports = {
     },
     plugins: ['simple-import-sort'],
     extends: [
+        'next/core-web-vitals',
         'eslint:recommended',
-        'plugin:react/recommended',
-        'plugin:jsx-a11y/recommended',
+        'plugin:@next/next/recommended',
         'plugin:prettier/recommended' // Make this the last element so prettier config overrides other formatting rules
     ],
     rules: {
@@ -34,6 +34,7 @@ module.exports = {
                 specialLink: ['hrefLeft', 'hrefRight'],
                 aspects: ['invalidHref', 'preferButton']
             }
-        ]
+        ],
+        'react/display-name': 'off'
     }
 };

@@ -48,7 +48,7 @@ const Hero = () => {
             <Box as="figure" position="fixed" height="100%" overflow="hidden" zIndex="-1">
                 <Image
                     src="/images/Hans-2020.jpg"
-                    alt="Foto van Hans Kuijpers"
+                    alt="Hans Kuijpers smiling at the camera"
                     layout="fill"
                     objectFit="cover"
                 />

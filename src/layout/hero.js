@@ -51,6 +51,7 @@ const Hero = () => {
                     alt="Hans Kuijpers smiling at the camera"
                     layout="fill"
                     objectFit="cover"
+                    priority={true}
                 />
             </Box>
             <ComponentContent pb="9vh" pl="3vw">

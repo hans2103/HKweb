@@ -5,6 +5,7 @@ import Stack from '../components/stack';
 import Text from '../components/text';
 import styled from 'styled-components';
 import css from '@styled-system/css';
+import Link from '../components/link';
 
 const Component = styled(Stack)(
     css({
@@ -23,6 +24,7 @@ const Footer = () => {
             gap="m"
             p="m">
             <Box ml="auto">
+                <Link href="./algemene-voorwaarden" name="Algemene voorwaarden"/>
                 <Text>Copyright &copy; {new Date().getFullYear() + ' '} Hans Kuijpers</Text>
             </Box>
         </Component>

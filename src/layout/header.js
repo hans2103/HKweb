@@ -20,7 +20,11 @@ const Header = () => {
     return (
         <Flex as="header" p="m">
             <Box>
-                <Link href="https://hkweb.nl" name="HKweb" hidden={true}>
+                <Link
+                    href="https://hkweb.nl"
+                    name="HKweb"
+                    hidden={true}
+                    title="to the homepage of HKweb.nl">
                     <StyledLogo width="3rem" />
                 </Link>
             </Box>

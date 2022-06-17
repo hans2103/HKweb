@@ -1,6 +1,5 @@
 // componentes/layout/Footer.js
 
-import Box from '../components/box';
 import Stack from '../components/stack';
 import Text from '../components/text';
 import styled from 'styled-components';

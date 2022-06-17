@@ -5,6 +5,7 @@ import Stack from '../components/stack';
 import Text from '../components/text';
 import styled from 'styled-components';
 import css from '@styled-system/css';
+import Link from '../components/link';
 
 const Component = styled(Stack)(
     css({
@@ -18,13 +19,13 @@ const Footer = () => {
         <Component
             as="footer"
             display="flex"
-            flexDirection="column"
-            justifyContent="flex-end"
-            gap="m"
+            flexDirection="row"
+            justifyContent="space-between"
             p="m">
-            <Box ml="auto">
-                <Text>Copyright &copy; {new Date().getFullYear() + ' '} Hans Kuijpers</Text>
-            </Box>
+            <Text>
+                <Link href="./algemene-voorwaarden" name="Algemene voorwaarden" />
+            </Text>
+            <Text ml="auto">Copyright &copy; {new Date().getFullYear() + ' '} Hans Kuijpers</Text>
         </Component>
     );
 };

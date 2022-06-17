@@ -25,7 +25,7 @@ const GlobalStyle = createGlobalStyle`
   }
   
   ul, ol {
-    padding: 0;
+    padding: 1rem;
   }
   
   @media print {

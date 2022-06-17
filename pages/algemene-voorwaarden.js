@@ -3,7 +3,6 @@
 import Flex from '../src/components/flex';
 import Heading from '../src/components/heading';
 import Layout from '../src/layout/layout';
-import Link from '../src/components/link';
 import Stack from '../src/components/stack';
 import Text from '../src/components/text';
 

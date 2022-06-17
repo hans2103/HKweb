@@ -17,9 +17,7 @@ const Conditions = () => {
                 mr="auto"
                 maxWidth="48rem"
                 flexDirection="column">
-                <Heading level={1}>
-                    Algemene voorwaarden HKweb versie 1. 15 juni 2022
-                </Heading>
+                <Heading level={1}>Algemene voorwaarden HKweb versie 1. 15 juni 2022</Heading>
 
                 <Stack as="section" gap="m" mt="1rem" aria-labelledby="section01">
                     <Heading level={2} id="section01">

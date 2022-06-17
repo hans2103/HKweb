@@ -7,7 +7,7 @@ import { variant, space } from 'styled-system';
 
 const variants = {
     1: {
-        color: 'primary',
+        color: 'base',
         fontFamily: 'heading',
         fontWeight: 'bold',
         lineHeight: 'heading',

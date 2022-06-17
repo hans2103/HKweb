@@ -10,7 +10,7 @@ const Stack = styled(Box)(
         gap: {
             property: '&& > * + *',
             scale: 'space',
-            transform: (value, scale) => ({ marginTop: scale[value] })
+            transform: (value, scale) => ({ marginBlockStart: scale[value] })
         }
     })
 );

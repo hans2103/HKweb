@@ -19,14 +19,13 @@ const Footer = () => {
         <Component
             as="footer"
             display="flex"
-            flexDirection="column"
-            justifyContent="flex-end"
-            gap="m"
+            flexDirection="row"
+            justifyContent="space-between"
             p="m">
-            <Box ml="auto">
-                <Link href="./algemene-voorwaarden" name="Algemene voorwaarden"/>
-                <Text>Copyright &copy; {new Date().getFullYear() + ' '} Hans Kuijpers</Text>
-            </Box>
+            <Text>
+                <Link href="./algemene-voorwaarden" name="Algemene voorwaarden" />
+            </Text>
+            <Text ml="auto">Copyright &copy; {new Date().getFullYear() + ' '} Hans Kuijpers</Text>
         </Component>
     );
 };

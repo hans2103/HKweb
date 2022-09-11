@@ -8,7 +8,7 @@ module.exports = {
                     {
                         key: 'Content-Security-Policy',
                         value:
-                            'default-src \'self\'; style-src \'unsafe-inline\'; font-src \'self\'; img-src \'self\' ik.imagekit.io; script-src \'self\''
+                            'default-src \'self\'; style-src \'unsafe-inline\'; font-src \'self\' data:; img-src \'self\' ik.imagekit.io; script-src \'self\''
                     },
                     {
                         key: 'X-Frame-Options',

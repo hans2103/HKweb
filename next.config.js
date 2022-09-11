@@ -24,7 +24,7 @@ module.exports = {
                     },
                     {
                         key: 'Permissions-Policy',
-                        value: 'camera=(); battery=(self); geolocation=(); microphone=()'
+                        value: 'battery=(self), accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()'
                     }
                 ]
             }

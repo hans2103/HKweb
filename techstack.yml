@@ -2,7 +2,7 @@ repo_name: hans2103/HKweb
 report_id: 3c3df70072573d3e849b0f99d8ce0345
 version: 0.1
 repo_type: Public
-timestamp: '2024-01-05T09:23:38+00:00'
+timestamp: '2024-02-29T18:05:34+00:00'
 requested_by: hans2103
 provider: github
 branch: master
@@ -45,7 +45,7 @@ tools:
   last_updated_by: Hans Kuijpers
   last_updated_on: 2022-09-11 13:27:25.000000000 Z
 - name: Next.js
-  description: 'A small framework for server-rendered universal JavaScript apps '
+  description: A small framework for server-rendered universal JavaScript apps
   website_url: https://nextjs.org/
   version: 12.3.0
   open_source: true
@@ -138,7 +138,7 @@ tools:
   detection_source_url: https://github.com/hans2103/HKweb
   detection_source: Repo Metadata
 - name: Prettier
-  description: 'Prettier is an opinionated code formatter. '
+  description: Prettier is an opinionated code formatter.
   website_url: https://prettier.io/
   version: 2.3.0
   license: MIT

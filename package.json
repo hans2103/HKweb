@@ -12,6 +12,9 @@
         "storybook": "start-storybook -p 6006",
         "build-storybook": "build-storybook"
     },
+    "engines": {
+        "node": "20.x"
+    },
     "dependencies": {
         "@styled-system/css": "^5.1.5",
         "@styled-system/prop-types": "^5.1.5",

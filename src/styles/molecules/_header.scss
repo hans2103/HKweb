@@ -1,0 +1,17 @@
+@use "../tools" as *;
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
+.header {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: z-index(header);
+  padding-block: var(--hk-spacing-sm);
+  background-color: var(--clr-body-bg);
+}
+
+.header__utilities {
+  font-size: var(--hk-fontsize-h4);
+}

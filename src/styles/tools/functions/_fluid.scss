@@ -1,0 +1,45 @@
+@use "../illusion" as *;
+@use "../variables/breakpoints" as *;
+@use "sass:math";
+
+@function fluid(
+  $min-size,
+  $max-size,
+  $min-vw: $breakpoint-sm,
+  $max-vw: $breakpoint-lg
+) {
+  $u: if(math.unit($min-size) != "", math.unit($min-size), math.unit($max-size));
+  $min-size-num: strip-unit($min-size);
+  $max-size-num: strip-unit($max-size);
+
+  @if ($min-vw == "sm") {
+    $min-vw: $breakpoint-sm;
+  } @else if ($min-vw == "md") {
+    $min-vw: $breakpoint-md;
+  } @else if ($min-vw == "lg") {
+    $min-vw: $breakpoint-lg;
+  } @else if ($min-vw == "xl") {
+    $min-vw: $breakpoint-xl;
+  }
+
+  @if ($max-vw == "sm") {
+    $max-vw: $breakpoint-sm;
+  } @else if ($max-vw == "md") {
+    $max-vw: $breakpoint-md;
+  } @else if ($max-vw == "lg") {
+    $max-vw: $breakpoint-lg;
+  } @else if ($max-vw == "xl") {
+    $max-vw: $breakpoint-xl;
+  }
+
+  $min-vw-num: strip-unit($min-vw);
+  $max-vw-num: strip-unit($max-vw);
+  $slope: math.div(($max-size-num - $min-size-num), ($max-vw-num - $min-vw-num));
+  $y-intercept: $min-size-num - ($slope * $min-vw-num);
+
+  @return clamp(
+          #{$min-size},
+          calc(#{$y-intercept}#{$u} + #{$slope * 100}vw),
+          #{$max-size}
+  );
+}

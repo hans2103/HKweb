@@ -1,0 +1,12 @@
+// Settings
+$use-extendalize: false !default;
+
+// Illusion
+@forward "illusion" with (
+  $extendalize: $use-extendalize,
+);
+
+// Helpers
+@forward "functions";
+@forward "variables";
+@forward "mixins";

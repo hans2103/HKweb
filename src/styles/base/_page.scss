@@ -1,0 +1,28 @@
+/* ==========================================================================
+   Print settings
+   ========================================================================== */
+
+@media print {
+  @page {
+    size: auto;
+    margin: .5cm;
+  }
+
+  html,
+  body {
+    background: transparent;
+  }
+
+  a:not(.logo, [href*="mailto:"], [href*="tel:"], [href*="wa.me"])::after {
+    font-size: smaller;
+    content: " (" attr(href) ")";
+  }
+
+  .print\:hide.print\:hide {
+    display: none;
+  }
+
+  .print\:only.print\:only.print\:only {
+    display: revert;
+  }
+}

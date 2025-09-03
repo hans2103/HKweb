@@ -1,0 +1,25 @@
+/* ==========================================================================
+   Text Decoration
+   ========================================================================== */
+
+@use "sass:string";
+@use "../variables/base" as *;
+@use "../illusion" as *;
+
+@mixin text-decoration(
+  $underline: var(--#{$prefix}anchor-underline, underline),
+  $hover-underline: var(--#{$prefix}anchor-underline-hover, underline)
+) {
+  text-decoration-color: var(--#{$prefix}anchor-underline-color, currentcolor);
+  text-decoration-line: $underline;
+  text-decoration-thickness: var(--#{$prefix}anchor-underline-thickness, max(.08em, 1px));
+  text-underline-offset: var(--#{$prefix}anchor-underline-offset, .25em);
+  transition: text-decoration-color 300ms, text-underline-offset 300ms;
+
+  &:hover,
+  &:focus {
+    text-decoration-color: var(--#{$prefix}anchor-underline-hover-color, currentcolor);
+    text-decoration-line: $hover-underline;
+    text-underline-offset: var(--#{$prefix}anchor-underline-hover-offset, .15em);
+  }
+}

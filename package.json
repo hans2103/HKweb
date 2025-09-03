@@ -1,70 +1,39 @@
 {
-    "name": "hkweb",
-    "version": "1.0.0",
-    "private": true,
-    "scripts": {
-        "dev": "next dev",
-        "server": "node server.js",
-        "build": "next build",
-        "start": "NODE_ENV=production node server.js",
-        "lint": "eslint --fix .",
-        "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
-        "storybook": "start-storybook -p 6006",
-        "build-storybook": "build-storybook"
-    },
-    "dependencies": {
-        "@styled-system/css": "^5.1.5",
-        "@styled-system/prop-types": "^5.1.5",
-        "eslint-config-next": "^12.3.0",
-        "express": "^4.18.1",
-        "next": "12.3.0",
-        "prop-types": "^15.8.1",
-        "react": "18.2.0",
-        "react-dom": "18.2.0",
-        "react-gtm-module": "^2.0.11",
-        "react-is": "^18.2.0",
-        "react-tooltip": "^4.2.21",
-        "styled-components": "^5.3.5",
-        "styled-normalize": "^8.0.7",
-        "styled-system": "^5.1.5"
-    },
-    "devDependencies": {
-        "@babel/core": "^7.19.0",
-        "@babel/preset-env": "^7.19.0",
-        "@next/eslint-plugin-next": "^12.3.0",
-        "@storybook/addon-actions": "^6.5.10",
-        "@storybook/addon-essentials": "^6.5.10",
-        "@storybook/addon-interactions": "^6.5.10",
-        "@storybook/addon-links": "^6.5.10",
-        "@storybook/builder-webpack5": "^6.5.10",
-        "@storybook/manager-webpack5": "^6.5.10",
-        "@storybook/react": "^6.5.10",
-        "@storybook/testing-library": "^0.0.13",
-        "babel-core": "^6.26.3",
-        "babel-loader": "^8.2.5",
-        "babel-plugin-inline-react-svg": "^2.0.1",
-        "babel-plugin-module-resolver": "^4.1.0",
-        "babel-plugin-styled-components": "^2.0.7",
-        "eslint": "^8.23.0",
-        "eslint-config-prettier": "^8.5.0",
-        "eslint-plugin-jsx-a11y": "^6.6.1",
-        "eslint-plugin-prettier": "^4.2.1",
-        "eslint-plugin-react": "^7.31.8",
-        "eslint-plugin-react-hooks": "^4.6.0",
-        "eslint-plugin-simple-import-sort": "^8.0.0",
-        "eslint-plugin-storybook": "^0.6.4",
-        "husky": "^8.0.1",
-        "lint-staged": "^13.0.3",
-        "prettier": "^2.7.1"
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "lint-staged"
-        }
-    },
-    "lint-staged": {
-        "./**/*.{js,jsx,ts,tsx}": [
-            "eslint --fix"
-        ]
-    }
+  "name": "hkweb",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --experimental-https",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@imagekit/next": "^2.1.2",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.539.0",
+    "next": "15.4.6",
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
+    "react-icons": "^5.5.0",
+    "sass": "^1.90.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@svgr/webpack": "^8.1.0",
+    "@types/node": "^24",
+    "@types/react": "19.1.10",
+    "@types/react-dom": "19.1.7",
+    "eslint": "^9",
+    "eslint-config-next": "15.4.6",
+    "illusion": "github:marsvaardig/illusion#v8.1.1",
+    "typescript": "^5"
+  },
+  "overrides": {
+    "@types/react": "19.1.10",
+    "@types/react-dom": "19.1.7"
+  },
+  "engines": {
+    "node": "20.x"
+  }
 }

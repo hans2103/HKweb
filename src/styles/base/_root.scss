@@ -1,0 +1,93 @@
+@use "../tools" as *;
+
+/* ==========================================================================
+   Root
+   ========================================================================== */
+
+@view-transition {
+  navigation: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @view-transition {
+    navigation: none;
+  }
+}
+
+:root {
+  --clr-neutral-100: oklch(100% 0.04 275);
+  --clr-neutral-200: oklch(85% 0.04 275);
+  --clr-neutral-300: oklch(70% 0.04 275);
+  --clr-neutral-800: oklch(50% 0.04 275);
+  --clr-neutral-900: oklch(30% 0.04 275);
+
+  // Widths
+  --hk-width-content-sm: #{$size-560};
+  --hk-width-content-md: #{$size-624};
+  --hk-width-content-lg: #{$size-680};
+  --hk-width-content-xl: #{$size-780};
+  --hk-width-page: #{$size-page};
+  --hk-width-full: 100%;
+
+  // Spacing
+  --hk-spacing-3xs: #{$size-2};
+  --hk-spacing-2xs: #{$size-4};
+  --hk-spacing-xs: #{$size-8};
+  --hk-spacing-sm: #{$size-12};
+  --hk-spacing-md: #{$size-16};
+  --hk-spacing-md\+: #{$size-20};
+  --hk-spacing-lg: #{$size-24};
+  --hk-spacing-xl: #{$size-32};
+  --hk-spacing-2xl: #{$size-48};
+  --hk-spacing-3xl: #{$size-64};
+  --hk-spacing-4xl: #{$size-128};
+
+  // Fluid Spacing
+  --hk-spacing--md-lg--sm-md: #{fluid($size-16, $size-24, "sm", "md")};
+  --hk-spacing--sm-md--sm-md: #{fluid($size-12, $size-16, "sm", "md")};
+  --hk-spacing--md-lg--md-lg: #{fluid($size-16, $size-24, "md", "lg")};
+  --hk-spacing--lg-xl--md-lg: #{fluid($size-24, $size-32, "md", "lg")};
+  --hk-spacing--md-2xl--sm-lg: #{fluid($size-16, $size-48, "sm", "lg")};
+  --hk-spacing--xs-lg--sm-lg: #{fluid($size-8, $size-24, "sm", "lg")};
+  --hk-spacing--xs-sm--sm-lg: #{fluid($size-8, $size-12, "sm", "lg")};
+
+  // Gap
+  --hk-gap-side: var(--hk-spacing--md-lg--sm-md);
+  --hk-gap: var(--hk-spacing--sm-md--sm-md);
+  --hk-gap-grow: var(--hk-spacing--sm-md--sm-md);
+
+  // Radius
+  --hk-radius-sm: #{$size-4};
+  --hk-radius-md: #{$size-8};
+  --hk-radius-lg: #{$size-16};
+  --hk-radius-xl: #{$size-24};
+  --hk-radius-full: #{$size-999};
+
+  // Font-size
+  --hk-fontsize-h1: #{fluid($font-size-3xl, $font-size-4xl)};
+  --hk-fontsize-h2: #{fluid($font-size-2xl, $font-size-3xl)};
+  --hk-fontsize-h3: #{fluid($font-size-xl, $font-size-2xl)};
+  --hk-fontsize-h4: #{fluid($font-size-lg, $font-size-xl)};
+  --hk-fontsize-h5: #{fluid($font-size-md, $font-size-lg)};
+  --hk-fontsize-h6: #{fluid($font-size-sm, $font-size-md)};
+
+  @media (prefers-color-scheme: light) {
+    --theme: light;
+    color-scheme: light;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    --theme: dark;
+    color-scheme: dark;
+  }
+
+  &[data-theme="light"] {
+    --theme: light;
+    color-scheme: light;
+  }
+
+  &[data-theme="dark"] {
+    --theme: dark;
+    color-scheme: dark;
+  }
+}

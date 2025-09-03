@@ -1,0 +1,18 @@
+@use "../../tools" as *;
+
+/* ==========================================================================
+   Button
+   ========================================================================== */
+
+.button {
+  --hk-btn-color: currentcolor;
+  --hk-btn-bg: var(--hk-surface-primary);
+  --hk-btn-border: 2px solid;
+  --hk-btn-border-color: var(--hk-control-secondary);
+  --hk-btn-hover-color: var(--hk-text-invert);
+  --hk-btn-hover-bg: var(--hk-surface-highlight);
+  --hk-btn-hover-border-color: var(--hk-control-secondary);
+  --hk-btn-radius: var(--hk-radius-xl);
+
+  @include button;
+}

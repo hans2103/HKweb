@@ -1,0 +1,21 @@
+@function z-index($name) {
+  @if $name == "modal" {
+    @return 999;
+  } @else if $name == "header" {
+    @return 19;
+  } @else if $name == "sticky" {
+    @return 9;
+  } @else if $name == "tooltip" {
+    @return 2;
+  } @else if $name == "dropdown" {
+    @return 2;
+  } @else if $name == "elevate" {
+    @return 1;
+  } @else if $name == "base" {
+    @return 0;
+  } @else {
+    @warn "Unknown z-index name: #{$name}. Returning default value of 0.";
+    @return 0;
+  }
+}
+

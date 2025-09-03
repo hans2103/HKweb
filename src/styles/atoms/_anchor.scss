@@ -1,0 +1,23 @@
+
+//a:not([class]) {
+//  -webkit-text-decoration-skip: ink;
+//  text-decoration-skip-ink: auto
+//}
+
+a {
+  color: currentColor;
+  text-decoration-line: underline;
+  text-decoration-thickness: max(0.08em, 1px);
+  text-decoration-color: currentcolor;
+  text-underline-offset: .25em;
+  transition: text-decoration-color 300ms, text-underline-thickness 300ms, text-underline-offset 300ms;
+
+  &:hover,
+  &:focus {
+    color: currentColor;
+    text-decoration-line: underline;
+    text-decoration-thickness: max(0.168em, 2px);
+    text-decoration-color: currentcolor;
+    text-underline-offset: .15em;
+  }
+}

@@ -1,0 +1,10 @@
+@use "../illusion" as *;
+
+// Primitive tokens as SCSS variables
+// =================================
+
+$breakpoint-sm: px(393) !default;
+$breakpoint-md: px(780) !default;
+$breakpoint-2md: px(960) !default;
+$breakpoint-lg: px(1440) !default;
+$breakpoint-xl: px(1920) !default;

@@ -1,0 +1,57 @@
+@use "../tools" as *;
+
+/* ==========================================================================
+   Cluster
+   ========================================================================== */
+
+.cluster {
+  padding-inline-start: unset;
+  list-style-type: none;
+  display: flex;
+  flex-wrap: var(--#{$prefix}cluster-flex-wrap, wrap);
+  align-items: var(--#{$prefix}cluster-align-items, center);
+  justify-content: var(--#{$prefix}cluster-justify-content, flex-start);
+  gap: var(--#{$prefix}cluster-gap, 1em);
+}
+
+/* Modifiers
+   ========================================================================== */
+
+.cluster--justify-between {
+  --#{$prefix}cluster-justify-content: space-between;
+}
+
+.cluster--justify-center {
+  --#{$prefix}cluster-justify-content: center;
+}
+
+.cluster--justify-end {
+  --#{$prefix}cluster-justify-content: flex-end;
+}
+
+.cluster--justify-start {
+  --#{$prefix}cluster-justify-content: flex-start;
+}
+
+.cluster--align-start {
+  --#{$prefix}cluster-align-items: flex-start;
+}
+
+.cluster--nowrap {
+  --#{$prefix}cluster-flex-wrap: nowrap;
+}
+
+.cluster--justify-stretch {
+  --#{$prefix}cluster-justify-content: space-between;
+
+  & > * {
+    flex-grow: 1;
+  }
+}
+
+// Modular scale modifiers
+@each $scale in $modular-scale {
+  .cluster--#{$scale} {
+    --#{$prefix}cluster-gap: var(--#{$prefix}spacing-#{$scale});
+  }
+}

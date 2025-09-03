@@ -1,0 +1,55 @@
+@use "../tools" as *;
+
+/* ==========================================================================
+   Layout
+   ========================================================================== */
+
+.layout\:content {
+  --gap: var(--#{$prefix}gap-side);
+  --bleed: minmax(var(--gap), auto);
+  --page: 1fr;
+  --xl: minmax(0, calc((var(--#{$prefix}width-content-xl) - var(--#{$prefix}width-content-lg)) / 2));
+  --lg: minmax(0, calc((var(--#{$prefix}width-content-lg) - var(--#{$prefix}width-content-md)) / 2));
+  --md: minmax(0, calc((var(--#{$prefix}width-content-md) - var(--#{$prefix}width-content-sm)) / 2));
+  --sm: min(var(--#{$prefix}width-content-sm), 100% - var(--gap) * 2);
+
+  display: grid;
+  grid-template-columns: [bleed-start] var(--bleed) [page-start] var(--page) [xl-start] var(--xl) [lg-start] var(--lg) [md-start] var(--md) [sm-start] var(--sm) [sm-end] var(--md) [md-end] var(--lg) [lg-end] var(--xl) [xl-end] var(--page) [page-end] var(--bleed) [bleed-end];
+
+  & > :not(.width\:content\:sm,
+    .width\:content\:md,
+    .width\:content\:lg,
+    .width\:page,
+    .width\:bleed,
+    .grid-column-ignore) {
+    grid-column: md;
+  }
+
+  & > .width\:content\:sm {
+    grid-column: sm;
+  }
+
+  & > .width\:content\:md {
+    grid-column: md;
+  }
+
+  & > .width\:content\:lg {
+    grid-column: lg;
+  }
+
+  & > .width\:content\:xl {
+    grid-column: xl;
+  }
+
+  & > .width\:page {
+    grid-column: page;
+    inline-size: 100%;
+    max-inline-size: var(--#{$prefix}width-page);
+    margin-inline: auto;
+  }
+
+  & > .width\:bleed {
+    grid-column: bleed;
+  }
+}
+

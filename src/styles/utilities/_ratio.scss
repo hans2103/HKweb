@@ -1,0 +1,58 @@
+@use "../tools" as *;
+
+/* ==========================================================================
+   Ratio blocks
+   ========================================================================== */
+
+[class*="ratio:"] {
+  position: relative;
+
+  & > img {
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline-start: 50%;
+    display: block;
+    max-inline-size: 100%;
+    transform: translate(-50%, -50%);
+
+    /* 1. Extra to make sure image span correctly when used together with a noscript tag. See /wie-wij-zijn/ */
+    @supports (object-fit: cover) {
+      inset: 0; // 1 // 1
+      inline-size: 100%; // 1
+      block-size: 100%; // 1
+      min-block-size: 100%;
+      transform: none;
+      object-fit: cover;
+    }
+  }
+
+  & > embed,
+  & > iframe,
+  & > video {
+    inline-size: 100%;
+    block-size: 100%;
+
+    @include coverall;
+
+    @supports (object-fit: cover) {
+      min-block-size: 0;
+      transform: none;
+      object-fit: cover;
+    }
+  }
+}
+
+.ratio--center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+/* Landscape style ratios
+   ========================================================================== */
+
+.ratio\:16\:9 {
+  @include ratio-block(16 by 9);
+}
+.ratio\:4\:3 {
+  @include ratio-block(4 by 3);
+}

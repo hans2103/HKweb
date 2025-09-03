@@ -1,0 +1,31 @@
+@use "../tools" as *;
+
+/* ==========================================================================
+   BODY
+   ========================================================================== */
+
+body {
+  color-scheme: light;
+
+  --clr-body-bg: oklch(100% 0.04 275);
+  --clr-card-bg: oklch(0.984 0.002 17.195);
+  --clr-text: var(--clr-neutral-900);
+  --clr-heading: var(--clr-neutral-900);
+
+  @container style(--theme: dark) {
+    color-scheme: dark;
+    --clr-body-bg: var(--clr-neutral-900);
+    --clr-card-bg: oklch(0.233 0.021 185.327);
+    --clr-text: #cbd5e1;
+    --clr-heading: oklch(0.833 0.077 186.481);
+  }
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  font-size: fluid($font-size-md, $font-size-2md);
+  line-height: 1.5;
+  color: var(--clr-text);
+  background: var(--clr-body-bg);
+  text-rendering: optimizeSpeed;
+}

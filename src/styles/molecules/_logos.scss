@@ -1,0 +1,21 @@
+@use "../tools" as *;
+
+/* ==========================================================================
+   Logos
+   ========================================================================== */
+
+.logos {
+  li {
+    inline-size: clamp(9rem, 18%, 15rem);
+    aspect-ratio: 2 / 1;
+  }
+
+  img {
+    inline-size: 100%;
+    max-inline-size: 100%;
+
+    @container style(--theme: dark) {
+      filter: brightness(0) invert(1);
+    }
+  }
+}

@@ -1,0 +1,32 @@
+@use "../tools" as *;
+
+/* ==========================================================================
+   Logo
+   ========================================================================== */
+
+.logo {
+  & > * {
+    display: flex;
+    gap: var(--hk-spacing-xs);
+    align-items: center;
+  }
+
+  a {
+    @include text-decoration(none, none);
+  }
+
+  svg {
+    block-size: var(--hk-spacing-2xl);
+    inline-size: auto;
+
+    @container style(--theme: dark) {
+      path {
+        fill: #ffffff;
+      }
+    }
+  }
+
+  span {
+    line-height: 1;
+  }
+}

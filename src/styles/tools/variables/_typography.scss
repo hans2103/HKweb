@@ -1,0 +1,24 @@
+@use "../illusion" as *;
+@use "size" as *;
+
+// Primitive tokens as SCSS variables
+// =================================
+
+// Weight
+$weight-medium: 500 !default;
+
+// Line-height
+$line-height-tight: 1.2 !default;
+$line-height-normal: 1.4 !default;
+$line-height-loose: 1.6 !default;
+
+// Sizes
+$font-size-xs: $size-12 !default;
+$font-size-sm: $size-14 !default;
+$font-size-md: $size-16 !default;
+$font-size-2md: $size-18 !default;
+$font-size-lg: $size-20 !default;
+$font-size-xl: $size-24 !default;
+$font-size-2xl: $size-32 !default;
+$font-size-3xl: $size-48 !default;
+$font-size-4xl: $size-64 !default;

@@ -1,0 +1,8 @@
+$extendalize: false !default;
+$logical-properties: true !default;
+
+@forward "../../../node_modules/illusion/scss/illusion" with (
+  $illusion-extendalize: $extendalize,
+  $illusion-logical-properties: $logical-properties,
+  $root-site-font-size: 16
+);

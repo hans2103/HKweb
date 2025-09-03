@@ -1,0 +1,39 @@
+@use "../tools" as *;
+
+/* ==========================================================================
+   Theme Select
+   ========================================================================== */
+
+.theme-selector {
+  position: relative;
+  display: inline-block;
+}
+
+.theme-selector__list {
+  position: absolute;
+  inset-block-start: 100%;
+  inset-inline-start: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--hk-spacing-2xs);
+  margin-block-start:var(--hk-spacing-2xs);
+  padding: var(--hk-spacing-xs);
+  list-style: none;
+  color: var(--clr-text);
+  background: var(--clr-body-bg);
+  border: 1px solid var(--clr-text);
+  border-radius: var(--hk-radius-sm);
+  box-shadow: 0 2px 6px oklch(0 0 0 / 10%);
+  width: max-content;
+  z-index: 10;
+
+  @container style(--theme: dark) {
+    box-shadow: 0 2px 6px oklch(1 0 0 / 10%);
+  }
+}
+
+
+.theme-icon {
+  width: 20px;
+  height: 20px;
+}

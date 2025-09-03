@@ -1,0 +1,81 @@
+@use "../tools" as *;
+@use "sass:math";
+
+.font\:heading-1 {
+  font-size: fluid($font-size-3xl, $font-size-4xl);
+  line-height: $line-height-tight;
+}
+
+.font\:heading-2 {
+  font-size: fluid($font-size-2xl, $font-size-3xl);
+  line-height: $line-height-tight;
+}
+
+.font\:heading-3 {
+  font-size: fluid($font-size-xl, $font-size-2xl);
+  line-height: $line-height-tight;
+}
+
+.font\:heading-4 {
+  font-size: fluid($font-size-lg, $font-size-xl);
+  line-height: $line-height-tight;
+}
+
+.font\:heading-5 {
+  font-size: fluid($font-size-md, $font-size-lg);
+  line-height: $line-height-tight;
+}
+
+.font\:heading-6 {
+  font-size: fluid($font-size-sm, $font-size-md);
+  line-height: $line-height-tight;
+}
+
+.font-weight\:bold {
+  font-weight: $weight-bold;
+}
+
+.font-weight\:medium {
+  font-weight: $weight-medium;
+}
+
+
+/* Alignment
+   ========================================================================== */
+
+.align\:center {
+  text-align: center;
+}
+
+.align\:right {
+  text-align: right;
+}
+
+.align\:left {
+  text-align: left;
+}
+
+.text\:center {
+  text-align: center;
+}
+
+// @TODO: these center classes do the same...
+
+
+/* Balancing
+   ========================================================================== */
+
+.balance-text {
+  &,
+  & > * {
+    text-wrap: balance;
+  }
+}
+
+
+/* Wrapping
+   ========================================================================== */
+
+.nowrap {
+  white-space: nowrap;
+}

@@ -1,0 +1,75 @@
+@use "../variables/base" as *;
+@use "../illusion" as *;
+@use "./text-decoration" as *;
+
+/* ==========================================================================
+   Button
+   ========================================================================== */
+
+@mixin button(
+  $btn-color: var(--#{$prefix}btn-color, currentcolor),
+  $btn-bg: var(--#{$prefix}btn-bg, transparent),
+  $btn-border-color: var(--#{$prefix}btn-border-color, transparent),
+  $btn-hover-color: var(--#{$prefix}btn-hover-color, currentcolor),
+  $btn-hover-bg: var(--#{$prefix}btn-hover-bg, transparent),
+  $btn-hover-border-color: var(--#{$prefix}btn-hover-border, transparent),
+) {
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  gap: var(--#{$prefix}btn-gap, var(--#{$prefix}spacing-xs));
+  inline-size: var(--#{$prefix}btn-width);
+  block-size: var(--#{$prefix}btn-height);
+  padding-block: var(--#{$prefix}btn-padding-block, var(--#{$prefix}spacing-2xs));
+  padding-inline: var(--#{$prefix}btn-padding-inline, var(--#{$prefix}spacing-xs));
+  overflow: hidden;
+  font-size: var(--#{$prefix}btn-font-size, var(--#{$prefix}body-m, 1em));
+  font-style: var(--#{$prefix}btn-font-style, normal);
+  line-height: 1;
+  font-weight: var(--#{$prefix}btn-font-weight, var(--#{$prefix}weight-normal, 400));
+  color: $btn-color;
+  text-decoration: none;
+  background: $btn-bg;
+  border: var(--#{$prefix}btn-border, 1px solid) $btn-border-color;
+  border-radius: var(--#{$prefix}btn-radius, var(--#{$prefix}radius-m));
+  transform-style: preserve-3d;
+
+  @include button-structure($display: var(--#{$prefix}btn-display, inline-flex), $vertical-align: false);
+  @include transition(color 200ms ease-in-out 100ms, background 200ms ease-in-out 100ms, transform 200ms ease-in-out);
+
+  @include hover {
+    --#{$prefix}btn-arrow-move: .5em;
+
+    color: $btn-hover-color;
+    text-decoration: none;
+    background: $btn-hover-bg;
+    border-color: $btn-hover-border-color;
+  }
+
+  @media print {
+    page-break-inside: avoid;
+  }
+
+  img,
+  svg {
+    display: block;
+    pointer-events: none;
+    fill: currentcolor;
+
+    &:not([width]) {
+      min-inline-size: 1em;
+    }
+
+  }
+
+  &.button--icon-only {
+    svg {
+      margin-inline: unset;
+    }
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+    opacity: .6;
+  }
+}

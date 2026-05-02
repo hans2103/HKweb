@@ -1,0 +1,33 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      eslint:
+        patterns:
+          - eslint
+          - eslint-*
+          - "@eslint/*"
+          - "@next/eslint-plugin-next"
+      next:
+        patterns:
+          - next
+          - eslint-config-next
+          - "@next/*"
+      styled:
+        patterns:
+          - styled-components
+          - styled-normalize
+          - styled-system
+          - "@styled-system/*"
+      react:
+        patterns:
+          - react
+          - react-dom
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly

@@ -16,7 +16,7 @@
         "prepare": "panda codegen --silent && husky"
     },
     "engines": {
-        "node": "25.x",
+        "node": "24.x",
         "npm": ">=11"
     },
     "dependencies": {

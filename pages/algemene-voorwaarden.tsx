@@ -11,20 +11,20 @@ const Conditions = () => {
         <Layout>
             <Flex
                 gap="xl"
-                p="2rem"
-                pl="3vw"
+                p="l"
+                pl="pageInline"
                 ml="auto"
                 mr="auto"
-                maxWidth="48rem"
+                maxWidth="bodyMaxWidth"
                 flexDirection="column">
                 <Heading level={1}>Algemene voorwaarden HKweb</Heading>
                 <Text>versie 1. 15 juni 2022</Text>
 
-                <Stack as="section" gap="m" mt="1rem" aria-labelledby="section01">
+                <Stack as="section" gap="m" mt="m" aria-labelledby="section01">
                     <Heading level={2} id="section01">
                         Artikel 1. Definities
                     </Heading>
-                    <Text mt="1rem">
+                    <Text mt="m">
                         In deze algemene voorwaarden worden de hiernavolgende termen in de
                         navolgende betekenis gebruikt, tenzij uitdrukkelijk anders aangegeven.
                     </Text>
@@ -78,7 +78,7 @@ const Conditions = () => {
                     </Stack>
                 </Stack>
 
-                <Stack as="section" gap="m" mt="1rem" aria-labelledby="section02">
+                <Stack as="section" gap="m" mt="m" aria-labelledby="section02">
                     <Heading level={2} id="section02">
                         Artikel 2. Toepasselijkheid
                     </Heading>
@@ -108,7 +108,7 @@ const Conditions = () => {
                     </Stack>
                 </Stack>
 
-                <Stack as="section" gap="m" mt="1rem" aria-labelledby="section03">
+                <Stack as="section" gap="m" mt="m" aria-labelledby="section03">
                     <Heading level={2} id="section03">
                         Artikel 3. Offertes, Aanbiedingen en Overeenkomst
                     </Heading>
@@ -165,7 +165,7 @@ const Conditions = () => {
                     </Stack>
                 </Stack>
 
-                <Stack as="section" gap="m" mt="1rem" aria-labelledby="section04">
+                <Stack as="section" gap="m" mt="m" aria-labelledby="section04">
                     <Heading level={2} id="section04">
                         Artikel 4. Uitvoer & voltooiing van de opdracht en dienstverlening
                     </Heading>
@@ -204,7 +204,7 @@ const Conditions = () => {
                     </Stack>
                 </Stack>
 
-                <Stack as="section" gap="m" mt="1rem" aria-labelledby="section05">
+                <Stack as="section" gap="m" mt="m" aria-labelledby="section05">
                     <Heading level={2} id="section05">
                         Artikel 5. Verplichtingen Partijen
                     </Heading>
@@ -260,7 +260,7 @@ const Conditions = () => {
                     </Stack>
                 </Stack>
 
-                <Stack as="section" gap="m" mt="1rem" aria-labelledby="section06">
+                <Stack as="section" gap="m" mt="m" aria-labelledby="section06">
                     <Heading level={2} id="section06">
                         Artikel 6. Specificaties en ontwikkeling website
                     </Heading>
@@ -302,7 +302,7 @@ const Conditions = () => {
                             vervolgens per ontworpen pagina goedkeuring te verlenen voor het
                             definitieve ontwerp. Een dergelijke goedkeuring behelst ten minste het
                             navolgende:
-                            <Stack as="ol" gap="m" type="a">
+                            <Stack as="ol" gap="m" style={{ listStyleType: "lower-alpha" }}>
                                 <Text as="li">
                                     Opdrachtgever geeft hiermee te kennen dat het definitief ontwerp
                                     gezien is, en gaat akkoord met het ontwerp zoals dat staat
@@ -350,7 +350,7 @@ const Conditions = () => {
                     </Stack>
                 </Stack>
 
-                <Stack as="section" gap="m" mt="1rem" aria-labelledby="section07">
+                <Stack as="section" gap="m" mt="m" aria-labelledby="section07">
                     <Heading level={2} id="section07">
                         Artikel 7. Prijzen / Betalingsvoorwaarden
                     </Heading>
@@ -448,7 +448,7 @@ const Conditions = () => {
                     </Stack>
                 </Stack>
 
-                <Stack as="section" gap="m" mt="1rem" aria-labelledby="section08">
+                <Stack as="section" gap="m" mt="m" aria-labelledby="section08">
                     <Heading level={2} id="section08">
                         Artikel 8. Leveringstermijnen / Aflevering
                     </Heading>
@@ -493,7 +493,7 @@ const Conditions = () => {
                     </Stack>
                 </Stack>
 
-                <Stack as="section" gap="m" mt="1rem" aria-labelledby="section09">
+                <Stack as="section" gap="m" mt="m" aria-labelledby="section09">
                     <Heading level={2} id="section09">
                         Artikel 9. Meerwerk
                     </Heading>
@@ -526,7 +526,7 @@ const Conditions = () => {
                     </Stack>
                 </Stack>
 
-                <Stack as="section" gap="m" mt="1rem" aria-labelledby="section10">
+                <Stack as="section" gap="m" mt="m" aria-labelledby="section10">
                     <Heading level={2} id="section10">
                         Artikel 10. Garantie
                     </Heading>
@@ -577,7 +577,7 @@ const Conditions = () => {
                     </Stack>
                 </Stack>
 
-                <Stack as="section" gap="m" mt="1rem" aria-labelledby="section11">
+                <Stack as="section" gap="m" mt="m" aria-labelledby="section11">
                     <Heading level={2} id="section11">
                         Artikel 11. Aansprakelijkheid
                     </Heading>
@@ -609,7 +609,7 @@ const Conditions = () => {
                             vergoeding voor directe schade meer bedragen dan 25.000 euro
                             (vijfentwintigduizend euro). Onder directe schade wordt uitsluitend
                             verstaan:
-                            <Stack as="ol" gap="m" type="a">
+                            <Stack as="ol" gap="m" style={{ listStyleType: "lower-alpha" }}>
                                 <Text as="li">
                                     de redelijke kosten die Opdrachtgever zou moeten maken om de
                                     prestatie van HKweb aan de Overeenkomst te laten beantwoorden.
@@ -675,7 +675,7 @@ const Conditions = () => {
                     </Stack>
                 </Stack>
 
-                <Stack as="section" gap="m" mt="1rem" aria-labelledby="section12">
+                <Stack as="section" gap="m" mt="m" aria-labelledby="section12">
                     <Heading level={2} id="section12">
                         Artikel 12. Duur en beëindiging Overeenkomst
                     </Heading>
@@ -733,7 +733,7 @@ const Conditions = () => {
                             Onverminderd het bepaalde in dit artikel heeft HKweb het recht de
                             Overeenkomst met onmiddellijke ingang en zonder rechterlijke tussenkomst
                             te beëindigen indien:
-                            <Stack as="ol" gap="m" type="a">
+                            <Stack as="ol" gap="m" style={{ listStyleType: "lower-alpha" }}>
                                 <Text as="li">
                                     Opdrachtgever oneigenlijk gebruikt maakt van internet;
                                 </Text>
@@ -760,7 +760,7 @@ const Conditions = () => {
                     </Stack>
                 </Stack>
 
-                <Stack as="section" gap="m" mt="1rem" aria-labelledby="section13">
+                <Stack as="section" gap="m" mt="m" aria-labelledby="section13">
                     <Heading level={2} id="section13">
                         Artikel 13. Overmacht
                     </Heading>
@@ -796,7 +796,7 @@ const Conditions = () => {
                     </Stack>
                 </Stack>
 
-                <Stack as="section" gap="m" mt="1rem" aria-labelledby="section14">
+                <Stack as="section" gap="m" mt="m" aria-labelledby="section14">
                     <Heading level={2} id="section14">
                         Artikel 14. Domeinnaamregistratie
                     </Heading>
@@ -819,7 +819,7 @@ const Conditions = () => {
                     </Stack>
                 </Stack>
 
-                <Stack as="section" gap="m" mt="1rem" aria-labelledby="section15">
+                <Stack as="section" gap="m" mt="m" aria-labelledby="section15">
                     <Heading level={2} id="section15">
                         Artikel 15. Service
                     </Heading>
@@ -853,7 +853,7 @@ const Conditions = () => {
                         <Text as="li">
                             Onder het Service, zoals bedoeld in deze algemene voorwaarden, wordt
                             verstaan:
-                            <Stack as="ol" gap="m" type="a">
+                            <Stack as="ol" gap="m" style={{ listStyleType: "lower-alpha" }}>
                                 <Text as="li">
                                     assistentie in de vorm van helpdesk ondersteuning waarbij de
                                     helpdesk te bereiken is op werkdagen van 8.30 tot 17.30 uur via
@@ -878,7 +878,7 @@ const Conditions = () => {
                     </Stack>
                 </Stack>
 
-                <Stack as="section" gap="m" mt="1rem" aria-labelledby="section16">
+                <Stack as="section" gap="m" mt="m" aria-labelledby="section16">
                     <Heading level={2} id="section16">
                         Artikel 16. Intellectuele Eigendomsrechten
                     </Heading>
@@ -947,7 +947,7 @@ const Conditions = () => {
                     </Stack>
                 </Stack>
 
-                <Stack as="section" gap="m" mt="1rem" aria-labelledby="section17">
+                <Stack as="section" gap="m" mt="m" aria-labelledby="section17">
                     <Heading level={2} id="section17">
                         Artikel 17. Geheimhouding
                     </Heading>
@@ -1008,7 +1008,7 @@ const Conditions = () => {
                     </Stack>
                 </Stack>
 
-                <Stack as="section" gap="m" mt="1rem" aria-labelledby="section18">
+                <Stack as="section" gap="m" mt="m" aria-labelledby="section18">
                     <Heading level={2} id="section18">
                         Artikel 18. Diversen
                     </Heading>
@@ -1043,7 +1043,7 @@ const Conditions = () => {
                     </Stack>
                 </Stack>
 
-                <Stack as="section" gap="m" mt="1rem" aria-labelledby="section19">
+                <Stack as="section" gap="m" mt="m" aria-labelledby="section19">
                     <Heading level={2} id="section19">
                         Artikel 19. Toepasselijk recht en geschillen
                     </Heading>
@@ -1069,7 +1069,7 @@ const Conditions = () => {
                     </Stack>
                 </Stack>
 
-                <Stack as="section" gap="m" mt="1rem" aria-labelledby="section20">
+                <Stack as="section" gap="m" mt="m" aria-labelledby="section20">
                     <Heading level={2} id="section20">
                         Artikel 20. Specifieke bepalingen omtrent Zoekmachine optimalisatie (SEO)
                     </Heading>
@@ -1101,7 +1101,7 @@ const Conditions = () => {
                     </Stack>
                 </Stack>
 
-                <Stack as="section" gap="m" mt="1rem" aria-labelledby="section21">
+                <Stack as="section" gap="m" mt="m" aria-labelledby="section21">
                     <Heading level={2} id="section21">
                         Artikel 21. Garanties Opdrachtgever
                     </Heading>
@@ -1126,7 +1126,7 @@ const Conditions = () => {
                     </Stack>
                 </Stack>
 
-                <Stack as="section" gap="m" mt="1rem" aria-labelledby="section1">
+                <Stack as="section" gap="m" mt="m" aria-labelledby="section1">
                     <Heading level={2} id="section1">
                         Artikel 22. Regelgeving – Gedragscodes
                     </Heading>

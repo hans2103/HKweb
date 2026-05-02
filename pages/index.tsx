@@ -12,10 +12,10 @@ const Home = () => {
     return (
         <Layout>
             <Hero />
-            <Flex p="2rem" pl="3vw" flexDirection="column">
+            <Flex p="l" pl="pageInline" flexDirection="column">
                 <Heading level={2}>HKweb</Heading>
 
-                <Stack as="section" mt="1rem" aria-labelledby="contact">
+                <Stack as="section" mt="m" aria-labelledby="contact">
                     <Heading level={2} id="contact">
                         Contact
                     </Heading>

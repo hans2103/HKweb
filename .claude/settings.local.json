@@ -29,7 +29,20 @@
       "Bash(grep -oE 'data-styled-version=\"6.4.1\">[^<]{0,15000}' /tmp/local.html)",
       "Read(//tmp/**)",
       "Bash(curl -fsS http://localhost:3000/ -o /tmp/local2.html)",
-      "Bash(echo \"exit: $?\")"
+      "Bash(echo \"exit: $?\")",
+      "Bash(git checkout *)",
+      "Bash(npx panda *)",
+      "Bash(curl -fsS http://localhost:3000/_next/static/chunks/_dot_panda_styles_xxx.css)",
+      "Bash(curl -fsS \"http://localhost:3000$\\(grep -oE '/_next/static/chunks/src_0wwu[^\"]+\\\\.css' /tmp/panda.html)",
+      "Bash(curl -fsS http://localhost:3000/ -o /tmp/panda3.html)",
+      "Bash(python3 *)",
+      "Bash(curl -fsS http://localhost:3000/algemene-voorwaarden -o /tmp/lp_av.html)",
+      "Bash(curl -fsS http://localhost:3000/ -o /tmp/lp2.html)",
+      "Bash(sed -i '' \"s|color: 'currentColor'|color: '[currentColor]'|g\" /Users/hans2103/Development/Sites/hkweb/src/layout/hero.tsx)",
+      "Bash(sed -i '' \"s|backgroundColor: 'currentColor'|backgroundColor: '[currentColor]'|g\" /Users/hans2103/Development/Sites/hkweb/panda.config.ts)",
+      "Bash(awk '/@layer tokens/,/^  }/' /tmp/lc_font.css)",
+      "Bash(curl -fsS http://localhost:3000/ -o /tmp/lp_d2.html)",
+      "Bash(curl -fsS http://localhost:3000/ -o /tmp/lp_clean.html)"
     ]
   }
 }

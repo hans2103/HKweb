@@ -24,6 +24,9 @@ module.exports = withBundleAnalyzer({
                         key: 'Content-Security-Policy',
                         value: [
                             "default-src 'self'",
+                            // 'unsafe-inline' required for inline `style=""` attrs that
+                            // next/image emits in `fill` mode. All component CSS is in
+                            // static files via Panda — no styled-components SSR blob.
                             "style-src 'self' 'unsafe-inline'",
                             "font-src 'self'",
                             "img-src 'self' ik.imagekit.io",

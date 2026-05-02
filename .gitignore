@@ -11,6 +11,9 @@ styleguide
 *.tsbuildinfo
 next-env.d.ts
 
+# panda css generated runtime
+/panda
+
 # next.js
 /.next/
 /out/

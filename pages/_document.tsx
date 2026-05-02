@@ -1,51 +1,15 @@
-import Document, {
-    type DocumentContext,
-    type DocumentInitialProps,
-    Head,
-    Html,
-    Main,
-    NextScript
-} from 'next/document';
-import { ServerStyleSheet } from 'styled-components';
+import { Head, Html, Main, NextScript } from 'next/document';
 
-class CustomDocument extends Document {
-    static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
-        const sheet = new ServerStyleSheet();
-        const originalRenderPage = ctx.renderPage;
+import { switzera } from '../src/fonts';
 
-        try {
-            ctx.renderPage = () =>
-                originalRenderPage({
-                    enhanceApp: (App) => (props) => sheet.collectStyles(<App {...props} />)
-                });
+const Document = () => (
+    <Html lang="nl" data-scroll-behavior="smooth" className={switzera.variable}>
+        <Head />
+        <body>
+            <Main />
+            <NextScript />
+        </body>
+    </Html>
+);
 
-            const initialProps = await Document.getInitialProps(ctx);
-
-            return {
-                ...initialProps,
-                styles: (
-                    <>
-                        {initialProps.styles}
-                        {sheet.getStyleElement()}
-                    </>
-                )
-            };
-        } finally {
-            sheet.seal();
-        }
-    }
-
-    render() {
-        return (
-            <Html lang="nl" data-scroll-behavior="smooth">
-                <Head />
-                <body>
-                    <Main />
-                    <NextScript />
-                </body>
-            </Html>
-        );
-    }
-}
-
-export default CustomDocument;
+export default Document;

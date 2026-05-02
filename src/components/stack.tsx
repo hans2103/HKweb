@@ -1,25 +1,16 @@
 // src/components/stack.tsx
+//
+// Block-layout Stack with margins between children (the "lobotomized owl"
+// pattern). Don't use Panda's built-in flex Stack: a flex parent hides
+// <ol>/<ul> list markers, which we need for the algemene-voorwaarden page.
+//
+// Backed by the `stack` recipe in panda.config.ts so each <Stack> renders one
+// semantic class (`.stack stack--gap_m`) instead of selector-prefixed atomic
+// classes per instance.
 
-import styled from 'styled-components';
-import { system } from 'styled-system';
+import { styled } from '../../panda/jsx';
+import { blockStack } from '../../panda/recipes';
 
-import Box, { type BoxProps } from './box';
-
-export type StackProps = BoxProps & {
-    gap?: string | number | (string | number)[];
-};
-
-const stackGap = system({
-    gap: {
-        // Apply margin to every child after the first one (lobotomized owl).
-        // Cast: styled-system's `property` is typed as a CSS prop, but a selector works at runtime.
-         
-        property: '&& > * + *' as any,
-        scale: 'space',
-        transform: (value, scale) => ({ marginBlockStart: scale?.[value] })
-    }
-});
-
-const Stack = styled(Box)<StackProps>(stackGap);
+const Stack = styled('div', blockStack);
 
 export default Stack;

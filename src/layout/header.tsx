@@ -1,19 +1,12 @@
 // src/layout/header.tsx
 
-import css from '@styled-system/css';
-import styled from 'styled-components';
-
+import { css } from '../../panda/css';
+import { Box, Flex } from '../../panda/jsx';
 import Logo from '../../public/images/logo--hkweb.svg';
-import Box from '../components/box';
-import Flex from '../components/flex';
 import Link from '../components/link';
 import SocialLinks from '../components/social-icons';
 
-const StyledLogo = styled(Logo)(
-    css({
-        fill: 'base'
-    })
-);
+const logoClass = css({ fill: 'base' });
 
 const Header = () => (
     <Flex as="header" p="m">
@@ -23,11 +16,11 @@ const Header = () => (
                 name="HKweb"
                 hidden={true}
                 title="to the homepage of HKweb.nl">
-                <StyledLogo width="3rem" />
+                <Logo width="3rem" className={logoClass} />
             </Link>
         </Box>
         <Box mx="auto" />
-        <SocialLinks type="follow" alignItems="center" justifyContent="flex-end" />
+        <SocialLinks type="follow" />
     </Flex>
 );
 

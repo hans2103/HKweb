@@ -10,7 +10,7 @@ type IconProps = {
 
 const Icon = ({ icon, size = 1, color }: IconProps) => (
     <svg width={`${size}em`} height={`${size}em`} viewBox="0 0 24 24" aria-hidden="true">
-        <path style={{ fill: color }} d={icons[icon]} />
+        <path fill={color} d={icons[icon]} />
     </svg>
 );
 

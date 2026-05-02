@@ -1,56 +1,24 @@
 // src/components/heading.tsx
 
-import type { ElementType, HTMLAttributes } from 'react';
-import styled from 'styled-components';
-import { space, type SpaceProps, variant } from 'styled-system';
+import type { ComponentPropsWithoutRef, ElementType } from 'react';
 
-const variants = {
-    1: {
-        color: 'base',
-        fontFamily: 'heading',
-        fontWeight: 'bold',
-        lineHeight: 'heading',
-        fontSize: 'xl'
-    },
-    2: {
-        color: 'base',
-        fontFamily: 'heading',
-        fontWeight: 'bold',
-        lineHeight: 'heading',
-        fontSize: 'l'
-    },
-    3: {
-        color: 'base',
-        fontFamily: 'heading',
-        fontWeight: 'bold',
-        lineHeight: 'heading',
-        fontSize: 'm'
-    }
-} as const;
+import { heading } from '../../panda/recipes';
 
 type HeadingLevel = 1 | 2 | 3;
 
-type HeadingBaseProps = HTMLAttributes<HTMLHeadingElement> & {
+type HeadingProps = ComponentPropsWithoutRef<'h1'> & {
     level: HeadingLevel;
     as?: ElementType;
 };
 
-const HeadingBase = ({ level, as, ...props }: HeadingBaseProps) => {
+const Heading = ({ level, as, className, children, ...rest }: HeadingProps) => {
     const Tag = (as ?? `h${level}`) as ElementType;
-    return <Tag {...props} />;
+    const recipeClass = heading({ level: String(level) as '1' | '2' | '3' });
+    return (
+        <Tag className={[recipeClass, className].filter(Boolean).join(' ')} {...rest}>
+            {children}
+        </Tag>
+    );
 };
-
-export type HeadingProps = SpaceProps & HeadingBaseProps;
-
-const Heading = styled(HeadingBase)<HeadingProps>(
-    {
-        margin: 0
-    },
-    variant({
-        variants,
-        prop: 'level'
-    }),
-    space
-);
 
 export default Heading;

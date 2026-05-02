@@ -1,5 +1,20 @@
-module.exports = {
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+    enabled: process.env.ANALYZE === 'true'
+});
+
+module.exports = withBundleAnalyzer({
     reactStrictMode: true,
+    compiler: {
+        styledComponents: true
+    },
+    turbopack: {
+        rules: {
+            '*.svg': {
+                loaders: ['@svgr/webpack'],
+                as: '*.js'
+            }
+        }
+    },
     async headers() {
         return [
             {
@@ -7,8 +22,18 @@ module.exports = {
                 headers: [
                     {
                         key: 'Content-Security-Policy',
-                        value:
-                            'default-src \'self\'; style-src \'unsafe-inline\'; font-src \'self\' data:; img-src \'self\' ik.imagekit.io; script-src \'self\'; connect-src vitals.vercel-insights.com'
+                        value: [
+                            "default-src 'self'",
+                            "style-src 'self' 'unsafe-inline'",
+                            "font-src 'self'",
+                            "img-src 'self' ik.imagekit.io",
+                            "script-src 'self'",
+                            "connect-src 'self' vitals.vercel-insights.com",
+                            "base-uri 'self'",
+                            "form-action 'self'",
+                            "frame-ancestors 'none'",
+                            "object-src 'none'"
+                        ].join('; ')
                     },
                     {
                         key: 'X-Frame-Options',
@@ -30,4 +55,4 @@ module.exports = {
             }
         ];
     }
-};
+});

@@ -10,9 +10,12 @@ export default defineConfig({
     jsxFramework: 'react',
     outdir: 'panda',
 
-    // Hash atomic class names in production for smaller HTML/CSS payloads
-    // (e.g. `.bg-c_base` → `.fxYz`). Dev mode keeps readable names.
-    hash: process.env.NODE_ENV === 'production',
+    // Hashing is disabled because Panda generates the runtime JSX helpers at
+    // `prepare` time but the CSS file at `next build` time. On Vercel those run
+    // with different NODE_ENV values, so a conditional hash produced HTML with
+    // unhashed classes (e.g. `pos_relative`) against a CSS file with only
+    // hashed selectors — none of the styles applied. Keep this off.
+    hash: false,
 
     // Use Lightning CSS for faster parsing + better minification.
     lightningcss: true,

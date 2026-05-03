@@ -29,7 +29,7 @@
         "@commitlint/cli": "^20.5.3",
         "@next/bundle-analyzer": "^16.2.4",
         "@next/eslint-plugin-next": "^16.2.4",
-        "@pandacss/dev": "^1.10.0",
+        "@pandacss/dev": "^1.11.0",
         "@pandacss/eslint-plugin": "^0.3.2",
         "@pandacss/postcss": "^1.10.0",
         "@svgr/webpack": "^8.1.0",

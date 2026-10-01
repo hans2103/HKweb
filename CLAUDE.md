@@ -89,7 +89,7 @@ Every page exports `config: PageConfig = { unstable_runtimeJS: false }` — the 
 ## a11y
 
 - All pages have an explicit `<h1>`; keep heading levels sequential (hero subtitle is a `<p>` styled as h2; to restyle a heading tag pass `as` to `Heading` itself — Panda `styled()` swallows `as`).
-- Social links live in `<nav aria-label="Sociale media">`; alt text and sr-only labels are Dutch.
+- Social links live in `<nav aria-label="Sociale media">`; alt text and sr-only labels are Dutch. Each link is a 44×44px touch target (`socialItem` recipe); separator dots are absolutely positioned so the row fits 360px screens.
 - `src/layout/layout.tsx` has a Dutch skip-to-content link visually hidden until focused.
 - `src/components/link.tsx` uses Panda's `link` recipe with `:focus-visible` (not `:focus`) — outline only for keyboard users.
 

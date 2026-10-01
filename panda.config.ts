@@ -241,13 +241,25 @@ export default defineConfig({
                 socialItem: {
                     className: 'social-item',
                     base: {
+                        position: 'relative',
                         margin: 0,
                         listStyle: 'none',
+                        // 44×44px touch target (WCAG 2.5.5 AAA) around the icon.
+                        '& > a': {
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            minWidth: '44px',
+                            minHeight: '44px'
+                        },
+                        // Separator dot sits on the boundary between two targets
+                        // and takes no width, so the row still fits 360px screens.
                         '& + &::before': {
                             content: '""',
-                            display: 'inline-block',
-                            verticalAlign: 'middle',
-                            margin: '0 1ch',
+                            position: 'absolute',
+                            left: 0,
+                            top: '50%',
+                            transform: 'translate(-50%, -50%)',
                             width: '3px',
                             height: '3px',
                             borderRadius: '50%',

@@ -40,7 +40,7 @@ const SocialLinks = ({ type }: SocialLinksProps) => {
                             href={item.link}
                             hidden={true}
                             name={'Bekijk mijn profiel op ' + item.label}>
-                            <Icon color="currentColor" icon={item.icon} />
+                            <Icon color="currentColor" icon={item.icon} size={1.25} />
                         </Link>
                     </li>
                 ))}

@@ -1,5 +1,7 @@
 // pages/algemene-voorwaarden.js
 
+import type { PageConfig } from 'next';
+
 import Flex from '../src/components/flex';
 import Heading from '../src/components/heading';
 import Stack from '../src/components/stack';
@@ -1159,6 +1161,9 @@ const Conditions = () => {
         </Layout>
     );
 };
+
+// Static content, no interactivity: ship zero client-side JavaScript.
+export const config: PageConfig = { unstable_runtimeJS: false };
 
 /** @component */
 export default Conditions;

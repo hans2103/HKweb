@@ -12,7 +12,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `npm run lint` — ESLint flat-config with `--fix`
 - `npm run format` — Prettier
 
-Node **24.x** (Vercel) (`engines.node`, `.nvmrc`). Husky 9 (`.husky/pre-commit` runs `lint-staged`; `.husky/commit-msg` runs commitlint). `npm run prepare` runs `panda codegen` then installs hooks.
+Node **24.x** (Vercel) (`engines.node`, `.nvmrc`) with npm 11 — run `nvm use` first; npm 10 (Node 22) crashes on this lockfile. `overrides` in `package.json` pins patched `postcss`/`browserslist`/`postcss-selector-parser` because Panda 1.x pulls vulnerable versions; drop them after upgrading to Panda 2. Husky 9 (`.husky/pre-commit` runs `lint-staged`; `.husky/commit-msg` runs commitlint). `npm run prepare` runs `panda codegen` then installs hooks.
 
 CI: `.github/workflows/ci.yml` runs install + lint + test + build on PRs and pushes to `master`. Dependabot opens weekly grouped npm PRs + monthly Actions bumps.
 
@@ -50,9 +50,17 @@ The `src/components/` directory still has the same component names as before, bu
 - `pages/_document.tsx` — minimal; sets `lang="nl"` and `data-scroll-behavior="smooth"` on `<html>`.
 - `src/layout/layout.tsx` — `Meta` + skip-to-content link (`Naar hoofdinhoud`) + `Header` + `<main id="main">` + `Footer`.
 
+### Zero client-side JavaScript
+
+Every page exports `config: PageConfig = { unstable_runtimeJS: false }` — the site has no interactivity, so production HTML ships **no `<script>` tags** (homepage ~63 KiB total, was ~207 KiB). Consequences:
+- No `useState`/`useEffect`/event handlers — they would silently do nothing in production (dev mode still hydrates, so test interactivity with `npm run build && npm start`).
+- `next/link` navigations are plain full-page loads.
+- Type the export as `PageConfig` (from `next`); a bare object literal fails Next's generated page-config type check.
+- New pages must add the same export.
+
 ### Fonts
 
-- `src/fonts/SwitzeraADFRegular.woff` is the actual binary; `src/fonts/index.ts` exposes it via `next/font/local` with `display: swap`.
+- `src/fonts/SwitzeraADFRegular.woff2` is the actual binary; `src/fonts/index.ts` exposes it via `next/font/local` with `display: swap`.
 - `panda.config.ts` `tokens.fonts.base` references `var(--font-switzera), Verdana, arial, sans-serif`.
 
 ### SVG and images

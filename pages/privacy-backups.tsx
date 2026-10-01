@@ -1,5 +1,6 @@
 // pages/privacy-backups.tsx
 
+import type { PageConfig } from 'next';
 import Head from 'next/head';
 
 import Flex from '../src/components/flex';
@@ -114,6 +115,9 @@ const PrivacyBackups = () => {
         </Layout>
     );
 };
+
+// Static content, no interactivity: ship zero client-side JavaScript.
+export const config: PageConfig = { unstable_runtimeJS: false };
 
 /** @component */
 export default PrivacyBackups;

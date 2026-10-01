@@ -1,5 +1,7 @@
 // pages/index.js
 
+import type { PageConfig } from 'next';
+
 import Flex from '../src/components/flex';
 import Heading from '../src/components/heading';
 import Link from '../src/components/link';
@@ -28,6 +30,9 @@ const Home = () => {
         </Layout>
     );
 };
+
+// Static content, no interactivity: ship zero client-side JavaScript.
+export const config: PageConfig = { unstable_runtimeJS: false };
 
 /** @component */
 export default Home;

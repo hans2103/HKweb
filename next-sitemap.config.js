@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-    siteUrl: 'https://www.hkweb.nl',
+    siteUrl: 'https://hkweb.nl',
     generateRobotsTxt: true,
     sitemapSize: 5000,
     robotsTxtOptions: {

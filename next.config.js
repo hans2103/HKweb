@@ -4,8 +4,10 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 module.exports = withBundleAnalyzer({
     reactStrictMode: true,
-    compiler: {
-        styledComponents: true
+    images: {
+        // Next's default tops out at 3840w (~500 KB for the hero on retina desktops);
+        // 2048w is plenty for a full-bleed photo and roughly a third of the bytes.
+        deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048]
     },
     turbopack: {
         rules: {

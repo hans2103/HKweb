@@ -68,7 +68,7 @@ Every page exports `config: PageConfig = { unstable_runtimeJS: false }` — the 
 ### SVG and images
 
 - SVG-as-component via Turbopack rule (`@svgr/webpack`); only `src/layout/header.tsx` imports `logo--hkweb.svg` directly. Icon path strings live in `lib/icons.ts`.
-- `src/components/image.tsx` wraps `next/image` with a custom ImageKit `loader`. For hero-style images use `fill` + `sizes` + `style={{ objectFit: 'cover' }}` + `priority`. The figure parent must be `position: relative/absolute/fixed` (next/image requirement).
+- `src/components/image.tsx` wraps `next/image` with a custom ImageKit `loader`. `images.deviceSizes` in `next.config.js` caps srcset at 2048w (default 3840w meant ~500 KB hero on retina desktops). For hero-style images use `fill` + `sizes` + `style={{ objectFit: 'cover' }}` + `priority`. The figure parent must be `position: relative/absolute/fixed` (next/image requirement).
 
 ### Security headers / CSP
 
@@ -89,7 +89,8 @@ Every page exports `config: PageConfig = { unstable_runtimeJS: false }` — the 
 
 ## a11y
 
-- All pages have an explicit `<h1>`.
+- All pages have an explicit `<h1>`; keep heading levels sequential (hero subtitle is a `<p>` styled as h2; to restyle a heading tag pass `as` to `Heading` itself — Panda `styled()` swallows `as`).
+- Social links live in `<nav aria-label="Sociale media">`; alt text and sr-only labels are Dutch.
 - `src/layout/layout.tsx` has a Dutch skip-to-content link visually hidden until focused.
 - `src/components/link.tsx` uses Panda's `link` recipe with `:focus-visible` (not `:focus`) — outline only for keyboard users.
 

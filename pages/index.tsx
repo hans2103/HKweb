@@ -18,7 +18,7 @@ const Home = () => {
                 <Heading level={2}>HKweb</Heading>
 
                 <Stack as="section" mt="m" aria-labelledby="contact">
-                    <Heading level={2} id="contact">
+                    <Heading level={2} as="h3" id="contact">
                         Contact
                     </Heading>
                     <Text>

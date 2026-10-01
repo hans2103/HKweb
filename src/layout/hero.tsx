@@ -1,5 +1,7 @@
 // src/layout/hero.tsx
 
+import type { ComponentProps } from 'react';
+
 import { SITE_SUBTITLE, SITE_TITLE } from '../../lib/constants';
 import { Box, Flex, styled } from '../../panda/jsx';
 import Heading from '../components/heading';
@@ -12,7 +14,13 @@ const HeroHeading = styled(Heading, {
     base: { color: 'currentColor', fontSize: 'xxl' }
 });
 
-const HeroSubheading = styled(Heading, {
+// The subtitle looks like an h2 but is not a section heading, so render it as
+// <p>. Panda's styled() swallows an `as` prop, so pass it to Heading here.
+const Subtitle = (props: Omit<ComponentProps<typeof Heading>, 'level' | 'as'>) => (
+    <Heading level={2} as="p" {...props} />
+);
+
+const HeroSubheading = styled(Subtitle, {
     base: { color: 'currentColor', fontSize: 'xl' }
 });
 
@@ -27,7 +35,7 @@ const Hero = () => (
         <Box as="figure" m="0" height="full" overflow="hidden">
             <Image
                 src="/images/Hans-2020.jpg"
-                alt="Hans Kuijpers smiling at the camera"
+                alt="Hans Kuijpers lacht naar de camera"
                 fill
                 sizes="100vw"
                 style={{ objectFit: 'cover' }}
@@ -36,7 +44,7 @@ const Hero = () => (
         </Box>
         <Box zIndex={1} color="hero" textShadow="headline" pb="pageBottom" pl="pageInline">
             <HeroHeading level={1}>{SITE_TITLE}</HeroHeading>
-            <HeroSubheading level={2}>{SITE_SUBTITLE}</HeroSubheading>
+            <HeroSubheading>{SITE_SUBTITLE}</HeroSubheading>
         </Box>
     </Flex>
 );

@@ -11,12 +11,8 @@ const logoClass = css({ fill: 'base' });
 const Header = () => (
     <Flex as="header" p="m">
         <Box>
-            <Link
-                href="https://hkweb.nl"
-                name="HKweb"
-                hidden={true}
-                title="to the homepage of HKweb.nl">
-                <Logo width="3rem" className={logoClass} />
+            <Link href="/" name="HKweb, naar de homepage" hidden={true} title="Naar de homepage">
+                <Logo width="3rem" className={logoClass} aria-hidden="true" focusable="false" />
             </Link>
         </Box>
         <Box mx="auto" />

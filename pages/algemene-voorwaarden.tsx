@@ -304,7 +304,7 @@ const Conditions = () => {
                             vervolgens per ontworpen pagina goedkeuring te verlenen voor het
                             definitieve ontwerp. Een dergelijke goedkeuring behelst ten minste het
                             navolgende:
-                            <Stack as="ol" gap="m" style={{ listStyleType: 'lower-alpha' }}>
+                            <Stack as="ol" gap="m" listStyleType="lower-alpha">
                                 <Text as="li">
                                     Opdrachtgever geeft hiermee te kennen dat het definitief ontwerp
                                     gezien is, en gaat akkoord met het ontwerp zoals dat staat
@@ -611,7 +611,7 @@ const Conditions = () => {
                             vergoeding voor directe schade meer bedragen dan 25.000 euro
                             (vijfentwintigduizend euro). Onder directe schade wordt uitsluitend
                             verstaan:
-                            <Stack as="ol" gap="m" style={{ listStyleType: 'lower-alpha' }}>
+                            <Stack as="ol" gap="m" listStyleType="lower-alpha">
                                 <Text as="li">
                                     de redelijke kosten die Opdrachtgever zou moeten maken om de
                                     prestatie van HKweb aan de Overeenkomst te laten beantwoorden.
@@ -735,7 +735,7 @@ const Conditions = () => {
                             Onverminderd het bepaalde in dit artikel heeft HKweb het recht de
                             Overeenkomst met onmiddellijke ingang en zonder rechterlijke tussenkomst
                             te beëindigen indien:
-                            <Stack as="ol" gap="m" style={{ listStyleType: 'lower-alpha' }}>
+                            <Stack as="ol" gap="m" listStyleType="lower-alpha">
                                 <Text as="li">
                                     Opdrachtgever oneigenlijk gebruikt maakt van internet;
                                 </Text>
@@ -855,7 +855,7 @@ const Conditions = () => {
                         <Text as="li">
                             Onder het Service, zoals bedoeld in deze algemene voorwaarden, wordt
                             verstaan:
-                            <Stack as="ol" gap="m" style={{ listStyleType: 'lower-alpha' }}>
+                            <Stack as="ol" gap="m" listStyleType="lower-alpha">
                                 <Text as="li">
                                     assistentie in de vorm van helpdesk ondersteuning waarbij de
                                     helpdesk te bereiken is op werkdagen van 8.30 tot 17.30 uur via

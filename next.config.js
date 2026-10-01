@@ -4,11 +4,6 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 module.exports = withBundleAnalyzer({
     reactStrictMode: true,
-    images: {
-        // Next's default tops out at 3840w (~500 KB for the hero on retina desktops);
-        // 2048w is plenty for a full-bleed photo and roughly a third of the bytes.
-        deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048]
-    },
     turbopack: {
         rules: {
             '*.svg': {
@@ -20,20 +15,25 @@ module.exports = withBundleAnalyzer({
     async headers() {
         return [
             {
+                // Hero variants never change in place: a new photo gets a new
+                // file name (see scripts/generate-hero-images.mjs).
+                source: '/images/hero/:file*',
+                headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }]
+            },
+            {
                 source: '/(.*)',
                 headers: [
                     {
                         key: 'Content-Security-Policy',
                         value: [
                             "default-src 'self'",
-                            // 'unsafe-inline' required for inline `style=""` attrs that
-                            // next/image emits in `fill` mode. All component CSS is in
-                            // static files via Panda — no styled-components SSR blob.
-                            "style-src 'self' 'unsafe-inline'",
+                            // No inline styles anywhere: Panda emits static CSS files and
+                            // the hero uses a plain <picture> instead of next/image.
+                            "style-src 'self'",
                             "font-src 'self'",
-                            "img-src 'self' ik.imagekit.io",
+                            "img-src 'self'",
                             "script-src 'self'",
-                            "connect-src 'self' vitals.vercel-insights.com",
+                            "connect-src 'self'",
                             "base-uri 'self'",
                             "form-action 'self'",
                             "frame-ancestors 'none'",

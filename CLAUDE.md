@@ -12,7 +12,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `npm run lint` — ESLint flat-config with `--fix`
 - `npm run format` — Prettier
 
-Node **25.x** (`engines.node`, `.nvmrc`). Husky 9 (`.husky/pre-commit` runs `lint-staged`; `.husky/commit-msg` runs commitlint). `npm run prepare` runs `panda codegen` then installs hooks.
+Node **24.x** (Vercel) (`engines.node`, `.nvmrc`). Husky 9 (`.husky/pre-commit` runs `lint-staged`; `.husky/commit-msg` runs commitlint). `npm run prepare` runs `panda codegen` then installs hooks.
 
 CI: `.github/workflows/ci.yml` runs install + lint + test + build on PRs and pushes to `master`. Dependabot opens weekly grouped npm PRs + monthly Actions bumps.
 
@@ -64,6 +64,7 @@ The `src/components/` directory still has the same component names as before, bu
 
 `next.config.js` sets these on every route:
 
+- `Strict-Transport-Security: max-age=63072000; includeSubDomains` (no `preload`).
 - `script-src 'self'` — no inline scripts, no third-party JS.
 - `style-src 'self' 'unsafe-inline'` — `'unsafe-inline'` is **only** required because `next/image` in `fill` mode emits an inline `style=""` attribute we can't control. Component CSS itself is all in static files (Panda is zero-runtime).
 - `img-src 'self' ik.imagekit.io` — images self-hosted or on ImageKit.
@@ -74,7 +75,7 @@ The `src/components/` directory still has the same component names as before, bu
 ### SEO
 
 - `next-sitemap` runs in `postbuild`, writes `public/sitemap*.xml` + `public/robots.txt` (both gitignored).
-- `src/layout/meta.tsx` provides static og:/twitter: meta + canonical URL.
+- `src/layout/meta.tsx` provides og:/twitter: meta; canonical + `og:url` are built per page from `SITE_URL` (`https://hkweb.nl`, the primary domain — `www` redirects to it) + the route path.
 
 ## a11y
 

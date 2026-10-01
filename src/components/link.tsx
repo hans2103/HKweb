@@ -15,10 +15,7 @@ type LinkComponentProps = Omit<NextLinkProps, 'as'> & {
 };
 
 const Link = ({ href, name, hidden, children, className, ...rest }: LinkComponentProps) => (
-    <NextLink
-        href={href}
-        className={[link(), className].filter(Boolean).join(' ')}
-        {...rest}>
+    <NextLink href={href} className={[link(), className].filter(Boolean).join(' ')} {...rest}>
         {hidden ? <Hidden>{name}</Hidden> : name}
         {children}
     </NextLink>

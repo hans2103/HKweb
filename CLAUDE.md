@@ -30,6 +30,7 @@ Panda generates atomic CSS at build/dev time — **zero runtime CSS-in-JS**. Con
 - Global CSS (preflight reset, root vars, body, print rules) lives in `globalCss` inside `panda.config.ts`.
 
 The `src/components/` directory still has the same component names as before, but most are now thin wrappers over Panda primitives:
+
 - **Box / Flex / Grid / Stack**: re-export `panda/jsx` (Panda's built-in JSX patterns include Box, Flex, Stack/HStack/VStack, Grid, Container, etc.).
 - **Heading / Button / Link**: use Panda **recipes** with className composition.
 - **Text / Input**: use `styled('p'/'input', { base: {...} })` from `panda/jsx`.
@@ -53,6 +54,7 @@ The `src/components/` directory still has the same component names as before, bu
 ### Zero client-side JavaScript
 
 Every page exports `config: PageConfig = { unstable_runtimeJS: false }` — the site has no interactivity, so production HTML ships **no `<script>` tags** (homepage ~63 KiB total, was ~207 KiB). Consequences:
+
 - No `useState`/`useEffect`/event handlers — they would silently do nothing in production (dev mode still hydrates, so test interactivity with `npm run build && npm start`).
 - `next/link` navigations are plain full-page loads.
 - Type the export as `PageConfig` (from `next`); a bare object literal fails Next's generated page-config type check.

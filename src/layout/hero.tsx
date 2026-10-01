@@ -34,12 +34,7 @@ const Hero = () => (
                 priority
             />
         </Box>
-        <Box
-            zIndex={1}
-            color="hero"
-            textShadow="headline"
-            pb="pageBottom"
-            pl="pageInline">
+        <Box zIndex={1} color="hero" textShadow="headline" pb="pageBottom" pl="pageInline">
             <HeroHeading level={1}>{SITE_TITLE}</HeroHeading>
             <HeroSubheading level={2}>{SITE_SUBTITLE}</HeroSubheading>
         </Box>

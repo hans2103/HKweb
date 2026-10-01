@@ -26,13 +26,7 @@ const SocialLinks = ({ type }: SocialLinksProps) => {
     const socialList = type === 'follow' ? socialFollow : socialShare;
 
     return (
-        <Flex
-            as="ul"
-            listStyle="none"
-            m="0"
-            p="0"
-            alignItems="center"
-            justifyContent="flex-end">
+        <Flex as="ul" listStyle="none" m="0" p="0" alignItems="center" justifyContent="flex-end">
             {socialList.map((item) => (
                 <li key={item.link} className={socialItem()}>
                     <Link

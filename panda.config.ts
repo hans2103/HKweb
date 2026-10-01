@@ -71,9 +71,10 @@ export default defineConfig({
                     base: { value: 'hsl(209,14%,37%)' },
                     light: { value: 'hsl(0,0%,60%)' },
                     primary: { value: 'hsl(209,14%,37%)' },
-                    accent: { value: 'hsl(14,84%,55%)' },
-                    hover: { value: 'hsl(14,84%,55%)' },
-                    focus: { value: 'hsl(14,84%,55%)' },
+                    // 45% lightness: 4.67:1 on white (WCAG AA for text); 55% was 3.47:1
+                    accent: { value: 'hsl(14,84%,45%)' },
+                    hover: { value: 'hsl(14,84%,45%)' },
+                    focus: { value: 'hsl(14,84%,45%)' },
                     selection: { value: 'hsl(52,100%,73%)' },
                     selectionAlpha: { value: 'hsla(52,100%,73%,0.25)' },
                     hero: { value: 'hsl(148,9%,88%)' },

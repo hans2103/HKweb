@@ -1,9 +1,0 @@
-# *
-User-agent: *
-Allow: /
-
-# Host
-Host: https://www.hkweb.nl
-
-# Sitemaps
-Sitemap: https://www.hkweb.nl/sitemap.xml

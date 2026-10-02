@@ -10,7 +10,9 @@ import Layout from '../src/layout/layout';
 
 const Conditions = () => {
     return (
-        <Layout>
+        <Layout
+            title="Algemene voorwaarden | HKweb"
+            description="De algemene voorwaarden van HKweb (Hans Kuijpers) voor het ontwerpen, bouwen en onderhouden van websites en webshops.">
             <Flex
                 gap="xl"
                 p="l"

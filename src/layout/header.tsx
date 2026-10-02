@@ -16,7 +16,7 @@ const Header = () => (
             </Link>
         </Box>
         <Box mx="auto" />
-        <SocialLinks type="follow" />
+        <SocialLinks />
     </Flex>
 );
 

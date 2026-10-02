@@ -1,7 +1,6 @@
 // pages/privacy-backups.tsx
 
 import type { PageConfig } from 'next';
-import Head from 'next/head';
 
 import Flex from '../src/components/flex';
 import Heading from '../src/components/heading';
@@ -12,10 +11,9 @@ import Layout from '../src/layout/layout';
 
 const PrivacyBackups = () => {
     return (
-        <Layout>
-            <Head>
-                <title>Privacyverklaring HKweb rclone backups</title>
-            </Head>
+        <Layout
+            title="Privacyverklaring HKweb rclone backups | HKweb"
+            description="Privacyverklaring van de interne Google OAuth-client “HKweb rclone backups”, waarmee HKweb serverbackups opslaat in de eigen Google Drive.">
             <Flex
                 gap="xl"
                 p="l"

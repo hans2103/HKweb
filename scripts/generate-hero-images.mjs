@@ -1,7 +1,8 @@
 // scripts/generate-hero-images.mjs
 //
 // Generates the responsive hero variants (AVIF, WebP, JPEG) from the original
-// photo into public/images/hero/. Run after replacing the source photo:
+// photo into public/images/hero/, plus the 1200×630 share image (og:image) in
+// public/images/og/. Run after replacing the source photo:
 //
 //   node scripts/generate-hero-images.mjs
 //
@@ -33,3 +34,13 @@ for (const width of WIDTHS) {
         console.log(`${file.padEnd(40)} ${(size / 1024).toFixed(1).padStart(7)} KiB`);
     }
 }
+
+// Share image for og:image / twitter:image. Social platforms expect 1.91:1;
+// 'attention' crops around the face instead of the geometric centre.
+const OG_FILE = 'public/images/og/hans-2020-1200x630.jpg';
+await mkdir('public/images/og', { recursive: true });
+const { size } = await sharp(SOURCE)
+    .resize({ width: 1200, height: 630, fit: 'cover', position: sharp.strategy.attention })
+    .jpeg({ quality: 82, mozjpeg: true, progressive: true })
+    .toFile(OG_FILE);
+console.log(`${OG_FILE.padEnd(40)} ${(size / 1024).toFixed(1).padStart(7)} KiB`);

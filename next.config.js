@@ -12,6 +12,17 @@ module.exports = withBundleAnalyzer({
             }
         }
     },
+    // Browsers and iOS request these at the root regardless of <link> tags.
+    async rewrites() {
+        return [
+            { source: '/favicon.ico', destination: '/favicon/favicon.ico' },
+            { source: '/apple-touch-icon.png', destination: '/favicon/apple-touch-icon.png' },
+            {
+                source: '/apple-touch-icon-precomposed.png',
+                destination: '/favicon/apple-touch-icon.png'
+            }
+        ];
+    },
     async headers() {
         return [
             {
@@ -44,6 +55,8 @@ module.exports = withBundleAnalyzer({
                         key: 'Strict-Transport-Security',
                         value: 'max-age=63072000; includeSubDomains'
                     },
+                    { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
+                    { key: 'Cross-Origin-Resource-Policy', value: 'same-origin' },
                     {
                         key: 'X-Frame-Options',
                         value: 'DENY'

@@ -6,11 +6,11 @@ import { Flex } from '../../panda/jsx';
 import { skipLink } from '../../panda/recipes';
 import Footer from './footer';
 import Header from './header';
-import Meta from './meta';
+import Meta, { type MetaProps } from './meta';
 
-const Layout = ({ children }: { children: ReactNode }) => (
+const Layout = ({ children, ...meta }: MetaProps & { children: ReactNode }) => (
     <Flex direction="column">
-        <Meta />
+        <Meta {...meta} />
         <a href="#main" className={skipLink()}>
             Naar hoofdinhoud
         </a>

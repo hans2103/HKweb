@@ -1,7 +1,18 @@
 // pages/index.js
 
 import type { PageConfig } from 'next';
+import Head from 'next/head';
 
+import {
+    OG_IMAGE,
+    SITE_DESCRIPTION,
+    SITE_EMAIL,
+    SITE_NAME,
+    SITE_PHONE,
+    SITE_TITLE,
+    SITE_URL,
+    SOCIAL_PROFILES
+} from '../lib/constants';
 import Flex from '../src/components/flex';
 import Heading from '../src/components/heading';
 import Link from '../src/components/link';
@@ -10,9 +21,32 @@ import Text from '../src/components/text';
 import Hero from '../src/layout/hero';
 import Layout from '../src/layout/layout';
 
+// Structured data for search engines. A JSON-LD data block is never executed,
+// so it is not subject to CSP script-src and keeps the page JS-free.
+const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: SITE_TITLE,
+    jobTitle: 'Frontend developer',
+    description: SITE_DESCRIPTION,
+    url: `${SITE_URL}/`,
+    image: OG_IMAGE.url,
+    email: `mailto:${SITE_EMAIL}`,
+    telephone: SITE_PHONE,
+    worksFor: { '@type': 'Organization', name: SITE_NAME, url: `${SITE_URL}/` },
+    knowsAbout: ['Joomla', 'Magento', 'Craft CMS', 'Next.js', 'Toegankelijkheid'],
+    sameAs: SOCIAL_PROFILES.map((profile) => profile.url)
+};
+
 const Home = () => {
     return (
         <Layout>
+            <Head>
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+                />
+            </Head>
             <Hero />
             <Flex p="l" pl="pageInline" flexDirection="column">
                 <Heading level={2}>HKweb</Heading>

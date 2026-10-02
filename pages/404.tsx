@@ -1,7 +1,6 @@
 // pages/404.tsx
 
 import type { PageConfig } from 'next';
-import Head from 'next/head';
 
 import Flex from '../src/components/flex';
 import Heading from '../src/components/heading';
@@ -11,11 +10,7 @@ import Layout from '../src/layout/layout';
 
 const NotFound = () => {
     return (
-        <Layout>
-            <Head>
-                <title>Pagina niet gevonden | Hans Kuijpers</title>
-                <meta name="robots" content="noindex" />
-            </Head>
+        <Layout title="Pagina niet gevonden | HKweb" noindex>
             <Flex
                 gap="xl"
                 p="l"

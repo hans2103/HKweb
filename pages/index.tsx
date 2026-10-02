@@ -5,6 +5,7 @@ import Head from 'next/head';
 
 import {
     OG_IMAGE,
+    SITE_ADDRESS,
     SITE_DESCRIPTION,
     SITE_EMAIL,
     SITE_NAME,
@@ -73,6 +74,7 @@ const structuredData = {
             image: OG_IMAGE.url,
             email: `mailto:${SITE_EMAIL}`,
             telephone: SITE_PHONE,
+            address: { '@type': 'PostalAddress', ...SITE_ADDRESS },
             founder: { '@id': PERSON_ID },
             areaServed: { '@type': 'Country', name: 'Nederland' }
         }

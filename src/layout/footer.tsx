@@ -13,9 +13,10 @@ const Footer = () => (
         borderTop="focus"
         borderColor="base">
         <Text>
-            <Link href="./algemene-voorwaarden" name="Algemene voorwaarden" />
+            <Link href="/algemene-voorwaarden" name="Algemene voorwaarden" />
         </Text>
-        <Text ml="auto">Copyright &copy; {new Date().getFullYear() + ' '} Hans Kuijpers</Text>
+        {/* End year is the build year, i.e. when the site was last published. */}
+        <Text ml="auto">Copyright &copy; 2018–{new Date().getFullYear()} Hans Kuijpers</Text>
     </Flex>
 );
 

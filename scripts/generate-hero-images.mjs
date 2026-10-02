@@ -16,7 +16,7 @@ import sharp from 'sharp';
 
 const SOURCE = 'public/images/Hans-2020.jpg';
 const OUT_DIR = 'public/images/hero';
-const WIDTHS = [640, 750, 828, 1080, 1200, 1920, 2048];
+const WIDTHS = [640, 750, 828, 1080, 1200, 1440, 1600, 1920, 2048];
 // Qualities tuned so SSIM against the original matches what ImageKit served
 // (AVIF ends up ~28% smaller than ImageKit's WebP at the same quality).
 const FORMATS = {

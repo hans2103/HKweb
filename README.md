@@ -1,34 +1,47 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# hkweb.nl
 
-## Getting Started
+Personal site of Hans Kuijpers / HKweb, live at <https://hkweb.nl>.
 
-First, run the development server:
+Next.js 16 (Pages Router) + React 19 + Panda CSS + TypeScript, deployed on Vercel. The site ships
+**no client-side JavaScript**: every page is static HTML + one small CSS file.
+
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
+nvm use        # Node 24 + npm 11 (npm 10 crashes on this lockfile)
+npm ci
+npm run dev    # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+| Command                           | What it does                                                                                           |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| `npm run dev`                     | Dev server (Turbopack). Note: dev mode still hydrates; test "no JS" behaviour with a production build. |
+| `npm run build && npm start`      | Production build (also writes sitemap + robots.txt) and server                                         |
+| `npm test`                        | Vitest — includes a guard that every page ships zero JS and uses no inline styles                      |
+| `npm run lint` / `npm run format` | ESLint (with `--fix`) / Prettier                                                                       |
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Adding a page
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+1. Create `pages/<slug>.tsx` and wrap it in `<Layout title="… | HKweb" description="…">`.
+2. Export `export const config: PageConfig = { unstable_runtimeJS: false };`.
+3. Style with Panda style props / `css()` — never a `style={…}` prop (CSP is `style-src 'self'`).
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Hero and share images
 
-## Learn More
+The hero photo is served as static AVIF/WebP/JPEG variants from `public/images/hero/`, and the
+1200×630 share image from `public/images/og/`. Both are generated from
+`public/images/Hans-2020.jpg`:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+node scripts/generate-hero-images.mjs
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Hero files are cached as `immutable`, so a new photo needs a new file name prefix (update the
+script and `src/layout/hero.tsx`).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Yearly maintenance
 
-## Deploy on Vercel
+- `public/.well-known/security.txt` — bump `Expires` before it lapses (a scheduled reminder opens a
+  PR in September 2027).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+More architecture notes (styling, CSP, SEO, a11y conventions) live in [`CLAUDE.md`](CLAUDE.md).

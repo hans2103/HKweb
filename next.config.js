@@ -31,6 +31,17 @@ module.exports = withBundleAnalyzer({
                 source: '/images/hero/:file*',
                 headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }]
             },
+            // Favicons, manifest and share image rarely change; revalidate weekly
+            // instead of on every visit.
+            ...[
+                '/favicon/:file*',
+                '/favicon.ico',
+                '/apple-touch-icon.png',
+                '/images/og/:file*'
+            ].map((source) => ({
+                source,
+                headers: [{ key: 'Cache-Control', value: 'public, max-age=604800' }]
+            })),
             {
                 source: '/(.*)',
                 headers: [
@@ -53,7 +64,7 @@ module.exports = withBundleAnalyzer({
                     },
                     {
                         key: 'Strict-Transport-Security',
-                        value: 'max-age=63072000; includeSubDomains'
+                        value: 'max-age=63072000; includeSubDomains; preload'
                     },
                     { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
                     { key: 'Cross-Origin-Resource-Policy', value: 'same-origin' },

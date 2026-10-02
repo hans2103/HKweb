@@ -75,6 +75,7 @@ const structuredData = {
             email: `mailto:${SITE_EMAIL}`,
             telephone: SITE_PHONE,
             address: { '@type': 'PostalAddress', ...SITE_ADDRESS },
+            priceRange: '€€',
             founder: { '@id': PERSON_ID },
             areaServed: { '@type': 'Country', name: 'Nederland' }
         }

@@ -17,6 +17,9 @@ module.exports = {
     siteUrl: 'https://hkweb.nl',
     generateRobotsTxt: true,
     sitemapSize: 5000,
+    // A handful of pages: write the URLs straight into sitemap.xml instead of
+    // an index that points to sitemap-0.xml.
+    generateIndexSitemap: false,
     // Google ignores changefreq/priority, and a lastmod that changes on every
     // build teaches it to ignore lastmod too: emit only <loc>.
     transform: async (_, loc) => ({ loc }),

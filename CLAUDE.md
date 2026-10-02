@@ -84,7 +84,7 @@ Every page exports `config: PageConfig = { unstable_runtimeJS: false }` — the 
 
 ### SEO
 
-- `next-sitemap` runs in `postbuild`, writes `public/sitemap*.xml` + `public/robots.txt` (both gitignored). The sitemap emits only `<loc>` (a build-time `lastmod` teaches Google to ignore it); robots.txt explicitly lists AI search and AI training crawlers (all allowed — flip `AI_TRAINING_BOTS` to `disallow` to opt out of training) and strips next-sitemap's Yandex-only `Host:` line.
+- `next-sitemap` runs in `postbuild`, writes `public/sitemap.xml` (no index file) + `public/robots.txt` (both gitignored). The sitemap emits only `<loc>` (a build-time `lastmod` teaches Google to ignore it); robots.txt explicitly lists AI search and AI training crawlers (all allowed — flip `AI_TRAINING_BOTS` to `disallow` to opt out of training) and strips next-sitemap's Yandex-only `Host:` line.
 - `public/llms.txt` summarises the site for AI assistants; `src/__tests__/llms-txt.test.ts` fails if a page isn't linked there.
 - `src/layout/meta.tsx` provides og:/twitter: meta; canonical + `og:url` are built per page from `SITE_URL` (`https://hkweb.nl`, the primary domain — `www` redirects to it) + the route path.
 - Per-page metadata goes through `Layout` props: `<Layout title="… | HKweb" description="…" noindex>`. Don't add a separate `<Head><title>`.

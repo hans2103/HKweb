@@ -10,12 +10,15 @@ export type MetaProps = {
     title?: string;
     description?: string;
     noindex?: boolean;
+    /** Open Graph type; `profile` adds the person's name for the homepage. */
+    ogType?: 'website' | 'profile';
 };
 
 const Meta = ({
     title = `${SITE_TITLE} – frontend developer | ${SITE_NAME}`,
     description = SITE_DESCRIPTION,
-    noindex = false
+    noindex = false,
+    ogType = 'website'
 }: MetaProps) => {
     const { asPath } = useRouter();
     const pageUrl = SITE_URL + asPath.split(/[?#]/)[0];
@@ -35,7 +38,13 @@ const Meta = ({
             {noindex && <meta name="robots" content="noindex" />}
             <meta key="description" name="description" content={description} />
             <link key="canonical" rel="canonical" href={pageUrl} />
-            <meta key="og:type" property="og:type" content="website" />
+            <meta key="og:type" property="og:type" content={ogType} />
+            {ogType === 'profile' && (
+                <>
+                    <meta property="profile:first_name" content="Hans" />
+                    <meta property="profile:last_name" content="Kuijpers" />
+                </>
+            )}
             <meta key="og:locale" property="og:locale" content="nl_NL" />
             <meta key="og:site_name" property="og:site_name" content={SITE_NAME} />
             <meta key="og:url" property="og:url" content={pageUrl} />

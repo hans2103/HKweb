@@ -1,0 +1,19 @@
+# HKweb
+
+> HKweb is het bedrijf van Hans Kuijpers, frontend developer. Hij bouwt snelle, toegankelijke websites en webshops met Joomla, Magento, Craft CMS en Next.js.
+
+De site is Nederlandstalig. Contact: info@hkweb.nl of +31 6 5422 4518.
+
+## Pagina's
+
+- [Homepage](https://hkweb.nl/): wie Hans Kuijpers is, wat HKweb doet en contactgegevens
+- [Algemene voorwaarden](https://hkweb.nl/algemene-voorwaarden): voorwaarden voor het ontwerpen, bouwen en onderhouden van websites en webshops
+- [Privacyverklaring rclone backups](https://hkweb.nl/privacy-backups): privacyverklaring van de interne Google OAuth-client waarmee HKweb serverbackups opslaat in de eigen Google Drive
+
+## Profielen
+
+- [GitHub](https://github.com/hans2103)
+- [LinkedIn](https://linkedin.com/in/hans2103)
+- [CodePen](https://codepen.io/hans2103)
+- [Behance](https://behance.net/hans2103)
+- [Instagram](https://instagram.com/hans2103)

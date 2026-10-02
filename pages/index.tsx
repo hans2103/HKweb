@@ -57,7 +57,8 @@ const Home = () => {
                     </Heading>
                     <Text>
                         <Link href="mailto:info@hkweb.nl" name="e-mail: info@hkweb.nl" /> |{' '}
-                        <Link href="tel:+31654224518" name="telefoon: 06 - 5422 4518" />
+                        {/* Non-breaking spaces keep the number on one line. */}
+                        <Link href="tel:+31654224518" name={'telefoon: 06\u00a05422\u00a04518'} />
                     </Text>
                 </Stack>
             </Flex>

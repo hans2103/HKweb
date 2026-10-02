@@ -4,7 +4,6 @@ export const SITE_DESCRIPTION =
     'Hans Kuijpers is frontend developer bij HKweb. Hij bouwt snelle, toegankelijke websites en webshops met Joomla, Magento, Craft CMS en Next.js.';
 export const SITE_TITLE = 'Hans Kuijpers';
 export const SITE_SUBTITLE = 'Happy Frontend Developer';
-export const SITE_SKILLS = 'Joomla | Magento | Craft CMS | NextJS';
 export const SITE_EMAIL = 'info@hkweb.nl';
 export const SITE_PHONE = '+31654224518';
 

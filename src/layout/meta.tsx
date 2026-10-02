@@ -3,25 +3,17 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-import {
-    OG_IMAGE,
-    SITE_DESCRIPTION,
-    SITE_NAME,
-    SITE_SKILLS,
-    SITE_SUBTITLE,
-    SITE_TITLE,
-    SITE_URL
-} from '../../lib/constants';
+import { OG_IMAGE, SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from '../../lib/constants';
 
 export type MetaProps = {
-    /** Full document title; defaults to the homepage title. */
+    /** Full document title (keep under ~60 chars); defaults to the homepage title. */
     title?: string;
     description?: string;
     noindex?: boolean;
 };
 
 const Meta = ({
-    title = `${SITE_TITLE}, ${SITE_SUBTITLE} | ${SITE_SKILLS}`,
+    title = `${SITE_TITLE} – frontend developer | ${SITE_NAME}`,
     description = SITE_DESCRIPTION,
     noindex = false
 }: MetaProps) => {

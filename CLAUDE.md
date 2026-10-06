@@ -92,7 +92,7 @@ Every page exports `config: PageConfig = { unstable_runtimeJS: false }` — the 
 - Homepage has a schema.org JSON-LD `@graph` (`ProfilePage` → `Person`, `WebSite`, `ProfessionalService` with `SITE_ADDRESS`, linked by `@id`) and `og:type=profile` (`Layout ogType="profile"`). JSON-LD is a non-executed data block, so it's allowed under `script-src 'self'` and doesn't count as client JS.
 - Site-wide data (description, e-mail, phone, address, social profiles) lives in `lib/constants.ts`; `SOCIAL_PROFILES` feeds both the header icons and JSON-LD `sameAs`.
 - `/favicon.ico` and `/apple-touch-icon.png` are rewrites to `/favicon/*` (`next.config.js`).
-- `public/.well-known/security.txt` has an `Expires` date (2027-10-01) — bump it yearly.
+- `public/.well-known/security.txt` has an `Expires` date (2028-10-01) — bump it yearly.
 
 ## a11y
 

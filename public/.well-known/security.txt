@@ -1,4 +1,4 @@
 Contact: mailto:info@hkweb.nl
-Expires: 2027-10-01T00:00:00.000Z
+Expires: 2028-10-01T00:00:00.000Z
 Preferred-Languages: nl, en
 Canonical: https://hkweb.nl/.well-known/security.txt

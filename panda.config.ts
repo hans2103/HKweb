@@ -5,6 +5,10 @@ export default defineConfig({
     // stripping list-style/heading sizes/default margins. Browser defaults match
     // the original site visuals.
     preflight: false,
+    // Panda 2 no longer loads these implicitly. preset-base provides the JSX
+    // patterns (Box/Flex/Grid…) and shorthand style props (mt, ml…);
+    // preset-panda the default tokens our `extend.tokens` builds on.
+    presets: ['@pandacss/preset-base', '@pandacss/preset-panda'],
     include: ['./src/**/*.{js,jsx,ts,tsx}', './pages/**/*.{js,jsx,ts,tsx}'],
     exclude: [],
     jsxFramework: 'react',
@@ -311,8 +315,8 @@ export default defineConfig({
         'ul, ol': {
             padding: '1rem'
         },
+        // @page lives in src/styles/globals.css — Panda 2 drops it from globalCss.
         '@media print': {
-            '@page': { size: 'auto', margin: '.5cm' },
             'html, body': { background: 'transparent' },
             'a::after': { fontSize: 'smaller', content: '" (" attr(href) ")"' },
             '.print\\:hide.print\\:hide': { display: 'none' }

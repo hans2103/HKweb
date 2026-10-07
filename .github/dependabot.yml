@@ -9,6 +9,10 @@ updates:
       # eslint-config-next still pins its plugins to eslint@<=9 peers; revisit once upstream supports v10
       - dependency-name: "eslint"
         update-types: ["version-update:semver-major"]
+      # typescript-eslint (via eslint-config-next) doesn't support TS 7 yet, so lint fails (#102).
+      # Remove once https://github.com/typescript-eslint/typescript-eslint/issues/10940 is resolved.
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
     # Each family has a routine group (minor/patch) and a separate *-major group.
     # Majors stay bundled (e.g. all @pandacss/* move together, a partial bump
     # never builds) but arrive as their own PR, titled "...-major group", so a

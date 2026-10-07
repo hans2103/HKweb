@@ -1,1 +1,7 @@
 @layer reset, base, tokens, recipes, utilities;
+
+/* Not in panda.config.ts globalCss: Panda 2 drops @page rules there. */
+@page {
+    size: auto;
+    margin: 0.5cm;
+}

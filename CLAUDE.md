@@ -33,7 +33,8 @@ The `src/components/` directory still has the same component names as before, bu
 
 - **Box / Flex / Grid / Stack**: re-export `panda/jsx` (Panda's built-in JSX patterns include Box, Flex, Stack/HStack/VStack, Grid, Container, etc.).
 - **Heading / Button / Link**: use Panda **recipes** with className composition.
-- **Text / Input**: use `styled('p'/'input', { base: {...} })` from `panda/jsx`.
+- **Text**: `styled('p', text)` over the `text` recipe (a recipe so its margin reset sits in `recipes.base` and `Stack`'s spacing in `recipes.variants` overrides it — atomic `styled()` base styles land in `utilities` and would win).
+- **Stack**: `styled('div', blockStack)`. Recipes used only through a `styled()` wrapper need `jsx: ['ComponentName']` in the recipe, otherwise Panda emits no CSS for them.
 - **Hidden**: visually-hidden via `css({...})`.
 - **Icon**: pure SVG, uses the `fill` attribute (NOT `style={{ fill }}` — that would leak inline style and require `'unsafe-inline'` style-src).
 

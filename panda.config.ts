@@ -187,8 +187,21 @@ export default defineConfig({
                         }
                     }
                 },
+                // A recipe (not styled() base styles) so the margin reset lands in
+                // recipes.base and the block-stack spacing in recipes.variants wins.
+                text: {
+                    className: 'text',
+                    jsx: ['Text'],
+                    base: {
+                        margin: 0,
+                        textStyle: 'body'
+                    }
+                },
                 blockStack: {
                     className: 'block-stack',
+                    // Used via styled('div', blockStack) in components/stack.tsx;
+                    // without this Panda never sees the recipe used and emits no CSS.
+                    jsx: ['Stack'],
                     base: {
                         display: 'block'
                     },

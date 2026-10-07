@@ -59,6 +59,16 @@ updates:
         patterns:
           - react
           - react-dom
+      vitest:
+        update-types: ["minor", "patch"]
+        patterns:
+          - vitest
+          - "@vitest/*"
+      vitest-major:
+        update-types: ["major"]
+        patterns:
+          - vitest
+          - "@vitest/*"
   - package-ecosystem: github-actions
     directory: /
     schedule:

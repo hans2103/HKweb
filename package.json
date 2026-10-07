@@ -25,7 +25,7 @@
         "react-dom": "^19.3.0"
     },
     "devDependencies": {
-        "@commitlint/cli": "^20.5.3",
+        "@commitlint/cli": "^21.2.3",
         "@next/bundle-analyzer": "^16.3.8",
         "@next/eslint-plugin-next": "^16.3.8",
         "@pandacss/dev": "^2.1.1",

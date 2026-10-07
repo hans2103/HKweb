@@ -9,22 +9,53 @@ updates:
       # eslint-config-next still pins its plugins to eslint@<=9 peers; revisit once upstream supports v10
       - dependency-name: "eslint"
         update-types: ["version-update:semver-major"]
+    # Each family has a routine group (minor/patch) and a separate *-major group.
+    # Majors stay bundled (e.g. all @pandacss/* move together, a partial bump
+    # never builds) but arrive as their own PR, titled "...-major group", so a
+    # breaking upgrade like Panda 1 -> 2 (#90) isn't merged as a routine bump.
+    # A dependency goes to the first group that matches it.
     groups:
       eslint:
+        update-types: ["minor", "patch"]
+        patterns:
+          - eslint
+          - eslint-*
+          - "@eslint/*"
+          - "@next/eslint-plugin-next"
+      eslint-major:
+        update-types: ["major"]
         patterns:
           - eslint
           - eslint-*
           - "@eslint/*"
           - "@next/eslint-plugin-next"
       next:
+        update-types: ["minor", "patch"]
+        patterns:
+          - next
+          - eslint-config-next
+          - "@next/*"
+      next-major:
+        update-types: ["major"]
         patterns:
           - next
           - eslint-config-next
           - "@next/*"
       panda:
+        update-types: ["minor", "patch"]
+        patterns:
+          - "@pandacss/*"
+      panda-major:
+        update-types: ["major"]
         patterns:
           - "@pandacss/*"
       react:
+        update-types: ["minor", "patch"]
+        patterns:
+          - react
+          - react-dom
+      react-major:
+        update-types: ["major"]
         patterns:
           - react
           - react-dom

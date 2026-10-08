@@ -14,7 +14,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Node **24.x** (Vercel) (`engines.node`, `.nvmrc`) with npm 11 — run `nvm use` first; npm 10 (Node 22) crashes on this lockfile. No `overrides` in `package.json`: the `postcss`/`browserslist`/`postcss-selector-parser` pins added for Panda 1.x were removed after the Panda 2 upgrade (no `npm audit` difference; Next keeps its own exact `postcss` pin). Husky 9 (`.husky/pre-commit` runs `lint-staged`, which only runs `eslint --fix` on staged JS/TS — Prettier is not enforced on commit, and e.g. `.github/dependabot.yml` is not Prettier-formatted; `.husky/commit-msg` runs commitlint). `npm run prepare` runs `panda codegen` then installs hooks.
 
-CI: `.github/workflows/ci.yml` (job `build`) runs install + lint + test + build on PRs and pushes to `master`. Vercel builds a preview per PR and deploys `master` to production; `next build` does not lint, so a green Vercel preview doesn't mean CI passes.
+CI: `.github/workflows/ci.yml` (job `build`) runs install + lint + test + build on PRs and pushes to `master`. Vercel builds a preview per PR and deploys `master` to production; `next build` does not lint, so a green Vercel preview doesn't mean CI passes. GitHub Pages is disabled for this repo (it used to publish a Jekyll render of the README at hans2103.nl/HKweb/ on every push to `master`, adding a second check named `build`); hkweb.nl is served only by Vercel.
 
 `master` is protected by a repository ruleset: changes go through a PR (no approvals required), the `build` check (GitHub Actions) must pass, force-push and branch deletion are blocked. Admins can bypass, which GitHub shows explicitly. So work on a branch and open a PR.
 

@@ -12,7 +12,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `npm run lint` — ESLint flat-config with `--fix`
 - `npm run format` — Prettier
 
-Node **24.x** (Vercel) (`engines.node`, `.nvmrc`) with npm 11 — run `nvm use` first; npm 10 (Node 22) crashes on this lockfile. `overrides` in `package.json` pins patched `postcss`/`browserslist`/`postcss-selector-parser` (added for Panda 1.x, which pulled vulnerable versions; now on Panda 2, so re-check whether they are still needed). Husky 9 (`.husky/pre-commit` runs `lint-staged`, which only runs `eslint --fix` on staged JS/TS — Prettier is not enforced on commit, and e.g. `.github/dependabot.yml` is not Prettier-formatted; `.husky/commit-msg` runs commitlint). `npm run prepare` runs `panda codegen` then installs hooks.
+Node **24.x** (Vercel) (`engines.node`, `.nvmrc`) with npm 11 — run `nvm use` first; npm 10 (Node 22) crashes on this lockfile. No `overrides` in `package.json`: the `postcss`/`browserslist`/`postcss-selector-parser` pins added for Panda 1.x were removed after the Panda 2 upgrade (no `npm audit` difference; Next keeps its own exact `postcss` pin). Husky 9 (`.husky/pre-commit` runs `lint-staged`, which only runs `eslint --fix` on staged JS/TS — Prettier is not enforced on commit, and e.g. `.github/dependabot.yml` is not Prettier-formatted; `.husky/commit-msg` runs commitlint). `npm run prepare` runs `panda codegen` then installs hooks.
 
 CI: `.github/workflows/ci.yml` (job `build`) runs install + lint + test + build on PRs and pushes to `master`. Vercel builds a preview per PR and deploys `master` to production; `next build` does not lint, so a green Vercel preview doesn't mean CI passes.
 

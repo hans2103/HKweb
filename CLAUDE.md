@@ -14,9 +14,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Node **24.x** (`engines.node`, `.nvmrc`) with npm 11; run `nvm use` first. `eslint-plugin-astro` needs Node ≥ 24.16, so keep the local 24 current (`nvm install 24`). Husky 9 (`.husky/pre-commit` runs `lint-staged`: `eslint --fix` on staged JS/TS/Astro; `.husky/commit-msg` runs commitlint). `package.json` is `"type": "module"`, so config files are ESM.
 
-CI: `.github/workflows/ci.yml` (job `build`) runs install, lint, build, then `npx vitest run` on PRs and pushes to `master`. Vercel builds a preview per PR and deploys `master` to production; Vercel runs `npm run build` but not the tests, so a green Vercel preview doesn't mean CI passes.
+CI: `.github/workflows/ci.yml` (job `build`) runs install, lint, build, `npx vitest run`, then Lighthouse CI (`@lhci/cli autorun`, config in `lighthouserc.json`: the home, case and legal page must score 100 in all four categories) on PRs and pushes to `main`. Vercel builds a preview per PR and deploys `main` to production; Vercel runs `npm run build` but not the tests. Lighthouse on a Vercel preview URL scores SEO ~69: previews send `X-Robots-Tag: noindex`, production doesn't.
 
-`master` is protected by a repository ruleset: changes go through a PR (no approvals required), the `build` check must pass, force-push and branch deletion are blocked. Work on a branch and open a PR.
+The default branch is `main` (renamed from `master` in October 2026; GitHub redirects old links). It is protected by a repository ruleset on `~DEFAULT_BRANCH`: changes go through a PR (no approvals required), the `build` check must pass, force-push and branch deletion are blocked. Work on a branch and open a PR.
+
+Vercel used Checkly for Deployment Checks; when Checkly fails (e.g. out of credits) Vercel builds production but doesn't promote it to hkweb.nl. The Lighthouse step in CI replaces it; remove Checkly under Vercel › Settings › Deployment Checks. A stuck production build can be promoted by hand in the Vercel dashboard.
 
 Dependabot (`.github/dependabot.yml`) opens weekly npm PRs + monthly Actions bumps. The `astro`, `eslint` and `vitest` families each have a routine group (minor/patch) and a separate `*-major` group. Packages that must move together (exact peer pins, like `vitest` + `@vitest/coverage-v8`) need to share a group. TypeScript majors are ignored: `typescript-eslint` supports TypeScript < 6.1 only; remove the ignore once typescript-eslint/typescript-eslint#10940 is resolved. `eslint-plugin-jsx-a11y` was dropped because it has no ESLint 10 support; accessibility is covered by the tests and Lighthouse.
 

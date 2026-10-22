@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [master]
+    branches: [main]
   pull_request:
-    branches: [master]
+    branches: [main]
 
 jobs:
   build:
@@ -20,3 +20,6 @@ jobs:
       # astro check + astro build; the tests below read the built dist/.
       - run: npm run build
       - run: npx vitest run
+      # Lighthouse on the built pages: every category must stay at 100
+      # (lighthouserc.json). Replaces the Checkly deployment checks.
+      - run: npx --yes @lhci/cli@0.15.1 autorun

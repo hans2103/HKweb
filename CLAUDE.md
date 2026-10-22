@@ -4,116 +4,86 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Commands
 
-- `npm run dev` — Next.js dev server (Turbopack) on http://localhost:3000
-- `npm run build` — production build (also generates sitemap via `postbuild`)
-- `npm run build:analyze` — production build with `@next/bundle-analyzer` (`ANALYZE=true`)
-- `npm start` — production server (`next start`)
-- `npm test` / `npm run test:watch` / `npm run test:coverage` — Vitest + RTL
-- `npm run lint` — ESLint flat-config with `--fix`
-- `npm run format` — Prettier
+- `npm run dev`: Astro dev server on http://localhost:4321
+- `npm run build`: `astro check` (TypeScript + `.astro` diagnostics) then `astro build` into `dist/`
+- `npm run preview`: serve `dist/` (Astro 7 starts it in the background: `astro preview stop`)
+- `npm test`: `pretest` builds, then Vitest checks the built `dist/`; `npm run test:watch` / `test:coverage`
+- `npm run lint`: ESLint flat config with `--fix`
+- `npm run format`: Prettier (with `prettier-plugin-astro`)
+- `npm run images`: regenerate image variants (`scripts/generate-images.mjs`, sharp)
 
-Node **24.x** (Vercel) (`engines.node`, `.nvmrc`) with npm 11 — run `nvm use` first; npm 10 (Node 22) crashes on this lockfile. No `overrides` in `package.json`: the `postcss`/`browserslist`/`postcss-selector-parser` pins added for Panda 1.x were removed after the Panda 2 upgrade (no `npm audit` difference; Next keeps its own exact `postcss` pin). Husky 9 (`.husky/pre-commit` runs `lint-staged`, which only runs `eslint --fix` on staged JS/TS — Prettier is not enforced on commit, and e.g. `.github/dependabot.yml` is not Prettier-formatted; `.husky/commit-msg` runs commitlint). `npm run prepare` runs `panda codegen` then installs hooks.
+Node **24.x** (`engines.node`, `.nvmrc`) with npm 11; run `nvm use` first. `eslint-plugin-astro` needs Node ≥ 24.16, so keep the local 24 current (`nvm install 24`). Husky 9 (`.husky/pre-commit` runs `lint-staged`: `eslint --fix` on staged JS/TS/Astro; `.husky/commit-msg` runs commitlint). `package.json` is `"type": "module"`, so config files are ESM.
 
-CI: `.github/workflows/ci.yml` (job `build`) runs install + lint + test + build on PRs and pushes to `master`. Vercel builds a preview per PR and deploys `master` to production; `next build` does not lint, so a green Vercel preview doesn't mean CI passes. GitHub Pages is disabled for this repo (it used to publish a Jekyll render of the README at hans2103.nl/HKweb/ on every push to `master`, adding a second check named `build`); hkweb.nl is served only by Vercel.
+CI: `.github/workflows/ci.yml` (job `build`) runs install, lint, build, then `npx vitest run` on PRs and pushes to `master`. Vercel builds a preview per PR and deploys `master` to production; Vercel runs `npm run build` but not the tests, so a green Vercel preview doesn't mean CI passes.
 
-`master` is protected by a repository ruleset: changes go through a PR (no approvals required), the `build` check (GitHub Actions) must pass, force-push and branch deletion are blocked. Admins can bypass, which GitHub shows explicitly. So work on a branch and open a PR.
+`master` is protected by a repository ruleset: changes go through a PR (no approvals required), the `build` check must pass, force-push and branch deletion are blocked. Work on a branch and open a PR.
 
-Dependabot (`.github/dependabot.yml`) opens weekly npm PRs + monthly Actions bumps. The `eslint`, `next`, `panda`, `react` and `vitest` families each have a routine group (minor/patch) and a separate `*-major` group, so breaking upgrades arrive as their own PR. Packages that must move together (exact peer pins, like `vitest` + `@vitest/coverage-v8`, or all `@pandacss/*`) need to share a group — separate PRs each fail `npm install`. Majors of `eslint` and `typescript` are ignored: TypeScript 7 breaks lint because `typescript-eslint` (via `eslint-config-next`) doesn't support it yet — remove the ignore once typescript-eslint/typescript-eslint#10940 is resolved. Closing a Dependabot PR makes it skip that version.
+Dependabot (`.github/dependabot.yml`) opens weekly npm PRs + monthly Actions bumps. The `astro`, `eslint` and `vitest` families each have a routine group (minor/patch) and a separate `*-major` group. Packages that must move together (exact peer pins, like `vitest` + `@vitest/coverage-v8`) need to share a group. TypeScript majors are ignored: `typescript-eslint` supports TypeScript < 6.1 only; remove the ignore once typescript-eslint/typescript-eslint#10940 is resolved. `eslint-plugin-jsx-a11y` was dropped because it has no ESLint 10 support; accessibility is covered by the tests and Lighthouse.
 
 ## Architecture
 
-Personal site for Hans Kuijpers (hkweb.nl), built on **Next.js 16 (Pages Router, Turbopack) + React 19 + Panda CSS + TypeScript** (strict). Site language is Dutch (`<Html lang="nl">`).
+Personal site of Hans Kuijpers (hkweb.nl): **Astro 7 (static output) + plain CSS + TypeScript (strict)**. Site language is Dutch (`<html lang="nl">`). The design is "richting C" from the HKweb homepage redesign canvas.
 
-### Styling: Panda CSS
+- `src/pages/`: `index.astro` (homepage), `werk/[id].astro` (case pages), `algemene-voorwaarden.astro`, `privacy-backups.astro`, `404.astro`, and endpoints `sitemap.xml.ts`, `robots.txt.ts`, `llms.txt.ts`.
+- `src/layouts/Base.astro`: `<head>` (meta, Open Graph, JSON-LD), skip link, `Header`, `<main id="main">`, `Footer`.
+- `src/components/`: `Header`, `Footer`, `WerkCard`, `Picture` (AVIF/WebP/JPEG `<picture>` for the static variants).
+- `src/content/werk/*.md`: one file per project, schema in `src/content.config.ts`. `case: true` creates `/werk/<id>` from the Markdown body; `featured: true` is the large card on the homepage.
+- `src/content/legal/*.html`: the legal texts, rendered with `set:html` (copied verbatim from the old Next.js build).
+- `src/data/site.ts`: site-wide data (URL, e-mail, address, social profiles, skills, other clients, talks, fixed pages).
+- `src/lib/`: `pages.ts` (all indexable pages, feeds sitemap and llms.txt), `url.ts` (`pagePath`: public path without `.html`/`index`), `images.ts`, `html.ts`.
 
-Panda **2** generates atomic CSS at build/dev time — **zero runtime CSS-in-JS**. Config lives in `panda.config.ts`; it must list `presets: ['@pandacss/preset-base', '@pandacss/preset-panda']` explicitly (Panda 2 no longer loads them implicitly — without them `panda/jsx` has no Box/Flex/Grid and shorthands like `mt` fail type-checking); tokens (spacing, colors, fonts, radii, shadows, borders) are defined there with `extend.tokens`, breakpoints replace defaults at top level. Reusable patterns are defined as **recipes** (currently `heading`, `text`, `blockStack`, `srOnly`, `skipLink`, `socialItem`, `link`).
+URLs: `build.format: 'file'` writes `werk/x.html`; `vercel.json` (`cleanUrls`, `trailingSlash: false`) serves it at `/werk/x`, matching the old Next.js URLs.
 
-- `panda/` (gitignored, regenerated by `panda codegen`) — outputs runtime helpers: `panda/css`, `panda/jsx`, `panda/recipes`, `panda/tokens`, `panda/patterns`.
-- `postcss.config.cjs` wires `@pandacss/postcss` so Turbopack picks up CSS extraction.
-- `src/styles/globals.css` declares the `@layer` order; imported once in `pages/_app.tsx`.
-- Global CSS (preflight reset, root vars, body, print rules) lives in `globalCss` inside `panda.config.ts` — except `@page`, which Panda 2 silently drops there; it lives in `src/styles/globals.css`.
+### CSS
 
-The `src/components/` directory still has the same component names as before, but most are now thin wrappers over Panda primitives:
+Plain CSS in `src/styles/`, imported once in `Base.astro` and bundled into one file (`build.inlineStylesheets: 'never'`, so no `<style>` in the HTML).
 
-- **Box / Flex / Grid**: re-export `panda/jsx` (Panda's built-in JSX patterns, from `preset-base`).
-- **Heading / Link**: use Panda **recipes** with className composition.
-- **Text**: `styled('p', text)` over the `text` recipe (a recipe so its margin reset sits in `recipes.base` and `Stack`'s spacing in `recipes.variants` overrides it — atomic `styled()` base styles land in `utilities` and would win).
-- **Stack**: `styled('div', blockStack)`. Recipes used only through a `styled()` wrapper need `jsx: ['ComponentName']` in the recipe, otherwise Panda emits no CSS for them.
-- **Hidden**: visually-hidden via the `srOnly` recipe.
-- **Icon**: pure SVG, uses the `fill` attribute (NOT `style={{ fill }}` — that would leak inline style and require `'unsafe-inline'` style-src).
-
-### Why this architecture
-
-- Replaces both `styled-components` and the unmaintained `styled-system` v5.
-- HTML payload dropped from ~25KB to ~20KB (no styled-components SSR `<style>` blob).
-- TypeScript-perfect autocomplete on every theme token.
-- App Router / RSC compatible if migrated later.
-
-### Pages and layout
-
-- `pages/_app.tsx` — imports `globals.css`, applies `--font-switzera` className from `next/font/local`. No theme provider, no SSR style sheet, no `StyleSheetManager` (none of those are needed with Panda).
-- `pages/_document.tsx` — minimal; sets `lang="nl"` and `data-scroll-behavior="smooth"` on `<html>`.
-- `src/layout/layout.tsx` — `Meta` + skip-to-content link (`Naar hoofdinhoud`) + `Header` + `<main id="main">` + `Footer`.
+- Cascade layers: `reset, tokens, base, layout, components` (declared at the top of `tokens.css`).
+- `tokens.css`: colours as `light-dark(<light>, <dark>)` with `color-scheme: light dark`, so dark mode follows the system setting (no toggle: that would need JavaScript). Keep colours six-digit hex: `src/__tests__/contrast.test.ts` parses them and checks every text/background pair against WCAG AA in both schemes.
+- Fluid type and spacing (`--step-*`, `--space-section`, `--gutter`) between a 360px and 1440px viewport: `clamp()` fallback, overridden with `progress()` inside `@supports`.
+- Fonts: `system-ui` stack, no web fonts.
+- Also used: native nesting, container queries (work grid, featured card), `:has()` (card hover/focus), logical properties, `color-mix()`, `text-wrap: balance|pretty`, cross-document view transitions (`@view-transition`, reduced motion respected).
+- `astro.config.mjs` sets `vite.build.cssTarget` to browsers with `light-dark()`; lower targets make Lightning CSS rewrite it into a large fallback.
+- Never use a `style` attribute (the CSP forbids inline styles); the tests fail on one.
 
 ### Zero client-side JavaScript
 
-Every page exports `config: PageConfig = { unstable_runtimeJS: false }` — the site has no interactivity, so production HTML ships **no `<script>` tags** (homepage ~63 KiB total, was ~207 KiB). Consequences:
+No framework islands, no `<script>` (except JSON-LD data blocks with `is:inline`), no Astro client router, `prefetch: false`. `src/__tests__/pages.test.ts` fails if a built page contains any other script, a `style` attribute or `<style>` element, an inline event handler, or loads anything from another host.
 
-- No `useState`/`useEffect`/event handlers — they would silently do nothing in production (dev mode still hydrates, so test interactivity with `npm run build && npm start`).
-- `next/link` navigations are plain full-page loads.
-- Type the export as `PageConfig` (from `next`); a bare object literal fails Next's generated page-config type check.
-- New pages must add the same export.
+### Images
 
-### Fonts
-
-- `src/fonts/SwitzeraADFRegular.woff2` is the actual binary; `src/fonts/index.ts` exposes it via `next/font/local` with `display: swap`.
-- `panda.config.ts` `tokens.fonts.base` references `var(--font-switzera), Verdana, arial, sans-serif`.
-
-### SVG and images
-
-- SVG-as-component via Turbopack rule (`@svgr/webpack`); only `src/layout/header.tsx` imports `logo--hkweb.svg` directly. Icon path strings live in `lib/icons.ts`.
-- Hero photo: static AVIF/WebP/JPEG variants (640–2048w) in `public/images/hero/`, generated by `node scripts/generate-hero-images.mjs` (sharp; qualities tuned to match the old ImageKit SSIM) and rendered with a plain `<picture>` in `src/layout/hero.tsx` plus an AVIF `<link rel="preload">`. No `next/image`, no ImageKit. Served `immutable` for a year, so a new photo needs a new file name prefix.
+- Project screenshots: 16:10 JPEG sources in `images/werk/<slug>.jpg` → `public/images/werk/<slug>-{480,960}.{avif,webp,jpg}`.
+- Avatar and share image: from `public/images/Hans-2020.jpg` → `public/images/avatar/` and `public/images/og/hans-2020-1200x630.jpg`.
+- All generated by `npm run images`; widths must match `src/lib/images.ts`. Every `<img>` has `width`/`height` (no layout shift).
+- The logo is `src/assets/logo-hkweb.svg`, imported as an Astro SVG component (inline `<svg>`, `fill: currentColor`).
 
 ### Security headers / CSP
 
-`next.config.js` sets these on every route:
+`vercel.json` sets on every route: `Content-Security-Policy` with `default-src`, `script-src`, `style-src`, `img-src`, `font-src`, `connect-src`, `base-uri`, `form-action` all `'self'`, `frame-ancestors 'none'`, `object-src 'none'`; HSTS (2 years, preload), COOP/CORP `same-origin`, `X-Frame-Options: DENY`, `nosniff`, `Referrer-Policy`, `Permissions-Policy`. `/_astro/*` is cached immutable; `/images/*` and `/favicon/*` for a week. Favicon root paths are rewrites to `/favicon/*`.
 
-- `Strict-Transport-Security: max-age=63072000; includeSubDomains; preload`.
-- `script-src 'self'` — no inline scripts, no third-party JS.
-- `style-src 'self'` — no inline styles anywhere. Never use a `style={...}` prop; use Panda style props/`css()` instead.
-- `img-src 'self'` — all images self-hosted.
-- `font-src 'self'`
-- `connect-src 'self'`
-- `base-uri 'self'`, `form-action 'self'`, `frame-ancestors 'none'`, `object-src 'none'`.
-- Also `Cross-Origin-Opener-Policy: same-origin` and `Cross-Origin-Resource-Policy: same-origin`.
+### SEO and AI
 
-### SEO
-
-- `next-sitemap` runs in `postbuild`, writes `public/sitemap.xml` (no index file) + `public/robots.txt` (both gitignored). The sitemap emits only `<loc>` (a build-time `lastmod` teaches Google to ignore it); robots.txt explicitly lists AI search (`AI_SEARCH_BOTS`) and AI training (`AI_TRAINING_BOTS`) crawlers in `next-sitemap.config.js`, all mapped to `allow: '/'` together — to opt out of training, give `AI_TRAINING_BOTS` their own policy with `disallow: '/'` and strips next-sitemap's Yandex-only `Host:` line.
-- `public/llms.txt` summarises the site for AI assistants; `src/__tests__/llms-txt.test.ts` fails if a page isn't linked there.
-- `src/layout/meta.tsx` provides og:/twitter: meta; canonical + `og:url` are built per page from `SITE_URL` (`https://hkweb.nl`, the primary domain — `www` redirects to it) + the route path.
-- Per-page metadata goes through `Layout` props: `<Layout title="… | HKweb" description="…" noindex>`. Don't add a separate `<Head><title>`.
-- Share image: `public/images/og/hans-2020-1200x630.jpg` (generated by the hero script, `OG_IMAGE` in `lib/constants.ts`).
-- Homepage has a schema.org JSON-LD `@graph` (`ProfilePage` → `Person`, `WebSite`, `ProfessionalService` with `SITE_ADDRESS`, linked by `@id`) and `og:type=profile` (`Layout ogType="profile"`). JSON-LD is a non-executed data block, so it's allowed under `script-src 'self'` and doesn't count as client JS.
-- Site-wide data (description, e-mail, phone, address, social profiles) lives in `lib/constants.ts`; `SOCIAL_PROFILES` feeds both the header icons and JSON-LD `sameAs`.
-- `/favicon.ico` and `/apple-touch-icon.png` are rewrites to `/favicon/*` (`next.config.js`).
-- `public/.well-known/security.txt` has an `Expires` date (2028-10-01) — bump it yearly.
+- `Base.astro` props: `title`, `description`, `noindex`, `ogType`, `jsonLd`. Canonical and `og:url` come from `SITE_URL` + `pagePath()`; `noindex` pages get no canonical.
+- JSON-LD: homepage `@graph` (`ProfilePage` → `Person` with `workExample` per project, `WebSite`, `ProfessionalService`); case pages a `WebPage` with breadcrumb and the project as `about`.
+- `sitemap.xml` emits only `<loc>` for every indexable page. `robots.txt` lists AI search (`AI_SEARCH_BOTS`) and AI training (`AI_TRAINING_BOTS`) crawlers, all allowed; to opt out of training give `AI_TRAINING_BOTS` their own `Disallow: /` group. `llms.txt` is generated from the same data as the pages. A new non-collection page must be added to `PAGES` in `src/data/site.ts`; `src/__tests__/discovery.test.ts` fails otherwise.
+- Contact is by e-mail only: no phone number on the site or in JSON-LD (Hans prefers e-mail). The street address is only in JSON-LD.
+- `public/.well-known/security.txt` has an `Expires` date (2028-10-01): bump it yearly.
 
 ## a11y
 
-- All pages have an explicit `<h1>`; keep heading levels sequential (hero subtitle is a `<p>` styled as h2; to restyle a heading tag pass `as` to `Heading` itself — Panda `styled()` swallows `as`).
-- Social links live in `<nav aria-label="Sociale media">`; alt text and sr-only labels are Dutch. Each link is a 44×44px touch target (`socialItem` recipe); separator dots are absolutely positioned so the row fits 360px screens.
-- `src/layout/layout.tsx` has a Dutch skip-to-content link visually hidden until focused.
-- `src/components/link.tsx` uses Panda's `link` recipe with `:focus-visible` (not `:focus`) — outline only for keyboard users.
+- One `<h1>` per page and sequential heading levels (tested).
+- Skip link `Naar hoofdinhoud`, visible on focus; `:focus-visible` outline in the accent colour.
+- Touch targets ≥ 44px (`--tap`) for nav, footer links and buttons.
+- Work cards are fully clickable via the title link's `::after`; card screenshots are decorative (`alt=""`), the case-page image has alt text.
+- Contrast: WCAG AA for every token pair in light and dark (tested).
 
 ## Tests
 
-- Vitest + jsdom + Testing Library (`vitest.config.ts`, `vitest.setup.ts`).
-- Tests in `src/**/__tests__/*.test.ts(x)`. No `ThemeProvider` wrap needed — Panda generates static CSS.
-- `src/__tests__/pages-config.test.ts` fails if a page lacks the `unstable_runtimeJS: false` config or uses an inline `style={…}` prop.
+Vitest, in `src/**/*.test.ts`. `src/__tests__/` reads the built `dist/` (`dist.ts` helpers): `pages.test.ts` (zero JS, CSP, lang/title/description/h1, image dimensions, skip link, heading order, canonical, JSON-LD), `discovery.test.ts` (sitemap, robots, llms.txt), `contrast.test.ts` (tokens). `src/lib/url.test.ts` is a unit test.
 
 ## Conventions
 
 - Prettier: 4-space indent, single quotes, semicolons, `printWidth: 100`, no trailing commas.
-- ESLint flat config (`eslint.config.mjs`) extends `eslint-config-next/core-web-vitals` + `simple-import-sort`.
+- ESLint flat config (`eslint.config.mjs`): `@eslint/js`, `typescript-eslint`, `eslint-plugin-astro`, `simple-import-sort`.
 - commitlint enforces only `header-min-length` (5) + `header-max-length` (100), plus a `body-leading-blank` warning; gitmoji-style commits stay valid.
+- Copy is Dutch; use U+2011 (non-breaking hyphen) in `’s‑Hertogenbosch` so it doesn't wrap after `’s-`.

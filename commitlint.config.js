@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     rules: {
         'header-min-length': [2, 'always', 5],
         'header-max-length': [2, 'always', 100],

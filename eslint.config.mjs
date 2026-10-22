@@ -1,26 +1,21 @@
-import pandaPlugin from '@pandacss/eslint-plugin';
-import nextCoreWebVitals from 'eslint-config-next/core-web-vitals';
+import js from '@eslint/js';
+import { defineConfig } from 'eslint/config';
+import astro from 'eslint-plugin-astro';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
+import globals from 'globals';
+import tseslint from 'typescript-eslint';
 
-const config = [
+export default defineConfig(
+    { ignores: ['dist/**', '.astro/**', 'node_modules/**', 'coverage/**', 'public/**'] },
+    js.configs.recommended,
+    tseslint.configs.recommended,
+    astro.configs.recommended,
     {
-        ignores: ['.next/**', 'node_modules/**', 'public/**', 'certificates/**', 'panda/**']
-    },
-    ...nextCoreWebVitals,
-    {
-        plugins: {
-            '@pandacss': pandaPlugin,
-            'simple-import-sort': simpleImportSort
-        },
+        languageOptions: { globals: { ...globals.node } },
+        plugins: { 'simple-import-sort': simpleImportSort },
         rules: {
-            'react/react-in-jsx-scope': 'off',
-            'react/display-name': 'off',
             'simple-import-sort/imports': 'warn',
-            'simple-import-sort/exports': 'warn',
-            // Panda CSS rules — recommended set
-            ...pandaPlugin.configs.recommended.rules
+            'simple-import-sort/exports': 'warn'
         }
     }
-];
-
-export default config;
+);

@@ -1,0 +1,46 @@
+---
+// A <picture> with AVIF and WebP sources and a JPEG fallback, for the static
+// variants from scripts/generate-images.mjs (<src>-<width>.<ext>).
+interface Props {
+    src: string;
+    widths: number[];
+    sizes: string;
+    alt: string;
+    width: number;
+    height: number;
+    loading?: 'lazy' | 'eager';
+    fetchpriority?: 'high' | 'low' | 'auto';
+    class?: string;
+}
+
+const {
+    src,
+    widths,
+    sizes,
+    alt,
+    width,
+    height,
+    loading = 'lazy',
+    fetchpriority,
+    class: className
+} = Astro.props;
+
+const srcset = (ext: string) => widths.map((w) => `${src}-${w}.${ext} ${w}w`).join(', ');
+---
+
+<picture>
+    <source type="image/avif" srcset={srcset('avif')} sizes={sizes} />
+    <source type="image/webp" srcset={srcset('webp')} sizes={sizes} />
+    <img
+        src={`${src}-${widths[0]}.jpg`}
+        srcset={srcset('jpg')}
+        sizes={sizes}
+        alt={alt}
+        width={width}
+        height={height}
+        loading={loading}
+        decoding="async"
+        fetchpriority={fetchpriority}
+        class={className}
+    />
+</picture>

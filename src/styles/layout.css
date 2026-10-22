@@ -1,0 +1,44 @@
+@layer layout {
+    .container {
+        max-inline-size: var(--container);
+        margin-inline: auto;
+        padding-inline: var(--gutter);
+    }
+
+    .section {
+        padding-block: var(--space-section);
+    }
+
+    .section--surface {
+        background: var(--color-surface);
+    }
+
+    .section--inverse {
+        --color-heading: var(--color-inverse-text);
+        --color-text-muted: var(--color-inverse-muted);
+        --color-rule: var(--color-inverse-rule);
+
+        color: var(--color-inverse-text);
+        background: var(--color-inverse-bg);
+    }
+
+    /* Heading column + content column; stacks when there is no room. */
+    .split {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-l) var(--space-xl);
+
+        > :first-child {
+            flex: 1 1 18rem;
+        }
+
+        > :last-child {
+            flex: 2 1 min(100%, 34rem);
+        }
+    }
+
+    /* Vertical rhythm for running text (legal pages, case pages). */
+    .flow > * + * {
+        margin-block-start: var(--flow-space, 1em);
+    }
+}

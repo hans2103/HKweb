@@ -6,63 +6,44 @@ updates:
       interval: weekly
     open-pull-requests-limit: 5
     ignore:
-      # eslint-config-next still pins its plugins to eslint@<=9 peers; revisit once upstream supports v10
-      - dependency-name: "eslint"
-        update-types: ["version-update:semver-major"]
-      # typescript-eslint (via eslint-config-next) doesn't support TS 7 yet, so lint fails (#102).
+      # typescript-eslint doesn't support TS 7 yet (peer: typescript <6.1), so lint fails (#102).
       # Remove once https://github.com/typescript-eslint/typescript-eslint/issues/10940 is resolved.
       - dependency-name: "typescript"
         update-types: ["version-update:semver-major"]
     # Each family has a routine group (minor/patch) and a separate *-major group.
-    # Majors stay bundled (e.g. all @pandacss/* move together, a partial bump
-    # never builds) but arrive as their own PR, titled "...-major group", so a
-    # breaking upgrade like Panda 1 -> 2 (#90) isn't merged as a routine bump.
+    # Majors stay bundled (packages with exact peer pins must move together, a
+    # partial bump never installs) but arrive as their own PR, titled
+    # "...-major group", so a breaking upgrade isn't merged as a routine bump.
     # A dependency goes to the first group that matches it.
     groups:
+      astro:
+        update-types: ["minor", "patch"]
+        patterns:
+          - astro
+          - "@astrojs/*"
+          - "*-astro"
+          - astro-*
+      astro-major:
+        update-types: ["major"]
+        patterns:
+          - astro
+          - "@astrojs/*"
+          - "*-astro"
+          - astro-*
       eslint:
         update-types: ["minor", "patch"]
         patterns:
           - eslint
           - eslint-*
           - "@eslint/*"
-          - "@next/eslint-plugin-next"
+          - typescript-eslint
       eslint-major:
         update-types: ["major"]
         patterns:
           - eslint
           - eslint-*
           - "@eslint/*"
-          - "@next/eslint-plugin-next"
-      next:
-        update-types: ["minor", "patch"]
-        patterns:
-          - next
-          - eslint-config-next
-          - "@next/*"
-      next-major:
-        update-types: ["major"]
-        patterns:
-          - next
-          - eslint-config-next
-          - "@next/*"
-      panda:
-        update-types: ["minor", "patch"]
-        patterns:
-          - "@pandacss/*"
-      panda-major:
-        update-types: ["major"]
-        patterns:
-          - "@pandacss/*"
-      react:
-        update-types: ["minor", "patch"]
-        patterns:
-          - react
-          - react-dom
-      react-major:
-        update-types: ["major"]
-        patterns:
-          - react
-          - react-dom
+          - typescript-eslint
       vitest:
         update-types: ["minor", "patch"]
         patterns:

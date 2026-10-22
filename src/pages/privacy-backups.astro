@@ -1,0 +1,11 @@
+---
+import html from '../content/legal/privacy-backups.html?raw';
+import Base from '../layouts/Base.astro';
+import { unwrap } from '../lib/html';
+---
+
+<Base
+    title="Privacyverklaring HKweb rclone backups | HKweb"
+    description="Privacyverklaring van de interne Google OAuth-client “HKweb rclone backups”, waarmee HKweb serverbackups opslaat in de eigen Google Drive.">
+    <div class="section container prose flow" set:html={unwrap(html)} />
+</Base>

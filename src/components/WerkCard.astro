@@ -1,0 +1,31 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+import { WERK_WIDTHS, werkImage } from '../lib/images';
+import Picture from './Picture.astro';
+
+interface Props {
+    entry: CollectionEntry<'werk'>;
+}
+
+const { data, id } = Astro.props.entry;
+// A project with a case page links there; the others link to the live site.
+const href = data.case ? `/werk/${id}` : data.url;
+---
+
+<li class="card">
+    <Picture
+        src={werkImage(data.image)}
+        widths={WERK_WIDTHS}
+        sizes="(min-width: 75rem) 18rem, (min-width: 40rem) 30vw, 45vw"
+        alt=""
+        width={480}
+        height={300}
+    />
+    <h3>
+        <a href={href}>{data.title}</a>
+    </h3>
+    <p>
+        {data.tech.join(', ')} · {data.summary}
+    </p>
+</li>

@@ -1,0 +1,283 @@
+---
+import { getCollection } from 'astro:content';
+
+import Picture from '../components/Picture.astro';
+import WerkCard from '../components/WerkCard.astro';
+import {
+    OG_IMAGE,
+    OTHER_CLIENTS,
+    PERSON_NAME,
+    SITE_ADDRESS,
+    SITE_DESCRIPTION,
+    SITE_EMAIL,
+    SITE_NAME,
+    SITE_URL,
+    SKILLS,
+    SOCIAL_PROFILES,
+    TALKS
+} from '../data/site';
+import Base from '../layouts/Base.astro';
+import { AVATAR, AVATAR_WIDTHS, WERK_WIDTHS, werkImage } from '../lib/images';
+
+const werk = (await getCollection('werk')).sort((a, b) => a.data.order - b.data.order);
+const featured = werk.find((entry) => entry.data.featured);
+const others = werk.filter((entry) => entry !== featured);
+
+// One schema.org @graph with @id references, so search engines and AI
+// assistants see the page, the person, the business and the work as linked
+// entities.
+const HOME = `${SITE_URL}/`;
+const PERSON_ID = `${HOME}#person`;
+const ORGANIZATION_ID = `${HOME}#organization`;
+const WEBSITE_ID = `${HOME}#website`;
+
+const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+        {
+            '@type': 'ProfilePage',
+            '@id': `${HOME}#profilepage`,
+            url: HOME,
+            name: `${PERSON_NAME}: frontend developer voor Joomla en Magento | ${SITE_NAME}`,
+            inLanguage: 'nl-NL',
+            isPartOf: { '@id': WEBSITE_ID },
+            mainEntity: { '@id': PERSON_ID }
+        },
+        {
+            '@type': 'WebSite',
+            '@id': WEBSITE_ID,
+            url: HOME,
+            name: SITE_NAME,
+            inLanguage: 'nl-NL',
+            publisher: { '@id': ORGANIZATION_ID }
+        },
+        {
+            '@type': 'Person',
+            '@id': PERSON_ID,
+            name: PERSON_NAME,
+            jobTitle: 'Frontend developer',
+            description: SITE_DESCRIPTION,
+            url: HOME,
+            image: OG_IMAGE.url,
+            email: `mailto:${SITE_EMAIL}`,
+            worksFor: { '@id': ORGANIZATION_ID },
+            knowsAbout: SKILLS,
+            sameAs: SOCIAL_PROFILES.map((profile) => profile.url),
+            workExample: werk.map(({ id, data }) => ({
+                '@type': 'WebSite',
+                name: data.title,
+                url: data.url,
+                description: data.summary,
+                ...(data.case && {
+                    subjectOf: { '@type': 'WebPage', url: `${SITE_URL}/werk/${id}` }
+                })
+            }))
+        },
+        {
+            '@type': 'ProfessionalService',
+            '@id': ORGANIZATION_ID,
+            name: SITE_NAME,
+            url: HOME,
+            logo: `${SITE_URL}/favicon/android-chrome-512x512.png`,
+            image: OG_IMAGE.url,
+            email: `mailto:${SITE_EMAIL}`,
+            foundingDate: '2005',
+            address: { '@type': 'PostalAddress', ...SITE_ADDRESS },
+            founder: { '@id': PERSON_ID },
+            areaServed: { '@type': 'Country', name: 'Nederland' }
+        }
+    ]
+};
+---
+
+<Base ogType="profile" jsonLd={jsonLd}>
+    <section class="intro container" aria-labelledby="intro-titel">
+        <p class="byline">
+            <Picture
+                src={AVATAR}
+                widths={AVATAR_WIDTHS}
+                sizes="4rem"
+                alt=""
+                width={128}
+                height={128}
+                loading="eager"
+            />
+            <span>
+                {PERSON_NAME} · frontend developer in Eersel · beschikbaar voor freelance projecten
+            </span>
+        </p>
+        <h1 id="intro-titel">
+            Frontend voor Joomla en Magento die snel is, en voor iedereen werkt.
+        </h1>
+        <div class="intro__footer">
+            <p>
+                Mijn eerste website maakte ik in 1995, HKweb bestaat sinds 2005. Ik werk met Joomla,
+                Magento (Hyvä) en Craft CMS, voor eigen klanten en als vaste kracht voor Perfect Web
+                Team. CSS is mijn favoriete gereedschap.
+            </p>
+            <a class="button" href={`mailto:${SITE_EMAIL}?subject=Check%20van%20mijn%20site`}>
+                Vraag een check van je site aan
+            </a>
+        </div>
+    </section>
+
+    <section class="section section--surface" aria-labelledby="cijfers-titel">
+        <div class="container split">
+            <h2 id="cijfers-titel" class="muted">
+                Wat ik beloof, laat deze site zien:
+            </h2>
+            <dl class="stats">
+                <div>
+                    <dt>100</dt>
+                    <dd>Lighthouse prestaties</dd>
+                </div>
+                <div>
+                    <dt>100</dt>
+                    <dd>Lighthouse toegankelijkheid</dd>
+                </div>
+                <div>
+                    <dt>0 KB</dt>
+                    <dd>JavaScript</dd>
+                </div>
+                <div>
+                    <dt>0</dt>
+                    <dd>externe verzoeken</dd>
+                </div>
+            </dl>
+        </div>
+    </section>
+
+    <section id="werk" class="section werk" aria-labelledby="werk-titel">
+        <div class="container">
+            <h2 id="werk-titel">Werk</h2>
+
+            {featured && (
+                <article class="featured">
+                    <Picture
+                        src={werkImage(featured.data.image)}
+                        widths={WERK_WIDTHS}
+                        sizes="(min-width: 75rem) 40rem, 100vw"
+                        alt={`Homepage van ${featured.data.title}`}
+                        width={960}
+                        height={600}
+                    />
+                    <div class="featured__body">
+                        <p class="eyebrow">
+                            Uitgelicht · {featured.data.tech.join(', ')}
+                            {featured.data.since && ` · sinds ${featured.data.since}`}
+                        </p>
+                        <h3>{featured.data.title}</h3>
+                        <p class="muted">{featured.data.intro ?? featured.data.summary}</p>
+                        <p>
+                            <a
+                                href={
+                                    featured.data.case ? `/werk/${featured.id}` : featured.data.url
+                                }>
+                                Lees de case
+                                <span class="visually-hidden">over {featured.data.title}</span>
+                            </a>
+                        </p>
+                    </div>
+                </article>
+            )}
+
+            <ul class="werk-grid">
+                {others.map((entry) => (
+                    <WerkCard entry={entry} />
+                ))}
+            </ul>
+
+            <div class="clients">
+                <h3>Ook gewerkt voor</h3>
+                <p>{OTHER_CLIENTS.join(' · ')}</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="vragen" class="section section--inverse" aria-labelledby="vragen-titel">
+        <div class="container">
+            <h2 id="vragen-titel">Vragen die ik vaak krijg</h2>
+            <div class="columns">
+                <article class="question">
+                    <h3>“Waarom scoort mijn webshop zo laag in PageSpeed?”</h3>
+                    <p>
+                        Meestal door scripts en lettertypes die vóór de inhoud laden, en
+                        afbeeldingen zonder vaste maat. Een Magento-shop op Hyvä wint daar veel mee,
+                        zonder dat alles opnieuw moet.
+                    </p>
+                </article>
+                <article class="question">
+                    <h3>“Kan iedereen mijn site gebruiken?”</h3>
+                    <p>
+                        Dat is te toetsen: met toetsenbord, screenreader en contrastmeting. Zo
+                        losten we bij het Drents Archief de laatste WCAG-knelpunten op.
+                    </p>
+                </article>
+                <article class="question">
+                    <h3>“Kan mijn oude Joomla-site nog mee?”</h3>
+                    <p>
+                        Vaak wel. Ik kijk welke extensies en templates de upgrade tegenhouden, en of
+                        bijwerken goedkoper is dan opnieuw bouwen.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="diensten" class="section" aria-labelledby="diensten-titel">
+        <div class="container">
+            <h2 id="diensten-titel">Diensten</h2>
+            <div class="columns">
+                <article class="service">
+                    <h3>Sitecheck</h3>
+                    <p>
+                        Snelheid en toegankelijkheid doorgelicht, met een rapport in gewone taal en
+                        een lijst wat het meeste oplevert.
+                    </p>
+                </article>
+                <article class="service">
+                    <h3>Frontend bouwen</h3>
+                    <p>
+                        Templates en thema’s voor Joomla, Magento (Hyvä) en Craft CMS, voor jou of
+                        als extra kracht in jouw team.
+                    </p>
+                </article>
+                <article class="service">
+                    <h3>Training en advies</h3>
+                    <p>Je eigen team leren werken met Joomla-overrides, Hyvä of moderne CSS.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="kennis" class="section section--surface" aria-labelledby="kennis-titel">
+        <div class="container split">
+            <div class="flow">
+                <h2 id="kennis-titel">Kennis delen</h2>
+                <p class="muted">
+                    Open source draait om elkaar verder helpen. Daarom sta ik al jaren op het podium
+                    in de Joomla-community, en bij de Joomla Gebruikersgroepen Eindhoven en
+                    {/* U+2011: a non-breaking hyphen keeps ’s‑ with Hertogenbosch. */}
+                    ’s‑Hertogenbosch.
+                </p>
+            </div>
+            <ul class="talks">
+                {TALKS.map(({ title, event }) => (
+                    <li>
+                        {title}
+                        <span>{event}</span>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    </section>
+
+    <section id="contact" class="section" aria-labelledby="contact-titel">
+        <div class="container contact">
+            <h2 id="contact-titel">Stuur me je URL. Ik vertel je eerlijk wat er beter kan.</h2>
+            <a class="button button--cta" href={`mailto:${SITE_EMAIL}`}>
+                {SITE_EMAIL}
+            </a>
+        </div>
+    </section>
+</Base>

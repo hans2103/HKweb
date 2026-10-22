@@ -1,0 +1,24 @@
+---
+import { FOUNDED, PERSON_NAME, SITE_NAME, SOCIAL_PROFILES } from '../data/site';
+
+// End year is the build year, i.e. when the site was last published.
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer container">
+    <p>
+        © {FOUNDED}–{year} {PERSON_NAME} · {SITE_NAME} · Eersel
+    </p>
+    <ul>
+        <li>
+            <a href="/algemene-voorwaarden">Algemene voorwaarden</a>
+        </li>
+    </ul>
+    <ul aria-label="Profielen">
+        {SOCIAL_PROFILES.map(({ label, url }) => (
+            <li>
+                <a href={url}>{label}</a>
+            </li>
+        ))}
+    </ul>
+</footer>

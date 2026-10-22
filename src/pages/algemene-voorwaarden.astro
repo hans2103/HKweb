@@ -1,0 +1,11 @@
+---
+import html from '../content/legal/algemene-voorwaarden.html?raw';
+import Base from '../layouts/Base.astro';
+import { unwrap } from '../lib/html';
+---
+
+<Base
+    title="Algemene voorwaarden | HKweb"
+    description="De algemene voorwaarden van HKweb (Hans Kuijpers) voor het ontwerpen, bouwen en onderhouden van websites en webshops.">
+    <div class="section container prose flow" set:html={unwrap(html)} />
+</Base>

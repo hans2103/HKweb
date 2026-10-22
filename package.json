@@ -2,61 +2,48 @@
     "name": "hkweb",
     "version": "26.18.1",
     "private": true,
+    "type": "module",
     "scripts": {
-        "dev": "next dev",
-        "build": "next build",
-        "postbuild": "next-sitemap",
-        "build:analyze": "ANALYZE=true next build",
-        "start": "next start",
+        "dev": "astro dev",
+        "build": "astro check && astro build",
+        "preview": "astro preview",
         "lint": "eslint --fix .",
-        "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
+        "format": "prettier --write .",
+        "pretest": "astro build",
         "test": "vitest run",
         "test:watch": "vitest",
         "test:coverage": "vitest run --coverage",
-        "prepare": "panda codegen --silent && husky"
+        "images": "node scripts/generate-images.mjs",
+        "prepare": "husky"
     },
     "engines": {
         "node": "24.x",
         "npm": ">=11"
     },
     "dependencies": {
-        "next": "^16.3.8",
-        "react": "^19.3.0",
-        "react-dom": "^19.3.0"
+        "astro": "^7.4.2"
     },
     "devDependencies": {
-        "@commitlint/cli": "^21.2.3",
-        "@next/bundle-analyzer": "^16.3.8",
-        "@next/eslint-plugin-next": "^16.3.8",
-        "@pandacss/dev": "^2.1.1",
-        "@pandacss/eslint-plugin": "^2.1.1",
-        "@pandacss/postcss": "^2.1.1",
-        "@pandacss/preset-base": "^2.1.2",
-        "@pandacss/preset-panda": "^2.1.2",
-        "@svgr/webpack": "^8.1.0",
-        "@testing-library/jest-dom": "^7.0.1",
-        "@testing-library/react": "^16.3.3",
-        "@testing-library/user-event": "^14.6.7",
-        "@types/node": "^26.6.4",
-        "@types/react": "^19.3.0",
-        "@types/react-dom": "^19.3.0",
-        "@vitejs/plugin-react": "~6.1.1",
-        "@vitest/coverage-v8": "^5.0.3",
-        "eslint": "^9.39.5",
-        "eslint-config-next": "^16.3.8",
+        "@astrojs/check": "^0.9.12",
+        "@commitlint/cli": "^21.2.4",
+        "@eslint/js": "^10.0.1",
+        "@types/node": "^24.19.2",
+        "@vitest/coverage-v8": "^5.0.5",
+        "eslint": "^10.13.0",
+        "eslint-plugin-astro": "^3.2.1",
         "eslint-plugin-simple-import-sort": "^14.0.0",
+        "globals": "^17.13.0",
         "husky": "^9.1.7",
-        "jsdom": "^30.1.2",
-        "lightningcss": "^1.33.0",
         "lint-staged": "^17.6.0",
-        "next-sitemap": "^4.2.3",
-        "prettier": "^3.9.9",
+        "prettier": "^3.9.10",
+        "prettier-plugin-astro": "^1.1.1",
         "sharp": "^0.35.5",
         "typescript": "^6.0.3",
-        "vitest": "^5.0.3"
+        "typescript-eslint": "^8.72.0",
+        "vitest": "^5.0.5"
     },
     "lint-staged": {
-        "*.{js,jsx,ts,tsx}": [
+        "*.{js,mjs,ts,astro}": [
             "eslint --fix"
         ]
     }

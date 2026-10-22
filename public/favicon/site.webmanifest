@@ -1,7 +1,7 @@
 {
     "name": "HKweb",
     "short_name": "HKweb",
-    "description": "Hans Kuijpers is frontend developer bij HKweb. Hij bouwt snelle, toegankelijke websites en webshops met Joomla, Magento, Craft CMS en Next.js.",
+    "description": "Hans Kuijpers is frontend developer bij HKweb in Eersel. Hij bouwt snelle, toegankelijke frontends voor Joomla, Magento (Hyvä) en Craft CMS.",
     "lang": "nl",
     "start_url": "/",
     "icons": [
@@ -16,7 +16,7 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#ffffff",
-    "background_color": "#ffffff",
+    "theme_color": "#dce3df",
+    "background_color": "#dce3df",
     "display": "standalone"
 }

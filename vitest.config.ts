@@ -1,16 +1,14 @@
-import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vitest/config';
 
+// Most tests check the built site in dist/ (`npm test` builds first, see
+// `pretest` in package.json): what ships is what gets tested.
 export default defineConfig({
-    plugins: [react()],
     test: {
-        environment: 'jsdom',
-        globals: true,
-        setupFiles: ['./vitest.setup.ts'],
+        include: ['src/**/*.test.ts'],
         coverage: {
             provider: 'v8',
             reporter: ['text', 'html'],
-            exclude: ['**/*.config.{js,ts,mjs,cjs}', 'next-env.d.ts', '.next/**', 'src/**/*.d.ts']
+            include: ['src/lib/**']
         }
     }
 });

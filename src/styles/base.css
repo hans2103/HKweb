@@ -1,0 +1,121 @@
+@page {
+    size: auto;
+    margin: 1.5cm;
+}
+
+@layer reset {
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    html {
+        text-size-adjust: none;
+        hanging-punctuation: first last;
+    }
+
+    body,
+    :where(h1, h2, h3, h4, p, ul, ol, dl, dd, figure, blockquote) {
+        margin: 0;
+    }
+
+    img,
+    picture,
+    svg {
+        display: block;
+        max-inline-size: 100%;
+        block-size: auto;
+    }
+}
+
+@layer base {
+    @media (prefers-reduced-motion: no-preference) {
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Cross-document view transitions: a soft fade between pages, no JS. */
+        @view-transition {
+            navigation: auto;
+        }
+    }
+
+    body {
+        min-block-size: 100dvh;
+        font-family: var(--font-sans);
+        font-size: var(--step-0);
+        line-height: 1.55;
+        color: var(--color-text);
+        background: var(--color-bg);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    h1,
+    h2,
+    h3 {
+        font-weight: 400;
+        color: var(--color-heading);
+        text-wrap: balance;
+    }
+
+    h1 {
+        font-size: var(--step-5);
+        line-height: 1.04;
+        letter-spacing: -0.02em;
+    }
+
+    h2 {
+        font-size: var(--step-4);
+        line-height: 1.12;
+        letter-spacing: -0.01em;
+    }
+
+    h3 {
+        font-size: var(--step-2);
+        line-height: 1.25;
+    }
+
+    p,
+    li,
+    dd {
+        text-wrap: pretty;
+    }
+
+    a {
+        color: var(--color-accent);
+        text-decoration-thickness: from-font;
+        text-underline-offset: 0.18em;
+
+        &:hover {
+            color: var(--color-accent-hover);
+        }
+    }
+
+    :focus-visible {
+        outline: 3px solid var(--color-accent);
+        outline-offset: 3px;
+        border-radius: var(--radius-s);
+    }
+
+    [id] {
+        scroll-margin-block-start: var(--space-m);
+    }
+
+    ::selection {
+        background: color-mix(in oklch, var(--color-accent) 30%, transparent);
+    }
+
+    @media print {
+        body {
+            background: none;
+            color: #000;
+        }
+
+        .skip-link,
+        .site-nav,
+        .contact {
+            display: none;
+        }
+    }
+}

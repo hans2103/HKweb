@@ -17,5 +17,6 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run lint
-      - run: npm test
+      # astro check + astro build; the tests below read the built dist/.
       - run: npm run build
+      - run: npx vitest run

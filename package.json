@@ -27,7 +27,7 @@
         "@astrojs/check": "^0.9.12",
         "@commitlint/cli": "^21.2.4",
         "@eslint/js": "^10.0.1",
-        "@types/node": "^24.19.2",
+        "@types/node": "^26.6.5",
         "@vitest/coverage-v8": "^5.0.5",
         "eslint": "^10.13.0",
         "eslint-plugin-astro": "^3.2.1",

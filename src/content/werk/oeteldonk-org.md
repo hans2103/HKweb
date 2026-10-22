@@ -14,10 +14,6 @@ role: Bouw, frontend en technisch beheer
 since: 2013
 ---
 
-## De opdracht
-
-TODO: twee à drie zinnen over wat de Oeteldonksche Club van 1882 nodig had, voor wie de site is en wat er rond carnaval op de site gebeurt.
-
 ## Wat ik bouwde
 
 - **De website.** Een Joomla-site met eigen template, gebouwd naar het ontwerp uit 2020, met een aftelklok naar het moment dat de Prins naar zijn durp komt.
@@ -28,5 +24,3 @@ TODO: twee à drie zinnen over wat de Oeteldonksche Club van 1882 nodig had, voo
 ## Hoe het nu draait
 
 De site wordt nog steeds doorontwikkeld, met genummerde releases en geautomatiseerde tests, en lokaal in DDEV.
-
-TODO: resultaat in cijfers of woorden: bezoekers rond carnaval, snelheid, wat de club ervan zegt.

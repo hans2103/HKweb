@@ -5,6 +5,7 @@
             "url": [
                 "http://localhost/index.html",
                 "http://localhost/werk/oeteldonk-org.html",
+                "http://localhost/werk/hendrien-org.html",
                 "http://localhost/algemene-voorwaarden.html"
             ],
             "numberOfRuns": 3,

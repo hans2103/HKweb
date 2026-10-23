@@ -43,6 +43,9 @@ const PAIRS = [
     ['color-accent-hover', 'color-surface'],
     ['color-inverse-text', 'color-inverse-bg'],
     ['color-inverse-muted', 'color-inverse-bg'],
+    ['color-inverse-subtle', 'color-inverse-bg'],
+    ['color-inverse-accent', 'color-inverse-bg'],
+    ['color-inverse-accent-hover', 'color-inverse-bg'],
     ['color-button-text', 'color-button'],
     ['color-cta-text', 'color-cta']
 ];

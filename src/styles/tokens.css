@@ -23,6 +23,9 @@
         --color-inverse-bg: light-dark(#252e37, #0e1317);
         --color-inverse-text: light-dark(#ffffff, #e6ebe8);
         --color-inverse-muted: light-dark(#d5dbe1, #b9c3cc);
+        --color-inverse-subtle: light-dark(#9aa6b2, #9aa6b2);
+        --color-inverse-accent: light-dark(#f2865f, #f2865f);
+        --color-inverse-accent-hover: light-dark(#f8b293, #f8b293);
         --color-inverse-rule: light-dark(#515e6b, #3a4550);
         --color-button: light-dark(#252e37, #e6ebe8);
         --color-button-text: light-dark(#ffffff, #161c21);

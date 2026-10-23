@@ -25,8 +25,8 @@ since: 2013
 
 De site wordt nog steeds doorontwikkeld, met genummerde releases en geautomatiseerde tests, en lokaal in DDEV.
 
-## Snelheid en bewuste keuzes
+## Snel, voor iedereen, en met bewuste keuzes
 
-Gemeten met Lighthouse op 23 oktober 2026: toegankelijkheid 100, prestaties 99 op mobiel en 100 op desktop. Om daar te komen laadt het kernscript van Joomla nu pas na de pagina, krijgt alleen de grootste afbeelding voorrang en is het logo 29% kleiner.
+Volgens de snelheidstest van Google (23 oktober 2026) is de site voor iedereen goed te gebruiken: 100 van de 100. Hij is ook snel: 99 op de telefoon en 100 op de computer. Daarvoor laat de site eerst zien wat je meteen nodig hebt, en laadt hij de rest daarna.
 
-Twee scores zijn met opzet geen 100. Best practices komt op 79, omdat Cloudflare's botbescherming een script toevoegt. Bij een site met stemmen, een webshop en formulieren weegt die bescherming zwaarder. SEO komt op 92, omdat `robots.txt` AI-bedrijven laat weten dat ze de content niet mogen gebruiken om modellen te trainen. Google indexeert gewoon door; alleen Lighthouse kent die regel nog niet.
+Op twee onderdelen kiest de site bewust voor iets anders dan de hoogste score. Hij is beveiligd tegen nep-bezoekers en spam; dat kost een paar punten, maar bij een site waar gestemd en gekocht wordt, is die beveiliging belangrijker. En de site vraagt AI-bedrijven om de teksten en foto's van de club niet te gebruiken om hun systemen te trainen. In Google blijft de site gewoon vindbaar.

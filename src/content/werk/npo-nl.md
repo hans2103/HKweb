@@ -1,6 +1,6 @@
 ---
 title: NPO.nl
-url: https://www.npo.nl
+url: https://npo.nl
 client: NPO
 tech: [Craft CMS]
 summary: Startpagina van de publieke omroep

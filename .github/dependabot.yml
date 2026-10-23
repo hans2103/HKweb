@@ -10,6 +10,10 @@ updates:
       # Remove once https://github.com/typescript-eslint/typescript-eslint/issues/10940 is resolved.
       - dependency-name: "typescript"
         update-types: ["version-update:semver-major"]
+      # @types/node follows the Node major the site runs on (24.x, the newest
+      # Vercel offers). Bump it together with .nvmrc and engines.node (#120).
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
     # Each family has a routine group (minor/patch) and a separate *-major group.
     # Majors stay bundled (packages with exact peer pins must move together, a
     # partial bump never installs) but arrive as their own PR, titled

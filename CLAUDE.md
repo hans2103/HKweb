@@ -20,7 +20,7 @@ The default branch is `main` (renamed from `master` in October 2026; GitHub redi
 
 Vercel used Checkly for Deployment Checks; when Checkly fails (e.g. out of credits) Vercel builds production but doesn't promote it to hkweb.nl. The Lighthouse step in CI replaces it; remove Checkly under Vercel › Settings › Deployment Checks. A stuck production build can be promoted by hand in the Vercel dashboard.
 
-Dependabot (`.github/dependabot.yml`) opens weekly npm PRs + monthly Actions bumps. The `astro`, `eslint` and `vitest` families each have a routine group (minor/patch) and a separate `*-major` group. Packages that must move together (exact peer pins, like `vitest` + `@vitest/coverage-v8`) need to share a group. TypeScript majors are ignored: `typescript-eslint` supports TypeScript < 6.1 only; remove the ignore once typescript-eslint/typescript-eslint#10940 is resolved. `eslint-plugin-jsx-a11y` was dropped because it has no ESLint 10 support; accessibility is covered by the tests and Lighthouse.
+Dependabot (`.github/dependabot.yml`) opens weekly npm PRs + monthly Actions bumps. The `astro`, `eslint` and `vitest` families each have a routine group (minor/patch) and a separate `*-major` group. Packages that must move together (exact peer pins, like `vitest` + `@vitest/coverage-v8`) need to share a group. TypeScript majors are ignored: `typescript-eslint` supports TypeScript < 6.1 only; remove the ignore once typescript-eslint/typescript-eslint#10940 is resolved. `@types/node` majors are ignored too: they follow the Node major in `.nvmrc`/`engines.node` (24.x, the newest Vercel offers) and move with it. `eslint-plugin-jsx-a11y` was dropped because it has no ESLint 10 support; accessibility is covered by the tests and Lighthouse.
 
 ## Architecture
 

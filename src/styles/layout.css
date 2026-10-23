@@ -16,6 +16,9 @@
     .section--inverse {
         --color-heading: var(--color-inverse-text);
         --color-text-muted: var(--color-inverse-muted);
+        --color-text-subtle: var(--color-inverse-subtle);
+        --color-accent: var(--color-inverse-accent);
+        --color-accent-hover: var(--color-inverse-accent-hover);
         --color-rule: var(--color-inverse-rule);
 
         color: var(--color-inverse-text);

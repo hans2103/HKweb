@@ -17,7 +17,7 @@ since: 2013
 ## Wat ik bouwde
 
 - **De website.** Een Joomla-site met eigen template, gebouwd naar het ontwerp uit 2020, met een aftelklok naar het moment dat de Prins naar zijn durp komt.
-- **Het jurysysteem van het Kwèkfestijn.** Een eigen Joomla-component waarin de jury de liedjes beoordeelt, met een API waar het scorebord van de finale de uitslag uit haalt.
+- **Het jurysysteem van het Kwèkfestijn.** Een eigen Joomla-component waarin de jury de liedjes beoordeelt, met een API waar het scorebord van de finale de uitslag uit haalt. Daar is [een eigen case](/werk/kwekfestijn-jury) over.
 - **De presentatie op de avond zelf.** Een slideshow in reveal.js voor op het grote scherm tijdens het Kwèkfestijn.
 - **De webshop.** [Hendrien.org](https://www.hendrien.org), de Magento-webshop van Stichting Hendrien en het officiële verkooppunt van de club.
 

@@ -5,7 +5,7 @@ export const SITE_NAME = 'HKweb';
 export const PERSON_NAME = 'Hans Kuijpers';
 export const SITE_EMAIL = 'info@hkweb.nl';
 export const SITE_DESCRIPTION =
-    'Hans Kuijpers is frontend developer bij HKweb in Eersel. Hij bouwt snelle, toegankelijke frontends voor Joomla, Magento (Hyvä) en Craft CMS.';
+    'Hans Kuijpers is frontend developer bij HKweb in Eersel. Hij bouwt snelle, toegankelijke frontends voor Joomla, Magento (Hyvä) en Craft CMS, en bouwt, host en beheert ook de toepassingen eromheen.';
 
 // The address stays out of the visible page; it is only published in JSON-LD.
 export const SITE_ADDRESS = {
@@ -37,9 +37,11 @@ export const SKILLS = [
     'Magento',
     'Hyvä',
     'Craft CMS',
+    'PHP',
     'CSS',
     'Toegankelijkheid',
-    'Webperformance'
+    'Webperformance',
+    'Hosting en serverbeheer'
 ];
 
 // Clients without a screenshot card on the homepage.

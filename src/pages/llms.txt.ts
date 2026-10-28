@@ -1,7 +1,14 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 
-import { OTHER_CLIENTS, SITE_EMAIL, SITE_URL, SKILLS, SOCIAL_PROFILES } from '../data/site';
+import {
+    EXTENSIONS,
+    OTHER_CLIENTS,
+    SITE_EMAIL,
+    SITE_URL,
+    SKILLS,
+    SOCIAL_PROFILES
+} from '../data/site';
 import { indexablePages } from '../lib/pages';
 
 // llms.txt (https://llmstxt.org): a Markdown summary of the site for AI
@@ -26,6 +33,10 @@ ${pages.map(({ path, title, summary }) => `- [${title}](${SITE_URL}${path}): ${s
 
 ${werk.map(({ data }) => `- [${data.title}](${data.url}): ${data.summary} (${data.tech.join(', ')}, ${data.relation})`).join('\n')}
 - Ook gewerkt voor: ${OTHER_CLIENTS.join(', ')}
+
+## Eigen Joomla-extensies (open source)
+
+${EXTENSIONS.map(({ name, repo, summary }) => `- [${name}](${repo}): ${summary}`).join('\n')}
 
 ## Profielen
 

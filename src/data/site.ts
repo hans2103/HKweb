@@ -61,6 +61,42 @@ export const OTHER_CLIENTS = [
     'Fanfare De Vooruitgang'
 ];
 
+// Own open-source Joomla extensions, maintained for Joomla 5/6. Leave out the
+// archived Joomla 3 ones (canonicalurl, SocialMetaTags, mod_meetup, mod_ecwid_product).
+export const EXTENSIONS = [
+    {
+        name: 'Google Tag Manager',
+        repo: 'https://github.com/hans2103/plg_system_googletagmanager',
+        summary:
+            'Google Tag Manager laden met een eigen cookiemelding: niets meten voordat je kiest'
+    },
+    {
+        name: 'ImageKit',
+        repo: 'https://github.com/hans2103/plg_system_imagekit',
+        summary: 'afbeeldingen via een CDN, automatisch in het lichtste formaat en de juiste maat'
+    },
+    {
+        name: 'YouTube',
+        repo: 'https://github.com/hans2103/plg_content_youtube',
+        summary: 'YouTube-video’s die pas laden als je erop klikt'
+    },
+    {
+        name: 'Error 404',
+        repo: 'https://github.com/hans2103/plg_system_error404',
+        summary: 'een eigen 404-pagina per taal, die niet per ongeluk weg kan'
+    },
+    {
+        name: 'Sanitize filename',
+        repo: 'https://github.com/hans2103/plg_media-action_sanitizefilename',
+        summary: 'nette bestandsnamen bij het uploaden van media'
+    },
+    {
+        name: 'Max size',
+        repo: 'https://github.com/hans2103/plg_media-action_maxsize',
+        summary: 'te grote afbeeldingen automatisch kleiner maken bij het uploaden'
+    }
+];
+
 export const TALKS = [
     { title: 'Template overrides en JLayouts (workshop)', event: 'JoomlaDagen 2019' },
     { title: 'Bootstrap 3 in Joomla', event: 'JoomlaDagen 2015' },

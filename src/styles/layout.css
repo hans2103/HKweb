@@ -13,6 +13,11 @@
         background: var(--color-surface);
     }
 
+    /* Second section on the same background: one band, no double gap. */
+    .section--continued {
+        padding-block-start: 0;
+    }
+
     .section--inverse {
         --color-heading: var(--color-inverse-text);
         --color-text-muted: var(--color-inverse-muted);

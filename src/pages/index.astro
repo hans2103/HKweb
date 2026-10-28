@@ -4,6 +4,7 @@ import { getCollection } from 'astro:content';
 import Picture from '../components/Picture.astro';
 import WerkCard from '../components/WerkCard.astro';
 import {
+    EXTENSIONS,
     OG_IMAGE,
     OTHER_CLIENTS,
     PERSON_NAME,
@@ -63,15 +64,25 @@ const jsonLd = {
             worksFor: { '@id': ORGANIZATION_ID },
             knowsAbout: SKILLS,
             sameAs: SOCIAL_PROFILES.map((profile) => profile.url),
-            workExample: werk.map(({ id, data }) => ({
-                '@type': 'WebSite',
-                name: data.title,
-                url: data.url,
-                description: data.summary,
-                ...(data.case && {
-                    subjectOf: { '@type': 'WebPage', url: `${SITE_URL}/werk/${id}` }
-                })
-            }))
+            workExample: [
+                ...werk.map(({ id, data }) => ({
+                    '@type': 'WebSite',
+                    name: data.title,
+                    url: data.url,
+                    description: data.summary,
+                    ...(data.case && {
+                        subjectOf: { '@type': 'WebPage', url: `${SITE_URL}/werk/${id}` }
+                    })
+                })),
+                ...EXTENSIONS.map(({ name, repo, summary }) => ({
+                    '@type': 'SoftwareSourceCode',
+                    name: `${name} (Joomla-extensie)`,
+                    codeRepository: repo,
+                    description: summary,
+                    programmingLanguage: 'PHP',
+                    runtimePlatform: 'Joomla'
+                }))
+            ]
         },
         {
             '@type': 'ProfessionalService',
@@ -264,7 +275,7 @@ const jsonLd = {
                 <h2 id="kennis-titel">Kennis delen</h2>
                 <p class="muted">
                     Open source draait om elkaar verder helpen. Daarom sta ik al jaren op het podium
-                    in de Joomla-community, en bij de Joomla Gebruikersgroepen Eindhoven en
+                    in de Joomla-community, en bij de Joomla Gebruikersgroepen Eindhoven en{' '}
                     {/* U+2011: a non-breaking hyphen keeps ’s‑ with Hertogenbosch. */}
                     ’s‑Hertogenbosch.
                 </p>
@@ -274,6 +285,29 @@ const jsonLd = {
                     <li>
                         {title}
                         <span>{event}</span>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    </section>
+
+    <section
+        id="extensies"
+        class="section section--surface section--continued"
+        aria-labelledby="extensies-titel">
+        <div class="container split">
+            <div class="flow">
+                <h2 id="extensies-titel">Eigen Joomla‑extensies</h2>
+                <p class="muted">
+                    Wat ik voor klanten nodig heb en vaker kan gebruiken, maak ik als plugin. Gratis
+                    en open source op GitHub, bijgehouden voor Joomla 5 en 6.
+                </p>
+            </div>
+            <ul class="talks talks--stacked">
+                {EXTENSIONS.map(({ name, repo, summary }) => (
+                    <li>
+                        <a href={repo}>{name}</a>
+                        <span>{summary}</span>
                     </li>
                 ))}
             </ul>

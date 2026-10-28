@@ -32,6 +32,12 @@ Het begon met een zelfgemaakte adventskalender: een rij deurtjes, elke dag een v
 - Privacy voorop: je kunt al je gegevens downloaden of laten verwijderen.
 - Updates rol ik uit via een eigen updateserver, net als bij een gewone Joomla-uitbreiding.
 
+## Voor iedereen te gebruiken
+
+Volgens de snelheidstest van Google (28 oktober 2026) is MomentsUntil voor iedereen goed te gebruiken: 100 van de 100, op de telefoon en op de computer. Vindbaarheid scoort ook 100. Het laatste punt kwam van de cookiemelding: die had te weinig contrast. Ik heb hem vervangen door een eigen melding in de stijl van de site, licht en donker, waarin weigeren net zo makkelijk is als accepteren.
+
+De site is snel: 99 op de computer en rond de 90 op de telefoon. Net als bij Oeteldonk is de site beveiligd tegen nep-bezoekers; dat kost een paar punten, maar houdt spam buiten.
+
 ## Nu
 
 MomentsUntil is in bèta. Op de site staan voorbeeldkalenders die je kunt bekijken.

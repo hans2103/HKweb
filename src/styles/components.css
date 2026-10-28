@@ -359,6 +359,11 @@
         }
     }
 
+    /* Name above a longer description, both left-aligned. */
+    .talks--stacked li {
+        flex-direction: column;
+    }
+
     .contact {
         display: flex;
         flex-wrap: wrap;

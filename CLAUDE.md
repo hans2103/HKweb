@@ -31,7 +31,7 @@ Personal site of Hans Kuijpers (hkweb.nl): **Astro 7 (static output) + plain CSS
 - `src/components/`: `Header`, `Footer`, `WerkCard`, `Picture` (AVIF/WebP/JPEG `<picture>` for the static variants).
 - `src/content/werk/*.md`: one file per project, schema in `src/content.config.ts`. `case: true` creates `/werk/<id>` from the Markdown body; `featured: true` is the large card on the homepage.
 - `src/content/legal/*.html`: the legal texts, rendered with `set:html` (copied verbatim from the old Next.js build).
-- `src/data/site.ts`: site-wide data (URL, e-mail, address, social profiles, skills, other clients, talks, fixed pages).
+- `src/data/site.ts`: site-wide data (URL, e-mail, address, social profiles, skills, other clients, own Joomla extensions, talks, fixed pages).
 - `src/lib/`: `pages.ts` (all indexable pages, feeds sitemap and llms.txt), `url.ts` (`pagePath`: public path without `.html`/`index`), `images.ts`, `html.ts`.
 
 URLs: `build.format: 'file'` writes `werk/x.html`; `vercel.json` (`cleanUrls`, `trailingSlash: false`) serves it at `/werk/x`, matching the old Next.js URLs.
@@ -66,7 +66,7 @@ No framework islands, no `<script>` (except JSON-LD data blocks with `is:inline`
 ### SEO and AI
 
 - `Base.astro` props: `title`, `description`, `noindex`, `ogType`, `jsonLd`. Canonical and `og:url` come from `SITE_URL` + `pagePath()`; `noindex` pages get no canonical.
-- JSON-LD: homepage `@graph` (`ProfilePage` → `Person` with `workExample` per project, `WebSite`, `ProfessionalService`); case pages a `WebPage` with breadcrumb and the project as `about`.
+- JSON-LD: homepage `@graph` (`ProfilePage` → `Person` with `workExample` per project and per own Joomla extension (`SoftwareSourceCode`), `WebSite`, `ProfessionalService`); case pages a `WebPage` with breadcrumb and the project as `about`.
 - `sitemap.xml` emits only `<loc>` for every indexable page. `robots.txt` lists AI search (`AI_SEARCH_BOTS`) and AI training (`AI_TRAINING_BOTS`) crawlers, all allowed; to opt out of training give `AI_TRAINING_BOTS` their own `Disallow: /` group. `llms.txt` is generated from the same data as the pages. A new non-collection page must be added to `PAGES` in `src/data/site.ts`; `src/__tests__/discovery.test.ts` fails otherwise.
 - Contact is by e-mail only: no phone number on the site or in JSON-LD (Hans prefers e-mail). The street address is only in JSON-LD.
 - `public/.well-known/security.txt` has an `Expires` date (2028-10-01): bump it yearly.

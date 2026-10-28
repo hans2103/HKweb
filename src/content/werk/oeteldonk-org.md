@@ -18,6 +18,7 @@ since: 2013
 
 - **De website.** Een Joomla-site met eigen template, gebouwd naar het ontwerp uit 2020, met een aftelklok naar het moment dat de Prins naar zijn durp komt.
 - **Het jurysysteem van het Kwèkfestijn.** Een eigen Joomla-component waarin de jury de liedjes beoordeelt, met een API waar het scorebord van de finale de uitslag uit haalt. Daar is [een eigen case](/werk/kwekfestijn-jury) over.
+- **Een eigen cookiemelding.** Gemaakt met mijn eigen [Google Tag Manager-plugin voor Joomla](https://github.com/hans2103/plg_system_googletagmanager), in de stijl van de site. Er wordt niets gemeten voordat je kiest, weigeren is net zo makkelijk als accepteren, en wie weigert, raakt ook de cookies kwijt die Google al had gezet. Filmpjes van YouTube en muziek van Spotify laden pas als je erop klikt.
 - **De presentatie op de avond zelf.** Een slideshow in reveal.js voor op het grote scherm tijdens het Kwèkfestijn.
 - **De webshop.** [Hendrien.org](https://www.hendrien.org), de Magento-webshop van Stichting Hendrien en het officiële verkooppunt van de club.
 

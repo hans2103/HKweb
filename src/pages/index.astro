@@ -18,7 +18,7 @@ import {
     TALKS
 } from '../data/site';
 import Base from '../layouts/Base.astro';
-import { AVATAR, AVATAR_WIDTHS, WERK_WIDTHS, werkImage } from '../lib/images';
+import { PORTRAIT, PORTRAIT_WIDTHS, WERK_WIDTHS, werkImage } from '../lib/images';
 
 const werk = (await getCollection('werk')).sort((a, b) => a.data.order - b.data.order);
 const featured = werk.find((entry) => entry.data.featured);
@@ -103,33 +103,36 @@ const jsonLd = {
 
 <Base ogType="profile" jsonLd={jsonLd}>
     <section class="intro container" aria-labelledby="intro-titel">
-        <p class="byline">
-            <Picture
-                src={AVATAR}
-                widths={AVATAR_WIDTHS}
-                sizes="4rem"
-                alt=""
-                width={128}
-                height={128}
-                loading="eager"
-            />
-            <span>
-                {PERSON_NAME} · frontend developer in Eersel · beschikbaar voor freelance projecten
-            </span>
-        </p>
-        <h1 id="intro-titel">
-            Frontend voor Joomla en Magento die snel is, en voor iedereen werkt.
-        </h1>
-        <div class="intro__footer">
-            <p>
-                Mijn eerste website maakte ik in 1995, HKweb bestaat sinds 2005. Ik werk met Joomla,
-                Magento (Hyvä) en Craft CMS, voor eigen klanten en als vaste kracht voor Perfect Web
-                Team. CSS is mijn favoriete gereedschap. Wat ik bouw, host en beheer ik ook zelf.
+        <div class="intro__text">
+            <p class="byline">
+                Hoi, ik ben {PERSON_NAME}. Frontend developer in Eersel, beschikbaar voor freelance
+                projecten.
+            </p>
+            <h1 id="intro-titel">
+                Ik bouw frontends voor Joomla en Magento die snel zijn, en voor iedereen werken.
+            </h1>
+            <p class="intro__lead">
+                Mijn eerste website maakte ik in 1995, HKweb bestaat sinds 2005. Nog steeds word ik
+                blij van een pagina die meteen laadt en die iedereen kan gebruiken. Ik werk met
+                Joomla, Magento (Hyvä) en Craft CMS, voor eigen klanten en als vaste kracht voor
+                Perfect Web Team. CSS is mijn favoriete gereedschap. Wat ik bouw, host en beheer ik
+                ook zelf, dus je hebt één aanspreekpunt.
             </p>
             <a class="button" href={`mailto:${SITE_EMAIL}?subject=Check%20van%20mijn%20site`}>
                 Vraag een check van je site aan
             </a>
         </div>
+        <Picture
+            src={PORTRAIT}
+            widths={PORTRAIT_WIDTHS}
+            sizes="clamp(10rem, 30vw, 20rem)"
+            alt={`${PERSON_NAME}, glimlachend, in een blauw overhemd met een grijs gebreid vest`}
+            width={640}
+            height={800}
+            loading="eager"
+            fetchpriority="high"
+            class="intro__portret"
+        />
     </section>
 
     <section class="section section--surface" aria-labelledby="cijfers-titel">
@@ -316,7 +319,9 @@ const jsonLd = {
 
     <section id="contact" class="section" aria-labelledby="contact-titel">
         <div class="container contact">
-            <h2 id="contact-titel">Stuur me je URL. Ik vertel je eerlijk wat er beter kan.</h2>
+            <h2 id="contact-titel">
+                Stuur me je URL. Ik vertel je eerlijk wat er goed is, en wat beter kan.
+            </h2>
             <a class="button button--cta" href={`mailto:${SITE_EMAIL}`}>
                 {SITE_EMAIL}
             </a>

@@ -10,7 +10,7 @@
     :root {
         color-scheme: light dark;
 
-        --color-bg: light-dark(#f7f7f5, #15171a);
+        --color-bg: light-dark(#faf8f5, #15171a);
         --color-surface: light-dark(#ffffff, #1f2226);
         --color-text: light-dark(#22262b, #eceef0);
         --color-heading: light-dark(#22262b, #ffffff);

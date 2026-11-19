@@ -24,7 +24,7 @@ Dependabot (`.github/dependabot.yml`) opens weekly npm PRs + monthly Actions bum
 
 ## Architecture
 
-Personal site of Hans Kuijpers (hkweb.nl): **Astro 7 (static output) + plain CSS + TypeScript (strict)**. Site language is Dutch (`<html lang="nl">`). The design is "richting C" from the HKweb homepage redesign canvas, made warmer in November 2026: neutral off-white and graphite with the logo blue (`#3b6fce`) as brand colour, and a large portrait in the intro.
+Personal site of Hans Kuijpers (hkweb.nl): **Astro 7 (static output) + plain CSS + TypeScript (strict)**. Site language is Dutch (`<html lang="nl">`). The design is "richting C" from the HKweb homepage redesign canvas, made warmer in November 2026: a slightly warm off-white (`#faf8f5`) and graphite with the logo blue (`#3b6fce`) as brand colour, and a large portrait in the intro.
 
 - `src/pages/`: `index.astro` (homepage), `werk/[id].astro` (case pages), `algemene-voorwaarden.astro`, `privacy-backups.astro`, `404.astro`, and endpoints `sitemap.xml.ts`, `robots.txt.ts`, `llms.txt.ts`.
 - `src/layouts/Base.astro`: `<head>` (meta, Open Graph, JSON-LD), skip link, `Header`, `<main id="main">`, `Footer`.

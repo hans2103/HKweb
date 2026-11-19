@@ -10,25 +10,25 @@
     :root {
         color-scheme: light dark;
 
-        --color-bg: light-dark(#f6efe4, #1d1a17);
-        --color-surface: light-dark(#fffcf7, #29241f);
-        --color-text: light-dark(#2e2925, #f0e9df);
-        --color-heading: light-dark(#2e2925, #ffffff);
-        --color-text-muted: light-dark(#4d443c, #cdc3b6);
-        --color-text-subtle: light-dark(#635950, #a99f93);
+        --color-bg: light-dark(#f7f7f5, #15171a);
+        --color-surface: light-dark(#ffffff, #1f2226);
+        --color-text: light-dark(#22262b, #eceef0);
+        --color-heading: light-dark(#22262b, #ffffff);
+        --color-text-muted: light-dark(#474d55, #c4c8cd);
+        --color-text-subtle: light-dark(#5d646d, #a0a6ad);
         --color-accent: light-dark(#2c56a8, #94b4f2);
         --color-accent-hover: light-dark(#1f3f7d, #bcd0f7);
-        --color-rule: light-dark(#b3a594, #4a4239);
-        --color-rule-subtle: light-dark(#e3d8c8, #3a332c);
-        --color-inverse-bg: light-dark(#2e2925, #141210);
-        --color-inverse-text: light-dark(#ffffff, #f0e9df);
-        --color-inverse-muted: light-dark(#ddd5ca, #cdc3b6);
-        --color-inverse-subtle: light-dark(#a99f93, #a99f93);
+        --color-rule: light-dark(#b4b9bf, #444a51);
+        --color-rule-subtle: light-dark(#e2e4e7, #2f3439);
+        --color-inverse-bg: light-dark(#22262b, #0c0d0f);
+        --color-inverse-text: light-dark(#ffffff, #eceef0);
+        --color-inverse-muted: light-dark(#d6d9dd, #c4c8cd);
+        --color-inverse-subtle: light-dark(#a3a9b0, #a0a6ad);
         --color-inverse-accent: light-dark(#94b4f2, #94b4f2);
         --color-inverse-accent-hover: light-dark(#bcd0f7, #bcd0f7);
-        --color-inverse-rule: light-dark(#635950, #3a332c);
-        --color-button: light-dark(#2e2925, #f0e9df);
-        --color-button-text: light-dark(#ffffff, #1d1a17);
+        --color-inverse-rule: light-dark(#5d646d, #2f3439);
+        --color-button: light-dark(#22262b, #eceef0);
+        --color-button-text: light-dark(#ffffff, #15171a);
         --color-cta: light-dark(#3b6fce, #3b6fce);
         --color-cta-text: light-dark(#ffffff, #ffffff);
         /* The blue of the HKweb logo tile, with the white signature on it. */

@@ -47,7 +47,8 @@ const PAIRS = [
     ['color-inverse-accent', 'color-inverse-bg'],
     ['color-inverse-accent-hover', 'color-inverse-bg'],
     ['color-button-text', 'color-button'],
-    ['color-cta-text', 'color-cta']
+    ['color-cta-text', 'color-cta'],
+    ['color-brand-text', 'color-brand']
 ];
 
 describe('colour contrast', () => {

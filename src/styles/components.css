@@ -53,11 +53,37 @@
         font-size: var(--step-1);
         color: var(--color-text);
         text-decoration: none;
+    }
+
+    /* The blue logo tile with the white signature, as on the printed logo. */
+    .site-logo__mark {
+        display: grid;
+        place-items: center;
+        inline-size: 3.25rem;
+        aspect-ratio: 1;
+        color: var(--color-brand-text);
+        background: var(--color-brand);
+        border-radius: 22%;
 
         svg {
-            inline-size: 3rem;
+            inline-size: 2.5rem;
+            block-size: auto;
             fill: currentColor;
         }
+    }
+
+    .site-logo__text {
+        display: grid;
+        line-height: 1.15;
+    }
+
+    .site-logo__name {
+        font-weight: 700;
+    }
+
+    .site-logo__tagline {
+        font-size: var(--step--1);
+        color: var(--color-text-muted);
     }
 
     .site-nav {
@@ -113,43 +139,46 @@
         }
     }
 
-    /* Intro (top of the homepage) */
+    /* Intro (top of the homepage): text with a portrait beside it. */
     .intro {
+        display: flex;
+        flex-wrap: wrap-reverse;
+        align-items: center;
+        gap: var(--space-l) var(--space-xl);
         padding-block: var(--space-l) var(--space-section);
 
         h1 {
             max-inline-size: 18em;
-            margin-block-start: var(--space-l);
+            margin-block-start: var(--space-s);
         }
+    }
+
+    .intro__text {
+        flex: 999 1 min(100%, 36rem);
     }
 
     .byline {
-        display: flex;
-        align-items: center;
-        gap: var(--space-s);
-        color: var(--color-text-muted);
-
-        img {
-            inline-size: 4rem;
-            aspect-ratio: 1;
-            border-radius: 50%;
-        }
+        font-size: var(--step-1);
+        color: var(--color-accent);
     }
 
-    .intro__footer {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: end;
-        justify-content: space-between;
-        gap: var(--space-l);
-        margin-block-start: var(--space-l);
+    .intro__lead {
+        max-inline-size: var(--measure);
+        margin-block: var(--space-m) var(--space-l);
+        font-size: var(--step-1);
+        color: var(--color-text-muted);
+    }
 
-        p {
-            flex: 1 1 min(100%, 32rem);
-            max-inline-size: var(--measure);
-            font-size: var(--step-1);
-            color: var(--color-text-muted);
-        }
+    .intro > picture {
+        flex: 1 1 10rem;
+        max-inline-size: clamp(10rem, 30vw, 20rem);
+    }
+
+    .intro__portret {
+        inline-size: 100%;
+        block-size: auto;
+        border-radius: 1.5rem;
+        box-shadow: 0.75rem 0.75rem 0 var(--color-brand);
     }
 
     /* Key figures */

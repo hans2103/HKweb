@@ -65,6 +65,11 @@ export const OTHER_CLIENTS = [
 // archived Joomla 3 ones (canonicalurl, SocialMetaTags, mod_meetup, mod_ecwid_product).
 export const EXTENSIONS = [
     {
+        name: 'Agent Ready',
+        repo: 'https://github.com/hans2103/plg_system_agentready',
+        summary: 'elke pagina ook als Markdown voor AI-agents, zonder betaalde CDN-functie'
+    },
+    {
         name: 'Google Tag Manager',
         repo: 'https://github.com/hans2103/plg_system_googletagmanager',
         summary:

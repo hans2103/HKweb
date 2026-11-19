@@ -27,6 +27,18 @@ const werk = defineCollection({
         featured: z.boolean().default(false),
         case: z.boolean().default(false),
         role: z.string().optional(),
+        // Before/after screenshots on the case page, from images/werk/screens/
+        // (<image>-desktop.jpg and <image>-mobiel.jpg per side).
+        compare: z
+            .object({
+                before: z.object({ label: z.string(), image: z.string() }),
+                after: z.object({ label: z.string(), image: z.string() }),
+                alt: z.object({
+                    before: z.object({ desktop: z.string(), mobiel: z.string() }),
+                    after: z.object({ desktop: z.string(), mobiel: z.string() })
+                })
+            })
+            .optional(),
         since: z.number().optional()
     })
 });

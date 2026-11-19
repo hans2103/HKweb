@@ -4,7 +4,7 @@ import { getCollection, render } from 'astro:content';
 import Picture from '../../components/Picture.astro';
 import { PERSON_NAME, SITE_EMAIL, SITE_NAME, SITE_URL } from '../../data/site';
 import Base from '../../layouts/Base.astro';
-import { WERK_WIDTHS, werkImage } from '../../lib/images';
+import { screenImage, SCREENS, WERK_WIDTHS, werkImage } from '../../lib/images';
 
 export async function getStaticPaths() {
     const werk = (await getCollection('werk')).sort((a, b) => a.data.order - b.data.order);
@@ -19,6 +19,11 @@ export async function getStaticPaths() {
 const { entry, next } = Astro.props;
 const { data } = entry;
 const { Content } = await render(entry);
+
+const devices = [
+    { key: 'desktop', label: 'Op de computer' },
+    { key: 'mobiel', label: 'Op de telefoon' }
+] as const;
 
 const pageUrl = `${SITE_URL}/werk/${entry.id}`;
 const description = `${data.title}: ${data.intro ?? data.summary}`;
@@ -121,6 +126,36 @@ const jsonLd = {
                 <Content />
             </div>
         </div>
+
+        {data.compare && (
+            <section class="section container flow" aria-labelledby="voor-na-titel">
+                <h2 id="voor-na-titel">Voor en na</h2>
+                {devices.map(({ key, label }) => (
+                    <div class="flow">
+                        <h3>{label}</h3>
+                        <div class={`compare compare--${key}`}>
+                            {(['before', 'after'] as const).map((side) => (
+                                <figure>
+                                    <Picture
+                                        src={screenImage(`${data.compare![side].image}-${key}`)}
+                                        widths={[...SCREENS[key].widths]}
+                                        sizes={
+                                            key === 'desktop'
+                                                ? '(min-width: 48rem) 36rem, 100vw'
+                                                : '15rem'
+                                        }
+                                        alt={data.compare!.alt[side][key]}
+                                        width={SCREENS[key].width}
+                                        height={SCREENS[key].height}
+                                    />
+                                    <figcaption>{data.compare![side].label}</figcaption>
+                                </figure>
+                            ))}
+                        </div>
+                    </div>
+                ))}
+            </section>
+        )}
     </article>
 
     {next && (

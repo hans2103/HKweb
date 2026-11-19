@@ -3,6 +3,8 @@
 // Generates every responsive image variant the site serves (AVIF, WebP, JPEG):
 //
 //   - project screenshots: images/werk/<slug>.jpg  → public/images/werk/<slug>-<w>.<ext>
+//   - before/after shots:  images/werk/screens/<name>-<desktop|mobiel>.jpg
+//                          → public/images/werk/screens/<name>-<desktop|mobiel>-<w>.<ext>
 //   - avatar:              public/images/Hans-2020.jpg → public/images/avatar/hans-2020-<w>.<ext>
 //   - share image:         public/images/Hans-2020.jpg → public/images/og/hans-2020-1200x630.jpg
 //
@@ -53,6 +55,21 @@ for (const file of (await readdir('images/werk')).filter((f) => f.endsWith('.jpg
             fit: 'cover',
             position: 'top'
         })
+    );
+}
+
+// Before/after screenshots for a case (frontmatter `compare`). Sources are cropped
+// beforehand (desktop 16:10, mobile 390:845), so these only scale down.
+const SCREEN_WIDTHS = { desktop: [480, 960], mobiel: [240, 480] };
+for (const file of (await readdir('images/werk/screens')).filter((f) => f.endsWith('.jpg'))) {
+    const name = basename(file, '.jpg');
+    const device = name.endsWith('-mobiel') ? 'mobiel' : 'desktop';
+    await variants(
+        `images/werk/screens/${file}`,
+        'public/images/werk/screens',
+        name,
+        SCREEN_WIDTHS[device],
+        (width) => ({ width })
     );
 }
 

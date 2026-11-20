@@ -1,7 +1,7 @@
 ---
 title: OnderdelenExpert
 url: https://www.onderdelenexpert.nl
-client: OnderdelenExpert
+client: Zanden Onderdelen Service
 tech: [Magento, Hyvä]
 summary: Webshop voor onderdelen van huishoudelijke apparaten, sinds november 2026 op Hyvä
 intro: Een webshop met duizenden onderdelen voor wasmachines, koelkasten en stofzuigers. Op 19 november 2026 overgezet naar Hyvä. De pagina's zijn nu minder dan half zo zwaar, en de automatische toegankelijkheidsscan vindt geen fouten meer.
@@ -14,7 +14,7 @@ role: Overstap van Luma naar Hyvä
 
 ## De opdracht
 
-OnderdelenExpert verkoopt onderdelen voor huishoudelijke apparaten: van een thermische beveiliging voor de koelkast tot een filter voor de stofzuiger. Wie zoekt, heeft vaak een kapot apparaat en wil snel het juiste onderdeel vinden, meestal op de telefoon. De webshop draaide op Magento met het standaardthema Luma. Dat werkt, maar elke pagina laadt honderden bestanden.
+OnderdelenExpert verkoopt onderdelen voor huishoudelijke apparaten: van een thermische beveiliging voor de koelkast tot een filter voor de stofzuiger. Wie zoekt, heeft vaak een kapot apparaat en wil snel het juiste onderdeel vinden, meestal op de telefoon. Dezelfde webshop draait ook als [zanden-onderdelen.nl](https://www.zanden-onderdelen.nl). Hij draaide op Magento met het standaardthema Luma. Dat werkt, maar elke pagina laadt honderden bestanden.
 
 ## Van Luma naar Hyvä
 
@@ -33,3 +33,8 @@ Gemeten op vier pagina's van de live webshop: op 5 november (oud) en op 20 novem
 - **Toegankelijkheid:** de snelheidstest van Google geeft nu op alle vier de pagina's een 100. De automatische scan op de regels van WCAG 2.1 AA vond eerst 2 tot 4 fouten per pagina, nu geen, ook niet in de winkelwagen en bij het afrekenen.
 
 Een automatische scan vindt niet alle toegankelijkheidsproblemen, en de score op de telefoon schommelt per meting. Half december laat Google zien hoe snel de webshop is voor echte bezoekers, gemeten over de eerste vier weken.
+
+## Meer voor deze klant
+
+- **[Centralestofzuigsysteem.nl](https://centralestofzuigsysteem.nl):** de site over de centrale stofzuigsystemen van Globovac, overgezet van WordPress naar Joomla.
+- **[Xper-products.nl](https://www.xper-products.nl):** de site van het eigen merk Xpèr, met een nieuw thema in Astro.

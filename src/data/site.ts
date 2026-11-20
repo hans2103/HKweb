@@ -56,7 +56,6 @@ export const OTHER_CLIENTS = [
     'B2B Zanden',
     'Vepo',
     'Van Maanen Montage',
-    'Xper Products',
     'Fanfare De Vooruitgang'
 ];
 

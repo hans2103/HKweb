@@ -53,7 +53,6 @@ export const OTHER_CLIENTS = [
     'Valiz',
     'PLCdirect',
     'Move to Match',
-    'B2B Zanden',
     'Vepo',
     'Van Maanen Montage',
     'Fanfare De Vooruitgang'

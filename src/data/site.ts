@@ -47,7 +47,6 @@ export const SKILLS = [
 // Clients without a screenshot card on the homepage.
 export const OTHER_CLIENTS = [
     'Perfect Web Team (vaste opdrachtgever sinds 2014)',
-    'OnderdelenExpert (nu: Magento naar Hyvä)',
     'ANWB Golf',
     'SPAR',
     'GGnet',

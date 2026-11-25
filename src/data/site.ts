@@ -67,6 +67,12 @@ export const EXTENSIONS = [
         summary: 'elke pagina ook als Markdown voor AI-agents, zonder betaalde CDN-functie'
     },
     {
+        name: 'Informanagement',
+        repo: 'https://github.com/hans2103/pkg_informanagement',
+        summary:
+            'het fiscale nieuws en de InforWijzers van Informanagement in Joomla, voor accountantskantoren'
+    },
+    {
         name: 'Google Tag Manager',
         repo: 'https://github.com/hans2103/plg_system_googletagmanager',
         summary:

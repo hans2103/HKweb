@@ -45,7 +45,7 @@ De nieuwe site draait op Joomla 6.2, zonder extensies van anderen. Wat er boveno
 
 ## Van WordPress-plugin naar Joomla-extensie
 
-Het fiscale nieuws en de advieswijzers op de site komen van Informanagement. Daarvoor waren er twee WordPress-plugins, maar geen Joomla-versie. Die bouwde ik zelf, en ik loste meteen op wat er aan de plugins schortte:
+Het fiscale nieuws en de advieswijzers op de site komen van Informanagement. Daarvoor waren er twee WordPress-plugins, maar geen Joomla-versie. Die bouwde ik zelf, als [open-source pakket voor Joomla 5 en 6](https://github.com/hans2103/pkg_informanagement), en ik loste meteen op wat er aan de plugins schortte:
 
 - De site haalt het nieuws elk uur op met één verzoek, in plaats van één voor de lijst plus één voor elk artikel. De details van een artikel volgen alleen als het nieuw of gewijzigd is.
 - Een storing bij de bron stopt de import niet meer halverwege. De site noteert de fout en gaat door met de rest.
@@ -54,6 +54,8 @@ Het fiscale nieuws en de advieswijzers op de site komen van Informanagement. Daa
 - Per artikel één afbeelding van zo’n 200 kB, in plaats van vijftien formaten en PNG’s van 3 MB.
 - De tekst uit de feed wordt opgeschoond, zonder losse opmaak in de tekst.
 - De scripts van de advieswijzers laden alleen op de pagina waar die staan, niet meer op elke pagina.
+
+Het pakket is gratis te gebruiken door elk kantoor met een abonnement bij Informanagement dat een Joomla-site heeft.
 
 ## Verder
 
